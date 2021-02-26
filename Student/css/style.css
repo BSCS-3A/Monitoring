@@ -43,7 +43,7 @@ nav .logo-pic{
  nav h1{
   font-family: Roboto Regular, sans-serif;
   font-weight: inherit;
-  font-size: 20px;
+  font-size: 30px;
   margin-bottom: 0px;
  }
 
@@ -146,6 +146,7 @@ nav img.user-profile{
 h4{
   font-size: 25px;
 }
+
 h3{
   font-family: Generica Regular, sans-serif;
   font-weight: inherit;
@@ -179,13 +180,11 @@ h5, h6{
 h5{
   font-size: 40px;
 }
+
 h6{
   margin-top: 100px;
   font-size: 15px;
 }
-
-
-
 
 @media all and (max-width: 968px) {
   nav ul{
@@ -268,6 +267,7 @@ header{
   font-weight: 600;
   padding: 10px 0;
 }
+
 p{
   font-size: 30px;
   font-weight: 500;
@@ -275,23 +275,40 @@ p{
 }
 
 article p{
-  font-family: Roboto regular, sans-serif;
-  color: #142d4f;
+  font-family: Roboto regular;
+  color:#1f6f8f;
   font-weight: inherit;
-  font-size: 20px;
-  letter-spacing: 3px;
-  position: relative;
+  font-size: 25px;
+  margin-top: 0px;
+  margin-bottom: 3px;
+  letter-spacing: 2px;
+  margin-left: 310px;
 }
 
 article h1{
-  font-family: Generica regular, sans-serif;
-  color: #1f6f8f;
+  font-family: Roboto regular, sans-serif;
+  color: #142d4f;
   font-weight: inherit;
-  font-size: 55px;
+  font-size: 65px;
   position: relative;
   letter-spacing: 3px;
-  margin-top: 10px;
+  margin-left:235px;
+  margin-top: 0px;
 }
+
+.res p{
+  font-size: 15px;
+  margin-top: 140px;
+  margin-left:300px;
+  color: #a37a0a;
+ }
+
+ .bg2{
+  position: absolute;
+  right:50px;
+  margin-top: 50px;
+  margin-bottom: 0;
+ }
 
 /* Container for flexboxes */
 section {
@@ -299,7 +316,7 @@ section {
   display: flex;
   margin-right: 0;
   margin-left: 30px;
-  margin-top: 190px;
+  margin-top: 140px;
   max-width: 700px;
 }
 
