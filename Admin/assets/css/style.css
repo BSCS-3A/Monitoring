@@ -335,11 +335,13 @@ div li span {
   padding: 1rem;
 }
 
-.position1, .position2, .position3, .position4, position5, .position6, position7, .position8{
+.position1, .position2, .position3, .position4, 
+.position5, .position6, .position7, .position8, 
+.position9, .position10, .position11, .position12{
   width: 18%;
   position:absolute;
   top: 45%;
-  left: 15%;
+  left: 16%;
   transform: translate(-50%, -50%);
   padding: 20px;
   background: #ffc423;
@@ -348,19 +350,31 @@ div li span {
   border-radius: 5px;
 }
 
-.position2{
-  left: 38%;
+.position2, .position6, .position10{
+  left: 39%;
 }
 
-.position3{
+.position3, .position7, .position11{
    left: 62%;
 }
 
-.position4{
+.position4, .position8, .position12{
   left: 85%;
 }
 
-.position1 h1, .position2 h1, .position3 h1, .position4 h1{
+.position5, .position6, .position7, .position8{
+  top: 80%;
+}
+
+.position9, .position10, .position11, .position12{
+  top: 115%;
+}
+
+
+.position1 h1, .position2 h1, .position3 h1, .position4 h1, 
+.position5 h1, .position6 h1, .position7 h1, .position8 h1, 
+.position9 h1, .position10 h1, .position11 h1, .position12 h1
+{
   margin: 0;
   padding: 0;
   color: rgb(0, 0, 0);
@@ -428,3 +442,22 @@ div li span {
  .anon{
   float: left;
  }
+
+ .btn{
+  border: none;
+  font-style: Roboto;
+  background-color:white;;
+  margin-top:580px;
+  margin-left: 600px;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn:hover {background:  #ffc423;}
+.success {color: white}
+.info {color: dodgerblue;}
+.warning {color: orange;}
+.danger {color: red;}
+.default {color: black;}
