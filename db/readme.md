@@ -12,5 +12,6 @@ v1.2
 first_name
 last_name
 mid_name
+addition of optional field photo
 
 this update affects the admin tb, candidate tb and student tb
