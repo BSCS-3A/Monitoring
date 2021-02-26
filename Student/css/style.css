@@ -275,31 +275,52 @@ p{
 }
 
 article p{
-  font-family: Roboto regular;
-  color:#1f6f8f;
-  font-weight: inherit;
-  font-size: 25px;
-  margin-top: 0px;
-  margin-bottom: 3px;
-  letter-spacing: 2px;
-  margin-left: 310px;
-}
-
-article h1{
   font-family: Roboto regular, sans-serif;
   color: #142d4f;
   font-weight: inherit;
-  font-size: 65px;
+  font-size: 20px;
+  letter-spacing: 3px;
+  position: relative;
+}
+
+article h1{
+  font-family: Generica regular, sans-serif;
+  color: #1f6f8f;
+  font-weight: inherit;
+  font-size: 55px;
   position: relative;
   letter-spacing: 3px;
-  margin-left:235px;
-  margin-top: 0px;
+  margin-top: 10px;
+}
+
+.elec p{
+  font-family: Roboto regular;
+  color:#1f6f8f;
+  font-weight: inherit;
+  font-size: 35px;
+  margin-top: 150px;
+  margin-bottom: 0px;
+  letter-spacing: 2px;
+  margin-left: 330px;
+}
+
+.on h1{
+  font-family: Roboto regular;
+  color: #142d4f;
+  font-weight: inherit;
+  font-size: 70px;
+  position: relative;
+  letter-spacing: 4px;
+  margin-left:275px;
+  margin-top: 4px;
 }
 
 .res p{
+  font-family: Roboto regular;
+  letter-spacing: 1px;
   font-size: 15px;
-  margin-top: 140px;
-  margin-left:300px;
+  margin-top: 130px;
+  margin-left:370px;
   color: #a37a0a;
  }
 
@@ -309,6 +330,72 @@ article h1{
   margin-top: 50px;
   margin-bottom: 0;
  }
+
+ .arch p{
+  font-family: Roboto black;
+  color: #142d4f;
+  font-weight: inherit;
+  font-size: 40px;
+  position: relative;
+  letter-spacing: 1px;
+  margin-left:436px;
+  margin-top: 25px;
+ }
+ 
+.folder1{
+  position: absolute;
+  left: 350px;
+  margin-top: 100px;
+  margin-bottom: 0;
+}
+
+.folder2{
+  position: absolute;
+  left:560px;
+  margin-top: 100px;
+  margin-bottom: 0;
+}
+
+.folder3{
+  position: absolute;
+  left:770px;
+  margin-top: 100px;
+  margin-bottom: 0;
+}
+
+.fname1 a{
+  font-family: Roboto black;
+  color:#1f6f8f;
+  font-size: 20px;
+  position: relative;
+  letter-spacing: 1px;
+  margin-left:340px;
+  margin-top: 250px;
+  float: left;
+}
+
+.fname2 a{
+  font-family: Roboto black;
+  color:#1f6f8f;
+  font-size: 20px;
+  position: relative;
+  letter-spacing: 1px;
+  margin-left: 40px;
+  margin-top: 250px;
+  float: left;
+}
+
+.fname3 a{
+  font-family: Roboto black;
+  color:#1f6f8f;
+  font-size: 20px;
+  position: relative;
+  letter-spacing: 1px;
+  margin-left:40px;
+  margin-top: 250px;
+  float: left;
+}
+
 
 /* Container for flexboxes */
 section {
