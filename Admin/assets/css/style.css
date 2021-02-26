@@ -334,3 +334,97 @@ div li span {
   display: none;
   padding: 1rem;
 }
+
+.position1, .position2, .position3, .position4, position5, .position6, position7, .position8{
+  width: 18%;
+  position:absolute;
+  top: 45%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background: #ffc423;
+  box-sizing: border-box;
+  box-shadow:0 20px 60px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+.position2{
+  left: 38%;
+}
+
+.position3{
+   left: 62%;
+}
+
+.position4{
+  left: 85%;
+}
+
+.position1 h1, .position2 h1, .position3 h1, .position4 h1{
+  margin: 0;
+  padding: 0;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  font-family: Roboto regular;
+  font-weight: inherit;
+  font-size: 20px;
+  position: relative;
+  margin-left: 55px;
+}
+
+.bar1,{
+  box-sizing: border-box;
+  width: 95%;
+  margin: 20px 0;
+}
+
+.bar1 p{
+    color:rgb(0, 0, 0);
+    text-transform: uppercase;
+    margin: 0 0 10px;
+    padding: 0;
+    font-weight: bold;
+    letter-spacing: 0px;
+    font-family: Roboto regular;
+    font-size: 15px;
+}
+
+.bar p:nth-child(2){
+  float:right;
+  position: relative;
+  top: -30px;
+}
+
+.vote_percentage{
+  background: #000000;
+  padding: 2px;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  border-radius: 0px;
+  margin-top: 20px;
+  margin-left: 60px;
+}
+
+
+.vote_level{
+  background: #ffffff;
+  width: 90%;
+  height: 30px;
+  border-radius: 1px; 
+}
+
+.elecstat p{
+  font-family: Roboto black;
+  color: #142d4f;
+  font-weight: inherit;
+  font-size: 40px;
+  position: relative;
+  letter-spacing: 1px;
+  margin-left:500px;
+  margin-top: 25px;
+ }
+
+ .anon{
+  float: left;
+ }
