@@ -15,3 +15,6 @@ mid_name
 addition of optional field photo
 
 this update affects the admin tb, candidate tb and student tb
+
+v1.3 minor rolllback
+removed first name, last name and mid name field
