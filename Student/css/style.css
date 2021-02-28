@@ -331,72 +331,6 @@ article h1{
   margin-bottom: 0;
  }
 
- .arch p{
-  font-family: Roboto black;
-  color: #142d4f;
-  font-weight: inherit;
-  font-size: 40px;
-  position: relative;
-  letter-spacing: 1px;
-  margin-left:436px;
-  margin-top: 25px;
- }
- 
-.folder1{
-  position: absolute;
-  left: 350px;
-  margin-top: 100px;
-  margin-bottom: 0;
-}
-
-.folder2{
-  position: absolute;
-  left:560px;
-  margin-top: 100px;
-  margin-bottom: 0;
-}
-
-.folder3{
-  position: absolute;
-  left:770px;
-  margin-top: 100px;
-  margin-bottom: 0;
-}
-
-.fname1 a{
-  font-family: Roboto black;
-  color:#1f6f8f;
-  font-size: 20px;
-  position: relative;
-  letter-spacing: 1px;
-  margin-left:340px;
-  margin-top: 250px;
-  float: left;
-}
-
-.fname2 a{
-  font-family: Roboto black;
-  color:#1f6f8f;
-  font-size: 20px;
-  position: relative;
-  letter-spacing: 1px;
-  margin-left: 40px;
-  margin-top: 250px;
-  float: left;
-}
-
-.fname3 a{
-  font-family: Roboto black;
-  color:#1f6f8f;
-  font-size: 20px;
-  position: relative;
-  letter-spacing: 1px;
-  margin-left:40px;
-  margin-top: 250px;
-  float: left;
-}
-
-
 /* Container for flexboxes */
 section {
   display: -webkit-flex;
@@ -548,3 +482,69 @@ article {
  .anon{
   float: left;
  }
+
+ /*election archives folder*/
+ .arch p{
+  font-family: Roboto black;
+  color: #142d4f;
+  font-weight: inherit;
+  font-size: 40px;
+  position: relative;
+  letter-spacing: 1px;
+  margin-left:436px;
+  margin-top: 25px;
+ }
+ 
+.folder1{
+  position: absolute;
+  left: 350px;
+  margin-top: 100px;
+  margin-bottom: 0;
+}
+
+.folder2{
+  position: absolute;
+  left:560px;
+  margin-top: 100px;
+  margin-bottom: 0;
+}
+
+.folder3{
+  position: absolute;
+  left:770px;
+  margin-top: 100px;
+  margin-bottom: 0;
+}
+
+.fname1 a{
+  font-family: Roboto black;
+  color:#1f6f8f;
+  font-size: 20px;
+  position: relative;
+  letter-spacing: 1px;
+  margin-left:340px;
+  margin-top: 250px;
+  float: left;
+}
+
+.fname2 a{
+  font-family: Roboto black;
+  color:#1f6f8f;
+  font-size: 20px;
+  position: relative;
+  letter-spacing: 1px;
+  margin-left: 40px;
+  margin-top: 250px;
+  float: left;
+}
+
+.fname3 a{
+  font-family: Roboto black;
+  color:#1f6f8f;
+  font-size: 20px;
+  position: relative;
+  letter-spacing: 1px;
+  margin-left:40px;
+  margin-top: 250px;
+  float: left;
+}
