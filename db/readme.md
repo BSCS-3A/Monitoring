@@ -18,3 +18,6 @@ this update affects the admin tb, candidate tb and student tb
 
 v1.3 minor rolllback
 removed first name, last name and mid name field
+v1.4
+*minor fix
+changes student_id field, from int to varchar and removed auto_increment 
