@@ -611,7 +611,7 @@ svg circle{
   width: 100%;
   height: 100%;
   fill: none;
-  stroke: #191919;
+  stroke: #003d55;
   stroke-width: 10;
   stroke-linecap: round;
   transform: translate(5px, 5px);
@@ -688,35 +688,39 @@ svg circle:nth-child(2){
 
 .fname1 a{
   font-family: Roboto black;
-  color:black;
-  font-size: 20px;
+  color:#124254;
+  font-size: 22px;
   position: relative;
   letter-spacing: 1px;
-  margin-left:370px;
+  margin-left:365px;
   margin-top: 250px;
   float: left;
 }
 
 .fname2 a{
   font-family: Roboto black;
-  color: black;
-  font-size: 20px;
+  color: #124254;
+  font-size: 22px;
   position: relative;
   letter-spacing: 1px;
-  margin-left: 90px;
+  margin-left: 75px;
   margin-top: 250px;
   float: left;
 }
 
 .fname3 a{
   font-family: Roboto black;
-  color:black;
-  font-size: 20px;
+  color:#124254;
+  font-size: 22px;
   position: relative;
   letter-spacing: 1px;
-  margin-left: 80px;
+  margin-left: 70px;
   margin-top: 250px;
   float: left;
+}
+
+.fname1 a:hover, .fname2 a:hover, .fname3 a:hover{
+  color:white;
 }
 
 /* Election Results Report */
