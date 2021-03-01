@@ -392,11 +392,12 @@ div li span {
   margin-left: 55px;
 }
 
-.bar1,{
+/*.bar1,{
   box-sizing: border-box;
   width: 95%;
   margin: 20px 0;
-}
+}*/
+
 
 .bar1 p{
     color:rgb(0, 0, 0);
