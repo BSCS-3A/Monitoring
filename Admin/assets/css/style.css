@@ -3,21 +3,23 @@
   padding: 0;
   user-select: none;
   box-sizing: border-box;
-  font-family: Roboto,Roboto Condensed,Generica, sans-serif;  
+  font-family: Roboto,Roboto Condensed,Generica, sans-serif;
+  list-style: none;  
 }
-
 body{  
   font-family: Roboto,Roboto Thin,Generica, sans-serif;  
-  background-image: url("../img/BUCEILS-BUILDING-BLUE.png");
+  background-image: url("../img/adminBG.png");
   background-size: cover;
   font-size: 100%;
+  background-attachment: fixed;
+  width: auto;
 }
-
 nav{
   background: #1d6986;
   box-shadow: 0 10px 20px rgba(0, 0, 0, .15 ),
               0 3px 6px rgba(0, 0, 0, .23);
-
+  width: auto;
+  z-index: 3;
 }
 nav:after{
   content: '';
@@ -27,7 +29,7 @@ nav:after{
 nav h2{
   font-family: Roboto Regular, sans-serif;
   font-weight: inherit;
-  font-size: 120%;
+  font-size: 140%;
   margin-bottom: 0px;
   letter-spacing: 6px;
   color: #ffffff;
@@ -37,38 +39,28 @@ nav h3{
   color: #ffffff;
   padding-top: 5px;
   font-weight: inherit;
-  font-size: 140%;
+  font-size: 170%;
   margin-bottom: 0px;
   letter-spacing: 6px;
   font-family: Generica regular, sans-serif;
 }
-
 nav .logo{
   float: left;
-  font-weight: 600;
-  line-height: 70px;
-  padding-left: 10px;
-}
-nav .logo-pic{
-  float: left;
-  /* object-fit: contain; */
-  width: 60px;
-  height: 60px;
-  background-size: cover;
-  margin-top: 10px;
-  margin-left: 30px;
-  resize: both;
-  overflow: scroll;
+  position: relative;
+  line-height: 80px;
+  margin-top: 5px;
+  margin-left: 40px;
 }
 nav ul{
   float: right;
   padding: 0;
   height: 80px;
-  margin-right: 40px;
+  /* margin-right: 40px; */
   margin-bottom: 0;
   list-style: none;
   position: relative;
   text-align: center;
+  z-index: 4;
 }
 nav ul li{
   float: left;
@@ -83,18 +75,27 @@ nav ul li a{
   color: rgb(255, 255, 255);
   line-height: 70px;
   text-decoration: none;
-  font-size: 1.3em;
-  padding: 40px 15px 0px 15px;
+  font-size: 1.6em;
+  padding: 8px 15px;
   letter-spacing: 1px;
   font-family: Roboto Light, sans-serif;
+}
+nav ul li a:visited {
+  color: #ffffff;
+  text-decoration: none;
 }
 nav ul li a:hover{
   color: #ffc423;
   text-decoration: none;
-  /* box-shadow:  inset 0 0 10px rgba(0,0,0,0.2); */
+}
+nav ul li a:active{
+  text-decoration: none;
 }
 nav ul li:hover{
   background-color: #124254;
+}
+nav ul li a:active {
+  color: green;
 }
 nav ul ul{
   position: absolute;
@@ -106,19 +107,47 @@ nav ul ul{
 }
 nav ul ul li{
  height: 50px;
+ position: relative;
+ margin: 0px;
+ float: none;
+ display: list-item;
 }
 nav ul ul li a{
+  line-height: 50px;
+}
+nav ul ul li .logout::before {
+  content: "\f2f5";
+  font-family: "Font Awesome 5 Free";
+  padding: 0 10px 0 0;
+}
+nav ul ul li a:link{
   color:rgb(0, 0, 0);
 }
-nav ul ul li:hover{
-  background-color: #e0a900;
+nav ul ul li a:visited {
+  color: black;
+  text-decoration: none;
 }
 nav ul ul li a:hover{
   color: #1b1b1b;
   box-shadow: none;
+  text-decoration: none;
+}
+nav ul ul li:hover{
+  background-color: #e0a900;
+  text-decoration: none;
+}
+nav ul ul li a:active{
+  color: #1b1b1b;
+  box-shadow: none;
+  text-decoration: none;
 }
 nav ul ul ul{
   border-top: none;
+}
+nav ul ul ul li{
+  position: relative;
+  top: -60px;
+  left: 150px;
 }
 nav ul li:hover > ul{
   top: 70px;
@@ -149,20 +178,22 @@ nav ul ul ul li{
 .show,.icon,input{
   display: none;
 }
-.fa-plus{
+/* .fa-plus{
   font-size: 15px;
   margin-left: 40px;
-}
+} */
 
 @media all and (max-width: 968px) {
   nav ul{
     margin-right: 0px;
+    margin-left: 0px;
     float: left;
   }
-  nav .logo{
+  /* nav .logo{
     padding-left: 30px;
-    width: 100%;
-  }
+    width: auto;
+    float: left;
+  } */
   .show + a, ul{
     display: none;
   }
@@ -176,17 +207,17 @@ nav ul ul ul li{
   .show{
     display: block;
     color: #ffffff;
-    font-size: 18px;
+    font-size: 1.2em;
     padding: 0 20px;
     line-height: 70px;
     cursor: pointer;
   }
   .show:hover{
-    color: cyan;
+    color:white;
   }
   .icon{
     display: block;
-    color:#ffc423;
+    color:#ffffff;
     position: absolute;
     top: 0;
     right: 40px;
@@ -197,6 +228,7 @@ nav ul ul ul li{
   nav ul ul{
     top: 70px;
     border-top: 0px;
+    border-bottom: 0px;
     float: none;
     position: static;
     display: none;
@@ -204,32 +236,28 @@ nav ul ul ul li{
     visibility: visible;
   }
   nav ul ul a{
-    padding-left: 40px;
+    left: 0;
   }
-  nav ul ul ul a{
+  /* nav ul ul ul a{
     padding-left: 80px;
   }
   nav ul ul ul li{
     position: static;
-  }
+  } */
   [id^=btn]:checked + ul{
+    width: 100%;
+    left: 0;
     display: block;
   }
   nav ul ul li{
+    border-top: 0px;
     border-bottom: 0px;
   }
   span.cancel:before{
     content: '\f00d';
   }
+  
 }
-/* .content{
-  z-index: -1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  text-align: center;
-} */
 header{
   font-size: 35px;
   font-weight: 600;
@@ -240,7 +268,14 @@ p{
   font-weight: 500;
   font-family: Generica regular, sans-serif;
 }
-
+/* Container for flexboxes */
+section {
+  display: -webkit-flex;
+  display: flex;
+  margin-left: 30px;
+  margin-top: 100px;
+  float: left;
+}
 article p{
   font-family: Roboto regular, sans-serif;
   color: white;
@@ -249,7 +284,6 @@ article p{
   letter-spacing: 3px;
   position: relative;
 }
-
 article h1{
   font-family: Generica regular, sans-serif;
   color: #ffc423;
@@ -259,16 +293,6 @@ article h1{
   letter-spacing: 3px;
   margin-top: 10px;
 }
-
-/* Container for flexboxes */
-section {
-  display: -webkit-flex;
-  display: flex;
-  margin-left: 30px;
-  margin-top: 190px;
-  max-width: 800px;
-}
-
 /* Style the content */
 article {
   -webkit-flex: 3;
@@ -276,9 +300,26 @@ article {
   flex: 3;
   padding: 10px;
 }
+/*For logos on top of welcome banner*/
+img.logos{
+  float: left;
+  padding-left: 10px;
+  height: 90px;
+  width: 100px;
+  margin-bottom: 2em;
+}
+.logo-container{
+  position:relative;
+  /* float: left; */
+  display: -webkit-flex;
+  display: flex;
+  margin-left: 0px;
+  margin-top: 0px;
+  max-width: 700px;
+} 
 /* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
 @media (max-width: 600px) {
-  body, section {
+  body, section, .container {
     -webkit-flex-direction: column;
     flex-direction: column;
   }
@@ -288,16 +329,18 @@ article {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 2%;
+  height: auto;
+  padding: .5px;
   background-color: #124254;
-  color: white;
   text-align: center;
-  color: #ffffff;
 }
-.footer p{
+div p.footer-txt{
+  position: relative;
+  top: .5em;
   font-family: Roboto Regular, sans-serif;
-  letter-spacing: 6px;
-  font-size: 0.8em;
+  letter-spacing: 7px;
+  font-size: 1em;
+  color: #ffffff;
 }
 nav img.user-profile{
   margin-top: 0;
@@ -309,76 +352,101 @@ nav img.user-profile{
   color: #333;
   float: right;
   text-align: center;
-  margin-right: 10px;
-  top: -250px;
-  bottom: 0;
+  margin: 80px 50px 50px;
   position: relative;
-  max-width: 600px;
-  display: flexbox;
-}
+  max-width: 500px;
+  height: auto;
 
-div h1 {
+}
+div #headline {
   font-weight: normal;
   letter-spacing: .125rem;
   text-transform: uppercase;
+  font-size: 4em;
+  letter-spacing: 1.6px;
+  color: black;
+  margin-bottom: .8em;
+  margin-top: 0;
+}
+div ul{
+  /* max-width: 90%; */
+  border: 1px solid #ffc423;
+  border-width: 3px;
+  text-align: center;
+  padding: 0;
 }
 div li {
   display: inline-block;
   font-size: 1.5em;
   list-style-type: none;
-  padding: 1em;
+  padding: 5%;
   text-transform: uppercase;
+  color: #ffffff;
 }
 div li span {
   display: block;
   font-size: 4.5rem;
 }
-#content {
+/* #content {
   display: flex;
   padding: 1rem;
   position: relative;
+} */
+div p.elec-guide-txt{
+  font-family: Roboto Regular, sans-serif;
+  text-align: justify;
+  font-size: 1.6em;
+  margin-top: 1em;
+  margin-bottom: 0;
+  float: right;
 }
 
-/*On-Going Election*/
-.position1, .position2, .position3, .position4, 
-.position5, .position6, .position7, .position8, 
-.position9, .position10, .position11, .position12{
+
+/* Election*/
+.Belecstat p{
+  font-family: Roboto black;
+  color: #ffc423;
+  font-weight: inherit;
+  font-size: 45px;
+  position: relative;
+  letter-spacing: 3px;
+  text-align: center;
+  margin-top: 25px;
+  z-index:-1000;
+ }
+.Bposition1, .Bposition2, .Bposition3, .Bposition4, 
+.Bposition5, .Bposition6, .Bposition7, .Bposition8, 
+.Bposition9, .Bposition10, .Bposition11, .Bposition12
+{
   width: 18%;
   position:absolute;
   top: 45%;
-  left: 16%;
+  left: 15%;
   transform: translate(-50%, -50%);
   padding: 20px;
-  background: #ffc423;
+  background: white;
   box-sizing: border-box;
   box-shadow:0 20px 60px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 }
-
-.position2, .position6, .position10{
-  left: 39%;
+.Bposition2, .Bposition6, .Bposition10{
+  left: 38%;
 }
-
-.position3, .position7, .position11{
-   left: 62%;
+.Bposition3, .Bposition7, .Bposition11{
+   left: 61%;
 }
-
-.position4, .position8, .position12{
-  left: 85%;
+.Bposition4, .Bposition8, .Bposition12{
+  left: 84%;
 }
-
-.position5, .position6, .position7, .position8{
+.Bposition5, .Bposition6, .Bposition7, .Bposition8{
   top: 80%;
 }
-
-.position9, .position10, .position11, .position12{
+.Bposition9, .Bposition10, .Bposition11, .Bposition12{
   top: 115%;
 }
-
-
-.position1 h1, .position2 h1, .position3 h1, .position4 h1, 
-.position5 h1, .position6 h1, .position7 h1, .position8 h1, 
-.position9 h1, .position10 h1, .position11 h1, .position12 h1
+.Bposition1 h1, .Bposition2 h1, .Bposition3 h1, .Bposition4 h1, 
+.Bposition5 h1, .Bposition6 h1, .Bposition7 h1, .Bposition8 h1, 
+.Bposition9 h1, .Bposition10 h1, .Bposition11 h1, .Bposition12 h1
 {
   margin: 0;
   padding: 0;
@@ -389,17 +457,9 @@ div li span {
   font-weight: inherit;
   font-size: 20px;
   position: relative;
-  margin-left: 55px;
+  margin-left: 77px;
 }
-
-/*.bar1,{
-  box-sizing: border-box;
-  width: 95%;
-  margin: 20px 0;
-}*/
-
-
-.bar1 p{
+.Bbar1 p{
     color:rgb(0, 0, 0);
     text-transform: uppercase;
     margin: 0 0 10px;
@@ -409,14 +469,12 @@ div li span {
     font-family: Roboto regular;
     font-size: 15px;
 }
-
-.bar p:nth-child(2){
+.Bbar p:nth-child(2){
   float:right;
   position: relative;
   top: -30px;
 }
-
-.vote_percentage{
+.Bvote_percentage{
   background: #000000;
   padding: 2px;
   box-sizing: border-box;
@@ -425,80 +483,56 @@ div li span {
   margin-top: 20px;
   margin-left: 60px;
 }
-
-.vote_level{
-  background: #ffffff;
+.Bvote_level{
+  background: #ffc423;
   width: 90%;
   height: 30px;
   border-radius: 1px; 
 }
-
-.elecstat p{
-  font-family: Roboto black;
-  color: #142d4f;
-  font-weight: inherit;
-  font-size: 40px;
-  position: relative;
-  letter-spacing: 1px;
-  /*margin-left:500px;*/
-  text-align: center;
-  margin-top: 25px;
-  z-index:-1000;
- }
-
- .anon{
+ .Banon{
   float: left;
  }
-
- .btn{
+ .Bbtn_postresults{
   border: none;
   font-style: Roboto;
-  background-color:white;;
-  margin-top:580px;
-  margin-left: 600px;
+  background-color:#1d6986;;
+  margin-top: 780px;
+  margin-left: 250px;
   padding: 14px 28px;
   font-size: 16px;
   cursor: pointer;
   display: inline-block;
+  border-radius: 10px;
 }
+.Bbtn_postresults:hover {background:  #ffc423;}
+.Bbtn_postresults:success {color: white}
+.Bbtn_postresults:default {color: black;}
 
-.btn:hover {background:  #ffc423;}
-.success {color: white}
-.info {color: dodgerblue;}
-.warning {color: orange;}
-.danger {color: red;}
-.default {color: black;}
-
-/* vote status */
-
-.votestat p{
+/* Vote Status */
+.Bvotestat p{
   font-family: Roboto black;
   color: #ffc423;
   font-weight: inherit;
-  font-size: 40px;
+  font-size: 45px;
   position: relative;
-  letter-spacing: 1px;
-  /*margin-left:560px;*/
+  letter-spacing: 3px;
   text-align: center;
   margin-top: 25px;
   z-index:-1000;
  }
-
-.con{
+.Bcon{
     display: flex;
     margin-left: 230px;
     margin-top: 90px;
     max-width: 10px;
 }
-
-.vcontainer{
+.Bvcontainer{
   position: relative;
   width: 900px;
   display: flex;
   justify-content: space-around;
 }
-
-.vcontainer .card{
+.Bvcontainer .Bcard{
   position: relative;
   width: 250px;
   display:flex;
@@ -510,25 +544,22 @@ div li span {
   margin-left: 50px;
   transition: 0.5s;
 }
-
-.vcontainer .card:hover{
+.Bvcontainer .Bcard:hover{
   /*transform:translateY(-10px);*/
   box-shadow: 0 15px 35px rgba(160, 137, 10, 0.788);
 }
-
-.vcontainer .card:before{
+.Bvcontainer .Bcard:before{
   content: '';
   position: absolute;
   top: 0;
-  left: 0%;
+  left: 0%; 100%;
+  backgro
   width: 100%;
-  height: 100%;
-  background: rgba(73, 163, 0, 0.03);
+  height:und: rgba(73, 163, 0, 0.03);
   pointer-events: none;
   z-index:1;
 }
-
-.percent{
+.Bpercent{
   position:relative;
   width: 150px;
   height: 150px;
@@ -536,8 +567,7 @@ div li span {
   background:#ffc423;
   z-index: 1000;
 }
-
-.percent .number{
+.Bpercent .Bnumber{
   position: absolute;
   top: 0;
   left: 0;
@@ -548,16 +578,14 @@ div li span {
   align-items: center;
   border-radius: 50%;
 }
-
-.percent .number h2{
+.Bpercent .Bnumber h2{
   color:#003d55;
   font-weight: 700;
   margin-top: 50px;
   font-size: 30px;
   transition: 0.5s;
 }
-
-.box a{
+.Bbox a{
   color:white;
   font-family: Roboto;
   font-size: 25px;
@@ -565,27 +593,22 @@ div li span {
   margin-left: 26px;
   margin-top: 35px;
 }
-
-.box a:hover{
+.Bbox a:hover{
   color: #124254;
 }
-
-.card:hover .percent .number h2{
+.Bcard:hover .Bpercent .Bnumber h2{
   color: #124254;
   font-size: 60px;
 }
-
-.percent .number h2 span{
+.Bpercent .Bnumber h2 span{
   font-size:24px;
   color: #777;
   transition: 0.5s;
 }
-
-.card:hover .percent .number h2 span{
+.Bcard:hover .Bpercent .Bnumber h2 span{
   color: #fff;
 }
-
-.text{
+.Btext{
   position: relative;
   color: #777;
   margin-top: 20px;
@@ -595,18 +618,15 @@ div li span {
   text-transform: uppercase;
   transition: 0.5s;
 }
-
-.card:hover .text{
+Bcard:hover .Btext{
   color: #fff;
 }
-
 svg{
   position: relative;
   width: 150px;
   height:150px;
   z-index:1000;
 }
-
 svg circle{
   width: 100%;
   height: 100%;
@@ -616,122 +636,127 @@ svg circle{
   stroke-linecap: round;
   transform: translate(5px, 5px);
 }
-
 svg circle:nth-child(2){
   stroke-dasharray: 440;
   stroke-dashoffset: 440;
 }
-
-.card:nth-child(1) svg circle:nth-child(2){
+.Bcard:nth-child(1) svg circle:nth-child(2){
   stroke-dashoffset: calc(440 - (440 * 90) / 100);
   stroke: #ff9124;
 }
-
-.card:nth-child(2) svg circle:nth-child(2){
+.Bcard:nth-child(2) svg circle:nth-child(2){
   stroke-dashoffset: calc(440 - (440 * 85) / 100);
   stroke: #ff9124;
 }
-
-.card:nth-child(3) svg circle:nth-child(2){
+.Bcard:nth-child(3) svg circle:nth-child(2){
   stroke-dashoffset: calc(440 - (440 * 25) / 100);
   stroke: #ff9124;
 }
-
-.card:nth-child(4) svg circle:nth-child(2){
+.Bcard:nth-child(4) svg circle:nth-child(2){
   stroke-dashoffset: calc(440 - (440 * 37) / 100);
   stroke:  #ff9124;
 }
-
-.card:nth-child(5) svg circle:nth-child(2){
+.Bcard:nth-child(5) svg circle:nth-child(2){
   stroke-dashoffset: calc(440 - (440 * 100) / 100);
   stroke:  #ff9124;
 }
-
-.card:nth-child(6) svg circle:nth-child(2){
+.Bcard:nth-child(6) svg circle:nth-child(2){
   stroke-dashoffset: calc(440 - (440 * 45) / 100);
   stroke:  #ff9124;
 }
 
-/*election archives folder*/
-.arch p{
+/* Election Archives Folder*/
+.Barchives p{
   font-family: Roboto black;
   color: #ffc423;
   font-weight: inherit;
-  font-size: 40px;
+  font-size: 45px;
   position: relative;
-  letter-spacing: 1px;
-  margin-left:520px;
+  letter-spacing: 3px;
+  text-align: center;
   margin-top: 25px;
-  z-index:-1000;
  }
  
-.folder1{
-  position: absolute;
-  left: 390px;
-  margin-top: 100px;
-  margin-bottom: 0;
-}
-
-.folder2{
-  position: absolute;
-  left:650px;
-  margin-top: 100px;
-  margin-bottom: 0;
-}
-
-.folder3{
-  position: absolute;
-  left:890px;
-  margin-top: 100px;
-  margin-bottom: 0;
-}
-
-.fname1 a{
-  font-family: Roboto black;
-  color:#124254;
-  font-size: 22px;
-  position: relative;
-  letter-spacing: 1px;
-  margin-left:365px;
-  margin-top: 250px;
+.Bimgs img{
+  position:relative;
+  z-index: 1000;
+  width: 150px;
+  height: 150px;
+  z-index: 1000;
+  }
+  
+ .Bboxes a{
+  color: #ffc423;
+  font-family: Roboto;
+  font-size: 25px;
   float: left;
-}
-
-.fname2 a{
-  font-family: Roboto black;
-  color: #124254;
-  font-size: 22px;
+  margin-left: 45px;
+  margin-top: -5px;
+  }
+.Bboxes a:hover{
+  color: white
+ }
+.Bcontainer{
+  display: flex;
+  margin-left: 305px;
+  margin-top: 90px;
+  max-width: 10px;
+  }
+.Bvcon{
   position: relative;
-  letter-spacing: 1px;
-  margin-left: 75px;
-  margin-top: 250px;
-  float: left;
+  width: 900px;
+  display: flex;
+  margin-top: -30px;
+  justify-content: space-around;
 }
-
-.fname3 a{
-  font-family: Roboto black;
-  color:#124254;
-  font-size: 22px;
+.Bvcon .Bcards{
   position: relative;
-  letter-spacing: 1px;
-  margin-left: 70px;
-  margin-top: 250px;
-  float: left;
+  width: 200px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 220px;
+  border-radius: 4px;
+  text-align: center;
+  margin-left: 50px;
+  transition: 0.5s;
 }
-
-.fname1 a:hover, .fname2 a:hover, .fname3 a:hover{
-  color:white;
+.Bvcon .Bcards:hover{
+/*transform:translateY(-10px);*/
+  box-shadow: 0 15px 35px rgba(160, 137, 10, 0.788);
+}
+.Bvcon .Bcards:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background: rgba(73, 163, 0, 0.03);
+  pointer-events: none;
+  z-index:1;
+}
+.Bpercent .Bnumber h2 span{
+  font-size:24px;
+  color: #777;
+  transition: 0.5s;
+}
+Bsvg{
+  position: relative;
+  margin-top: -240px;
+  width: 150px;
+  height:150px;
+  z-index:1000;
 }
 
 /* Election Results Report */
-.report p{
+.Breport p{
   font-family: Roboto black;
   color: #ffc423;
   font-weight: inherit;
-  font-size: 40px;
+  font-size: 45px;
   position: relative;
-  letter-spacing: 1px;
-  /*margin-left:520px;*/
+  letter-spacing: 3px;
   margin-top: 25px;
   z-index:-1000;
   text-align: center;
