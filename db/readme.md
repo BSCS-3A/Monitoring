@@ -21,3 +21,8 @@ removed first name, last name and mid name field
 v1.4
 *minor fix
 changes student_id field, from int to varchar and removed auto_increment 
+
+v1.5
+*minor fixes
+*addition of new fields and entity
+*student_id roll back to int(11)
