@@ -1,4 +1,7 @@
 <?php
+
+// Election (Admin)
+
 session_start();
 include "db_connection.php";
 
