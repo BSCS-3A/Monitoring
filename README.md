@@ -1,7 +1,7 @@
 # Monitoring
 FILE NAMING
 
-front_Monitoring_v1_0.html >> On-going Election Status Display (Student) 
+front_Monitoring_v1_0.html >> On-going Election Status Display (Student)  
 front_Monitoring_v1_1.html >> No-going Election Status Display (Student)  
 front_Monitoring_v2_0.html >> Election Results (Student)  
 front_Monitoring_v3_0.html >> Election Archives Folders (Student)  
