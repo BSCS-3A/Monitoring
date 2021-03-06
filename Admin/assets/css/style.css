@@ -508,7 +508,7 @@ div p.elec-guide-txt{
 .Bbtn_postresults:success {color: white}
 .Bbtn_postresults:default {color: black;}
 
-/* Vote Status */
+/* Vote Status Percentage */
 .Bvotestat p{
   font-family: Roboto black;
   color: #ffc423;
@@ -588,11 +588,12 @@ div p.elec-guide-txt{
 .Bbox a{
   color:white;
   font-family: Roboto;
-  font-size: 25px;
+  font-size: 20px;
   float: left;
-  margin-left: 26px;
+  margin-left: 30px;
   margin-top: 35px;
 }
+
 .Bbox a:hover{
   color: #124254;
 }
@@ -665,6 +666,73 @@ svg circle:nth-child(2){
   stroke:  #ff9124;
 }
 
+/*Vote Status per grade level*/
+
+.table{
+ text-align: center;
+}
+.Bvs_gradelevel p{
+  font-family: Roboto black;
+  font-size: 20px;
+  position: relative;
+  letter-spacing: 3px;
+  text-align: center;
+  z-index:-1000;
+  margin-top: -50px;
+}
+
+.Bbtn_goback{
+  border: none;
+  font-style: Roboto;
+  background-color:white;
+  padding: 6px 8px;
+  margin-left: 10px;
+  font-size: 11px;
+  cursor: pointer;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+.Bnp{
+  margin-top: -12px;
+}
+.Bnp a{
+  text-decoration: none;
+  display: inline-block;
+  padding: 6px 16px;
+}
+.Bnp a:hover {
+  background-color: #ffc423;
+  color: #1d6986;
+}
+.Bprevious {
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  margin-left: 667px;
+}
+.Bnext {
+  background-color: white;
+  color:black;
+  font-size: 16px;
+  margin-left: 5px;
+}
+.round {
+  border-radius: 50%;
+}
+.Btitle{
+  background-color: #1d6986;
+  font-family: Roboto;
+  color:#ffc423;
+  text-align: center;
+  font-size: 15px;
+}
+
+.Btable_contents{
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 12px;
+}
+
 /* Election Archives Folder*/
 .Barchives p{
   font-family: Roboto black;
@@ -685,7 +753,7 @@ svg circle:nth-child(2){
   z-index: 1000;
   }
   
- .Bboxes a{
+ .Bboxes_arch a{
   color: #ffc423;
   font-family: Roboto;
   font-size: 25px;
