@@ -81,8 +81,94 @@
 
     <div class="Bvotestat">
         <p><b>VOTE STATUS</b></p>
-    </div>  
+    </div>
+    <button class="Bbtn_goback" onclick="goBack()">Go Back</button>
+    <div class="Bvs_gradelevel">
+        <p>GRADE 7</p>
+    </div>
+
     
+
+    <table id="Bexample" class="table table-bordered" style="width:100%" align="center">
+        <thead>
+            <tr>
+                <th class="Btitle">SECTION</th>
+                <th class="Btitle">LAST NAME</th>
+                <th class="Btitle">FIRST NAME</th>
+                <th class="Btitle">STATUS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="Btable_contents">A</td>
+                <td class="Btable_contents"">Ador</td>
+                <td class="Btable_contents">Dhan Japhet</td>
+                <td class="Btable_contents"><b>VOTED</b></td>
+            </tr>
+            <tr>
+                <td class="Btable_contents">A</td>
+                <td class="Btable_contents">Barrios</td>
+                <td class="Btable_contents">Steven Andrei</td>
+                <td class="Btable_contents"><b>VOTED</b></td>
+            </tr>
+            <tr>
+                <td class="Btable_contents">A</td>
+                <td class="Btable_contents">Llander</td>
+                <td class="Btable_contents">Joshua Alex</td>
+                <td class="Btable_contents"><b>NOT YET VOTED</b></td>
+            </tr>
+            <tr>
+                <td class="Btable_contents">A</td>
+                <td class="Btable_contents">Maronilla</td>
+                <td class="Btable_contents">John Kenneth</td>
+                <td class="Btable_contents"><b>VOTED</b></td>
+            </tr>
+            <tr>
+                <td class="Btable_contents">A</td>
+                <td class="Btable_contents">Sta. Ana</td>
+                <td class="Btable_contents">Karlo Rhommel</td>
+                <td class="Btable_contents"><b>NOT YET VOTED</b></td>
+            </tr>
+            <tr>
+                <td class="Btable_contents">A</td>
+                <td class="Btable_contents">Ajero</td>
+                <td class="Btable_contents">Jessica</td>
+                <td class="Btable_contents"><b>VOTED</b</td>
+            </tr>
+            <tr>
+                <td class="Btable_contents">A</td>
+                <td class="Btable_contents">Ballesteros</td>
+                <td class="Btable_contents">Kaycee</td>
+                <td class="Btable_contents"><b>NOT YET VOTED</b></td>
+            </tr>
+            <tr>
+                <td class="Btable_contents">A</td>
+                <td class="Btable_contents">Benazir</td>
+                <td class="Btable_contents">Barrameda</td>
+                <td class="Btable_contents"><b>NOT YET VOTED</b></td>
+            </tr>
+            <tr>
+                <td class="Btable_contents">A</td>
+                <td class="Btable_contents">Jarapa</td>
+                <td class="Btable_contents">Mika-Ella</td>
+                <td class="Btable_contents"><b>VOTED</b</td>
+            </tr>
+            <tr>
+                <td class="Btable_contents">A</td>
+                <td class="Btable_contents">Gallos</td>
+                <td class="Btable_contents">Nica</td>
+                <td class="Btable_contents"><b>NOT YET VOTED</b></td>
+            </tr>
+        </tbody>
+        </tfoot>
+    </table>
+
+   
+    
+    <div class="Bnp">
+    <a href="#" class="Bprevious round">&#8249;</a>
+    <a href="#" class="Bnext round">&#8250;</a>
+    </div>
 
     <div class="footer">
         <p class="footer-txt">BS COMPUTER SCIENCE 3A © 2021</p>
@@ -93,6 +179,17 @@
             $('span').toggleClass("cancel");
         });
     </script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+    <script>
+        function goBack() {
+        window.history.back()
+        }
+        
+        </script>
 </body>
 
 </html>
