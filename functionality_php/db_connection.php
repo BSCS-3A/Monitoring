@@ -5,14 +5,16 @@
 *$password should also be change along with $db_name
 *only change when using it
 */
+
 $sname= "localhost";
 $uname= "root";
 $password = "";
 
 $db_name = "db_monitoring";
 
-$conn = mysqli_connect($sname, $unmae, $password, $db_name);
+$conn = mysqli_connect($sname, $uname, $password, $db_name);
 
 if (!$conn) {
 	echo "Connection failed!";
 }
+?>
