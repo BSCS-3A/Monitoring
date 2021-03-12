@@ -752,7 +752,7 @@ svg circle:nth-child(2){
   height: 150px;
   z-index: 1000;
   }
-  
+
  .Bboxes_arch a{
   color: #ffc423;
   font-family: Roboto;
@@ -764,20 +764,7 @@ svg circle:nth-child(2){
 .Bboxes a:hover{
   color: white
  }
-.Bcontainer{
-  display: flex;
-  margin-left: 305px;
-  margin-top: 90px;
-  max-width: 10px;
-  }
-.Bvcon{
-  position: relative;
-  width: 900px;
-  display: flex;
-  margin-top: -30px;
-  justify-content: space-around;
-}
-.Bvcon .Bcards{
+.Bcards{
   position: relative;
   width: 200px;
   display:flex;
@@ -786,14 +773,15 @@ svg circle:nth-child(2){
   height: 220px;
   border-radius: 4px;
   text-align: center;
-  margin-left: 50px;
+  margin-top: 50px;
+  margin-left: 80px;
   transition: 0.5s;
 }
-.Bvcon .Bcards:hover{
+.Bcards:hover{
 /*transform:translateY(-10px);*/
   box-shadow: 0 15px 35px rgba(160, 137, 10, 0.788);
 }
-.Bvcon .Bcards:before{
+.Bcards:before{
   content: '';
   position: absolute;
   top: 0;

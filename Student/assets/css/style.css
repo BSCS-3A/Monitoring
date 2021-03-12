@@ -1009,7 +1009,6 @@ svg2{
   text-align: center;
   margin-top: 25px;
  }
- 
 .Bimg img{
   position:relative;
   z-index: 1000;
@@ -1017,7 +1016,6 @@ svg2{
   height: 150px;
   z-index: 1000;
   }
-  
  .Bbox a{
   color: #1f6f8f;
   font-family: Roboto;
@@ -1026,27 +1024,10 @@ svg2{
   margin-left: 70px;
   margin-top: -5px;
   }
-  
 .Bbox a:hover{
   color: #124254;
  }
-
-.Bcon{
-  display: flex;
-  margin-left: 230px;
-  margin-top: 90px;
-  max-width: 10px;
-  }
-
-.Bvcontainer{
-  position: relative;
-  width: 900px;
-  display: flex;
-  margin-top: -30px;
-  justify-content: space-around;
-}
-
-.Bvcontainer .Bcard{
+.Bcard{
 position: relative;
 width: 200px;
 display:flex;
@@ -1055,16 +1036,15 @@ align-items: center;
 height: 220px;
 border-radius: 4px;
 text-align: center;
-margin-left: 50px;
+margin-top: 50px;
+margin-left: 80px;
 transition: 0.5s;
 }
-
-.Bvcontainer .Bcard:hover{
+.Bcard:hover{
 /*transform:translateY(-10px);*/
 box-shadow: 0 15px 35px rgba(160, 137, 10, 0.788);
 }
-
-.Bvcontainer .Bcard:before{
+ .Bcard:before{
 content: '';
 position: absolute;
 top: 0;
@@ -1075,13 +1055,11 @@ background: rgba(73, 163, 0, 0.03);
 pointer-events: none;
 z-index:1;
 }
-
 .Bpercent .Bnumber h2 span{
 font-size:24px;
 color: #777;
 transition: 0.5s;
 }
-
 svg{
 position: relative;
 margin-top: -240px;
