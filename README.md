@@ -2,7 +2,7 @@
 FILE NAMING
 
 front_ElecStat_v1_0.html >> On-going Election Status Display (Student)  
-front_NoElecStat_v1_1.html >> No On-going Election Status Display (Student) 
+front_NoElecStat_v1_1.html >> No On-going Election Status Display (Student)  
 front_NoElecStat_v1_2.html >> End of Election Status Display (Student) 
 front_ElectRes_v2_0.html >> Election Results (Student)  
 front_ArcFolder_v3_0.html >> Election Archives Folders (Student)  
