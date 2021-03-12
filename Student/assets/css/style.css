@@ -491,6 +491,49 @@ div p.elec-guide-txt{
   margin-top: 100px;
 }
 
+/* End of Election*/
+.Belec_end1 p{
+  font-family: Roboto regular;
+  color:#1f6f8f;
+  font-weight: inherit;
+  font-size: 30px;
+  margin-top: 100px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.Belec_end2 h1{
+  font-family: Roboto regular;
+  color: #142d4f;
+  font-weight: inherit;
+  font-size: 50px;
+  position: relative;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-top: 0px;
+}
+
+.Belec_end3 p{
+  font-family: Roboto regular;
+  color:#1f6f8f;
+  font-weight: inherit;
+  font-size: 30px;
+  margin-top: -20px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.Bres_end h1{
+  font-family: Roboto regular;
+  color: #142d4f;
+  font-weight: inherit;
+  font-size: 15px;
+  position: relative;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-top: 100px;
+}
+
 
 /*Election Results*/
 
