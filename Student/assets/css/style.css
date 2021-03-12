@@ -1003,7 +1003,7 @@ svg2{
   font-family: Roboto black;
   color: #142d4f;
   font-weight: inherit;
-  font-size: 40px;
+  font-size: 45px;
   position: relative;
   letter-spacing: 1px;
   text-align: center;
@@ -1021,7 +1021,7 @@ svg2{
   font-family: Roboto;
   font-size: 25px;
   float: left;
-  margin-left: 70px;
+  margin-left: 75px;
   margin-top: -5px;
   }
 .Bbox a:hover{
@@ -1036,9 +1036,11 @@ align-items: center;
 height: 220px;
 border-radius: 4px;
 text-align: center;
-margin-top: 50px;
-margin-left: 80px;
+margin: auto;
+margin: auto;
+margin-top: 80px;
 transition: 0.5s;
+border-radius: 60%;
 }
 .Bcard:hover{
 /*transform:translateY(-10px);*/
@@ -1051,7 +1053,7 @@ top: 0;
 left: 0%;
 width: 100%;
 height: 100%;
-background: rgba(73, 163, 0, 0.03);
+/*background: rgba(73, 163, 0, 0.03);*/
 pointer-events: none;
 z-index:1;
 }
