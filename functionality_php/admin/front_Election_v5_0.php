@@ -1,9 +1,7 @@
 <?php
-
 // Election (Admin)
-
 session_start();
-include "db_connection.php";
+include "../php/db_connection.php";
 
 // Check connection
 if ($conn->connect_error) {

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta charset="utf-8">
-    <link rel="icon" href="..Admin/assets/img/buceils-logo.png" type="image/png">
+    <link rel="icon" href="../Admin/assets/img/buceils-logo.png" type="image/png">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -41,11 +41,11 @@
                 <a href="#">ELECTION</a>
                 <input type="checkbox" id="btn-2">
                 <ul>
-                    <li><a href="front_Monitoring_v8_0.php">Archive</a></li>
-                    <li><a href="front_Monitoring_v6_0.html ">Vote Status</a></li>
-                    <li><a href="front_Monitoring_v5_0.html">Vote Result</a>
+                    <li><a href="front_ArchFolder_v8_0.php">Archive</a></li>
+                    <li><a href="#">Vote Status</a></li>
+                    <li><a href="#">Vote Result</a>
                         <ul>
-                            <li><a href="front_Monitoring_v10_0.html">Make Report</a></li>
+                            <li><a href="#">Make Report</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Configuration</a>
@@ -84,29 +84,26 @@
         </div>
         
           <?php
-
             //  Election Archives Folders (Admin)
-
-            session_start();
-            include "db_connection.php";
-
-            // Check connection
-            if ($conn->connect_error) {
-              die("Connection failed: " . $conn->connect_error);
-            }
-            //echo "Connected successfully";
+            require "../php/db_connection.php";
+                // Check connection
+                if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+                }
+                //echo "Connected successfully";
 
             $result1 = mysqli_query($conn,"SELECT YEAR(start_date) AS year FROM vote_event;");
 
               while($row1 = mysqli_fetch_array($result1)) {
                 if(empty($row1['year'])){
                   echo "no content";
-              }
+                }
                 else {
-                  include('folder.php');
+                  require('folder.html');
                 }
               }
             ?>
+
         <div class="footer">
             <p class="footer-txt">BS COMPUTER SCIENCE 3A © 2021</p>
         </div>
