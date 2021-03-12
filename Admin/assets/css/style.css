@@ -401,7 +401,6 @@ div p.elec-guide-txt{
   float: right;
 }
 
-
 /* Election*/
 .Belecstat p{
   font-family: Roboto black;
@@ -553,7 +552,6 @@ div p.elec-guide-txt{
   position: absolute;
   top: 0;
   left: 0%; 100%;
-  backgro
   width: 100%;
   height:und: rgba(73, 163, 0, 0.03);
   pointer-events: none;
@@ -593,7 +591,6 @@ div p.elec-guide-txt{
   margin-left: 30px;
   margin-top: 35px;
 }
-
 .Bbox a:hover{
   color: #124254;
 }
