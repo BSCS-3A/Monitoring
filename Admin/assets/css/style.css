@@ -256,7 +256,6 @@ nav ul ul ul li{
   span.cancel:before{
     content: '\f00d';
   }
-  
 }
 header{
   font-size: 35px;
@@ -356,7 +355,6 @@ nav img.user-profile{
   position: relative;
   max-width: 500px;
   height: auto;
-
 }
 div #headline {
   font-weight: normal;
@@ -406,7 +404,7 @@ div p.elec-guide-txt{
   font-family: Roboto black;
   color: #ffc423;
   font-weight: inherit;
-  font-size: 45px;
+  font-size: 3.2vw;
   position: relative;
   letter-spacing: 3px;
   text-align: center;
@@ -487,6 +485,10 @@ div p.elec-guide-txt{
   width: 90%;
   height: 30px;
   border-radius: 1px; 
+  color: #1d6986;;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 23px;
 }
  .Banon{
   float: left;
@@ -494,9 +496,21 @@ div p.elec-guide-txt{
  .Bbtn_postresults{
   border: none;
   font-style: Roboto;
-  background-color:#1d6986;;
+  background-color:#1d6986;
   margin-top: 780px;
-  margin-left: 250px;
+  margin-left: 60px;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 10px;
+}
+.Bbtn_reset{
+  border: none;
+  font-style: Roboto;
+  background-color:#1d6986;
+  margin-top: 780px;
+  margin-left: 200px;
   padding: 14px 28px;
   font-size: 16px;
   cursor: pointer;
@@ -505,14 +519,15 @@ div p.elec-guide-txt{
 }
 .Bbtn_postresults:hover {background:  #ffc423;}
 .Bbtn_postresults:success {color: white}
-.Bbtn_postresults:default {color: black;}
+.Bbtn_reset:hover {background:  #ffc423;}
+.Bbtn_reset:success {color: white}
 
 /* Vote Status Percentage */
 .Bvotestat p{
   font-family: Roboto black;
   color: #ffc423;
   font-weight: inherit;
-  font-size: 45px;
+  font-size: 3.2vw;
   position: relative;
   letter-spacing: 3px;
   text-align: center;
@@ -521,9 +536,10 @@ div p.elec-guide-txt{
  }
 .Bcon{
     display: flex;
-    margin-left: 230px;
-    margin-top: 90px;
-    max-width: 10px;
+    margin: auto;
+    margin-left: 17%;
+    margin-top: 5%;
+    max-width: auto;
 }
 .Bvcontainer{
   position: relative;
@@ -543,17 +559,13 @@ div p.elec-guide-txt{
   margin-left: 50px;
   transition: 0.5s;
 }
-.Bvcontainer .Bcard:hover{
-  /*transform:translateY(-10px);*/
-  box-shadow: 0 15px 35px rgba(160, 137, 10, 0.788);
-}
 .Bvcontainer .Bcard:before{
   content: '';
   position: absolute;
   top: 0;
   left: 0%; 100%;
   width: 100%;
-  height:und: rgba(73, 163, 0, 0.03);
+  height: rgba(73, 163, 0, 0.03);
   pointer-events: none;
   z-index:1;
 }
@@ -579,9 +591,10 @@ div p.elec-guide-txt{
 .Bpercent .Bnumber h2{
   color:#003d55;
   font-weight: 700;
-  margin-top: 50px;
+  margin-top: 55px;
   font-size: 30px;
   transition: 0.5s;
+  margin-left: 10px;
 }
 .Bbox a{
   color:white;
@@ -596,7 +609,7 @@ div p.elec-guide-txt{
 }
 .Bcard:hover .Bpercent .Bnumber h2{
   color: #124254;
-  font-size: 60px;
+  font-size: 40px;
 }
 .Bpercent .Bnumber h2 span{
   font-size:24px;
@@ -606,17 +619,8 @@ div p.elec-guide-txt{
 .Bcard:hover .Bpercent .Bnumber h2 span{
   color: #fff;
 }
-.Btext{
-  position: relative;
-  color: #777;
-  margin-top: 20px;
-  font-weight:700;
-  font-size: 18px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: 0.5s;
-}
-Bcard:hover .Btext{
+
+Bcard:hover{
   color: #fff;
 }
 svg{
@@ -664,7 +668,6 @@ svg circle:nth-child(2){
 }
 
 /*Vote Status per grade level*/
-
 .table{
  text-align: center;
 }
@@ -677,7 +680,6 @@ svg circle:nth-child(2){
   z-index:-1000;
   margin-top: -50px;
 }
-
 .Bbtn_goback{
   border: none;
   font-style: Roboto;
@@ -735,7 +737,7 @@ svg circle:nth-child(2){
   font-family: Roboto black;
   color: #ffc423;
   font-weight: inherit;
-  font-size: 45px;
+  font-size: 3.2vw;
   position: relative;
   letter-spacing: 3px;
   text-align: center;
@@ -744,17 +746,13 @@ svg circle:nth-child(2){
 .Bimgs img{
   position:relative;
   z-index: 1000;
-  width: 150px;
-  height: 150px;
-  z-index: 1000;
+  align-items: center;
   }
  .Bboxes_arch a{
   color: #ffc423;
   font-family: Roboto;
-  font-size: 25px;
-  float: left;
-  margin-left: 50px;
-  margin-top: -5px;
+  font-size: 1.5vw;
+  text-align: center;
   }
 .Bboxes a:hover{
   color: white
