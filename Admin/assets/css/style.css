@@ -404,72 +404,49 @@ div p.elec-guide-txt{
   font-family: Roboto black;
   color: #ffc423;
   font-weight: inherit;
-  font-size: 3.2vw;
+  font-size: 500%;
   position: relative;
   letter-spacing: 3px;
   text-align: center;
   margin-top: 25px;
   z-index:-1000;
  }
-.Bposition1, .Bposition2, .Bposition3, .Bposition4, 
-.Bposition5, .Bposition6, .Bposition7, .Bposition8, 
-.Bposition9, .Bposition10, .Bposition11, .Bposition12
+.Belection_container{
+  display: grid; 
+  grid-gap: 60px; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: repeat(2, 200px);  
+  padding: 70px;
+  margin-top: -5px;
+}
+.Bposition1, .Bposition2, .Bposition3, .Bposition4, .Bposition5,
+.Bposition6, .Bposition7, .Bposition8, .Bposition9, .Bposition10, .Bposition11
 {
-  width: 18%;
-  position:absolute;
-  top: 45%;
-  left: 15%;
-  transform: translate(-50%, -50%);
   padding: 20px;
+  background-color:white;
+  width:100%;
+  height: auto;
   background: white;
-  box-sizing: border-box;
   box-shadow:0 20px 60px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 }
-.Bposition2, .Bposition6, .Bposition10{
-  left: 38%;
-}
-.Bposition3, .Bposition7, .Bposition11{
-   left: 61%;
-}
-.Bposition4, .Bposition8, .Bposition12{
-  left: 84%;
-}
-.Bposition5, .Bposition6, .Bposition7, .Bposition8{
-  top: 80%;
-}
-.Bposition9, .Bposition10, .Bposition11, .Bposition12{
-  top: 115%;
-}
-.Bposition1 h1, .Bposition2 h1, .Bposition3 h1, .Bposition4 h1, 
-.Bposition5 h1, .Bposition6 h1, .Bposition7 h1, .Bposition8 h1, 
-.Bposition9 h1, .Bposition10 h1, .Bposition11 h1, .Bposition12 h1
-{
-  margin: 0;
-  padding: 0;
+.Bposition1 h1, .Bposition2 h1, .Bposition3 h1, .Bposition4 h1, .Bposition5 h1{
   color: rgb(0, 0, 0);
   text-transform: uppercase;
-  letter-spacing: 0px;
   font-family: Roboto regular;
-  font-weight: inherit;
-  font-size: 20px;
+  font-size: 200%;
   position: relative;
-  margin-left: 77px;
+  text-align:center;
+  margin-top: 2px;
 }
-.Bbar1 p{
-    color:rgb(0, 0, 0);
-    text-transform: uppercase;
-    margin: 0 0 10px;
-    padding: 0;
-    font-weight: bold;
-    letter-spacing: 0px;
-    font-family: Roboto regular;
-    font-size: 15px;
-}
-.Bbar p:nth-child(2){
-  float:right;
+.Bposition6 h1, .Bposition7 h1, .Bposition8 h1, .Bposition9 h1, .Bposition10 h1, .Bposition11 h1{
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  font-family: Roboto regular;
+  font-size: 200%;
   position: relative;
-  top: -30px;
+  text-align:center;
+  margin-top: -5px;
 }
 .Bvote_percentage{
   background: #000000;
@@ -488,39 +465,56 @@ div p.elec-guide-txt{
   color: #1d6986;;
   text-align: center;
   font-family: Roboto;
-  font-size: 23px;
+  font-size: 210%;
 }
  .Banon{
   float: left;
+ }
+ .Bbtn_post{
+   text-align: center;
+ }
+ .Bbtn_reset{
+   text-align:center;
  }
  .Bbtn_postresults{
   border: none;
   font-style: Roboto;
   background-color:#1d6986;
-  margin-top: 780px;
-  margin-left: 60px;
-  padding: 14px 28px;
-  font-size: 16px;
+  padding: 1em 2.1em 1.1em;
   cursor: pointer;
-  display: inline-block;
   border-radius: 10px;
+  display:inline-block;
+  width:auto;
+  font-size: 150%;
+  text-align: center;
+  position: relative;
 }
-.Bbtn_reset{
+.Bbtn_resetresults{
   border: none;
   font-style: Roboto;
   background-color:#1d6986;
-  margin-top: 780px;
-  margin-left: 200px;
-  padding: 14px 28px;
-  font-size: 16px;
+  padding: 1em 2.1em 1.1em;
   cursor: pointer;
-  display: inline-block;
   border-radius: 10px;
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 150%;
+  width:auto;
+  text-align: center;
 }
+
 .Bbtn_postresults:hover {background:  #ffc423;}
 .Bbtn_postresults:success {color: white}
-.Bbtn_reset:hover {background:  #ffc423;}
-.Bbtn_reset:success {color: white}
+.Bbtn_resetresults:hover {background:  #ffc423;}
+.Bbtn_resetresults:success {color: white}
+.Bbtn_postresults:disabled{
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.Bbtn_resetresults:disabled{
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
 /* Vote Status Percentage */
 .Bvotestat p{
@@ -620,9 +614,6 @@ div p.elec-guide-txt{
   color: #fff;
 }
 
-Bcard:hover{
-  color: #fff;
-}
 svg{
   position: relative;
   width: 150px;
@@ -737,21 +728,23 @@ svg circle:nth-child(2){
   font-family: Roboto black;
   color: #ffc423;
   font-weight: inherit;
-  font-size: 3.2vw;
+  font-size: 500%;
   position: relative;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
   text-align: center;
-  margin-top: 25px;
+  margin-top: 40px;
  }
 .Bimgs img{
   position:relative;
-  z-index: 1000;
   align-items: center;
+  z-index: -2000;
+  max-width: 100%;
+  height: auto;
   }
  .Bboxes_arch a{
-  color: #ffc423;
+  color: black;
   font-family: Roboto;
-  font-size: 1.5vw;
+  font-size: 200%;
   text-align: center;
   }
 .Bboxes a:hover{
@@ -767,9 +760,10 @@ svg circle:nth-child(2){
   border-radius: 4px;
   text-align: center;
   margin: auto;
-  margin-top: 80px;
+  margin-top: 20px;
   transition: 0.5s;
   border-radius: 60%;
+  z-index: -1000;
 }
 .Bcards:hover{
 /*transform:translateY(-10px);*/
@@ -797,6 +791,56 @@ Bsvg{
   width: 150px;
   height:150px;
   z-index:1000;
+}
+
+/*Election Archives List*/
+.Barch_year{
+  font-family: Roboto black;
+  color: #1d6986;
+  font-weight: inherit;
+  font-size: 1.5vw;
+  position: relative;
+  letter-spacing: 1px;
+  text-align: center;
+  font-style: italic;
+  margin-top: -10px;
+}
+.Barch_container{
+  padding: 30px;
+  color: black;
+  display: grid;  
+  grid-gap: 5px;  
+  grid-template-columns: repeat(auto-fit, minmax(150px, 5fr));
+  grid-template-rows: repeat(2, 150px);  
+  text-align: center;
+  margin-top: -5px;
+}
+.Barch_container > div > img{
+  border-radius: 50%;
+  width: 80px;
+}
+.Barch_container > div > img > p {  
+  width: 100%;  
+  height: 100%;  
+  object-fit: cover;  
+  text-align: center;
+}
+.Barch_container > div > p {  
+  font-family: Roboto;
+  font-size: 15px;
+  object-fit: cover;  
+  text-align: center;
+}
+.Bpstn .Bname{
+  margin-top: 10px;
+  color:  #142d4f;
+  font-weight: bold;
+}
+.Bpstn .Bpstn{
+  margin-top: 10px;
+  color:  #ffb700;
+  margin-top: -10px;
+  font-weight: bold;
 }
 
 /* Election Results Report */

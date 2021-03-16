@@ -409,72 +409,58 @@ div p.elec-guide-txt{
 }
 
 /* On-Going Election*/
-
-.Bbg2{
-  position: absolute;
-  right:50px;
-  margin-top: 0px;
-  margin-bottom: 0;
-  width:390px;
-  height: 510px;
-}
-
  .Belec1 p{
   font-family: Roboto regular;
   color:#1f6f8f;
   font-weight: inherit;
-  font-size: 46px;
-  margin-top: 150px;
+  font-size: 470%;
+  margin-top: 110px;
   letter-spacing: 4px;
-  margin-left: 280px;
+  text-align: center;
 }
-
 .Bon1 h1{
   font-family: Roboto regular;
   color: #142d4f;
   font-weight: inherit;
-  font-size: 70px;
+  font-size: 800%;
   position: relative;
   letter-spacing: 4px;
-  margin-left:275px;
   margin-top: 4px;
+  text-align: center;
 }
-
-
 .Bres{
-  background-color: #ffc423;
-  border: 1px #ffc423;
-  width: 210px;
-  float: left;
-  margin-top: 0px;
-  margin-left: 350px;
+  margin: auto;
+  padding: 1em 2.1em 1.1em;
+  cursor: pointer;
+  display:inline-block;
+  width:100%;
+  border-radius: 10px;
+  display: inline-block;
+  font-size: 150%;
+  text-align: center;
+  position: relative;
 }
-
 .Bres p{
   font-family: Roboto;
   letter-spacing: 1px;
-  font-size: 15px;
-  margin-top: 10px;
-  margin-left:10px;
-}
+  font-size: 100%;
 
+}
 /*No On-going Election*/
 .Belec2 p{
   font-family: Roboto regular;
   color:#1f6f8f;
   font-weight: inherit;
-  font-size: 48px;
-  margin-top: 150px;
+  font-size: 500%;
+  margin-top: 130px;
   letter-spacing: 4px;
   text-align: center;
 }
-
 .Bon2 h1{
   font-family: Roboto regular;
   color: #142d4f;
   font-weight: inherit;
-  font-size: 70px;
-  position: relative;
+  font-size: 700%;
   letter-spacing: 4px;
   text-align: center;
   margin-top: 4px;
@@ -484,8 +470,7 @@ div p.elec-guide-txt{
   font-family: Roboto regular;
   color: #142d4f;
   font-weight: inherit;
-  font-size: 15px;
-  position: relative;
+  font-size: 150%;
   letter-spacing: 4px;
   text-align: center;
   margin-top: 100px;
@@ -496,8 +481,8 @@ div p.elec-guide-txt{
   font-family: Roboto regular;
   color:#1f6f8f;
   font-weight: inherit;
-  font-size: 30px;
-  margin-top: 100px;
+  font-size: 470%;
+  margin-top: 80px;
   letter-spacing: 4px;
   text-align: center;
 }
@@ -506,28 +491,27 @@ div p.elec-guide-txt{
   font-family: Roboto regular;
   color: #142d4f;
   font-weight: inherit;
-  font-size: 50px;
+  font-size: 700%;
   position: relative;
   letter-spacing: 4px;
   text-align: center;
-  margin-top: 0px;
+  margin-top: -0.5%;
 }
 
 .Belec_end3 p{
   font-family: Roboto regular;
   color:#1f6f8f;
   font-weight: inherit;
-  font-size: 30px;
-  margin-top: -20px;
+  font-size: 470%;
+  margin-top:-2%;
   letter-spacing: 4px;
   text-align: center;
 }
-
 .Bres_end h1{
   font-family: Roboto regular;
   color: #142d4f;
   font-weight: inherit;
-  font-size: 15px;
+  font-size: 150%;
   position: relative;
   letter-spacing: 4px;
   text-align: center;
@@ -537,24 +521,15 @@ div p.elec-guide-txt{
 .Bcontainer_res{
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 15vh;
-}
-.Bhoverme {
-  width: 500px;
-  text-align: center;
-  padding: 10px 0;
-  cursor: pointer;
-  position: relative;
-  font-family: Roboto black;
-  font-weight: inherit;
-  letter-spacing: 1px;
-  text-align: center;
-  margin-top: 25px;
 }
 .Bhoverme h1 {
+  font-family: Roboto black;
   color: #142d4f;
-  font-size: 40px;
+  font-size: 500%;
+  position: relative;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 40px;
 }
 .Bhoverme i {
   position: absolute;
@@ -923,50 +898,33 @@ div p.elec-guide-txt{
     opacity: 9;
   }
 }
-.Bposition1, .Bposition2, .Bposition3, .Bposition4, 
-.Bposition5, .Bposition6, .Bposition7, .Bposition8, 
-.Bposition9, .Bposition10, .Bposition11, .Bposition12
-{
-  width: 18%;
-  position:absolute;
-  top: 45%;
-  left: 15%;
-  transform: translate(-50%, -50%);
+.Belec_container{  
   padding: 20px;
-  background: #1f6f8f;
-  box-sizing: border-box;
-  box-shadow:0 20px 60px rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
+  color: black;
+  display: grid;  
+  grid-gap: 5px;  
+  grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+  grid-template-rows: repeat(5, 300px);  
+  text-align: center;
 }
-.Bposition2, .Bposition6, .Bposition10{
-  left: 38%;
+.Belec_container > div > img{
+  border-radius: 50%;
 }
-.Bposition3, .Bposition7, .Bposition11{
-   left: 61%;
+.Belec_container > div > img > p {  
+  width: 100%;  
+  height: 100%;  
+  object-fit: cover;  
+  text-align: center;
 }
-.Bposition4, .Bposition8, .Bposition12{
-  left: 84%;
+.Belec_container > div > p {  
+  font-family: Roboto;
+  font-size: 15px;
+  object-fit: cover;  
+  text-align: center;
 }
-.Bposition5, .Bposition6, .Bposition7, .Bposition8{
-  top: 80%;
-}
-.Bposition9, .Bposition10, .Bposition11, .Bposition12{
-  top: 115%;
-}
-.Bposition1 h1, .Bposition2 h1, .Bposition3 h1, .Bposition4 h1, 
-.Bposition5 h1, .Bposition6 h1, .Bposition7 h1, .Bposition8 h1, 
-.Bposition9 h1, .Bposition10 h1, .Bposition11 h1, .Bposition12 h1
-{
-  margin: 0;
-  padding: 0;
-  color: #ffc423;
-  text-transform: uppercase;
-  letter-spacing: 0px;
-  font-family: Roboto regular;
-  font-weight: inherit;
-  font-size: 20px;
-  position: relative;
-  margin-left: 77px;
+.Bpstn .Bnum_votes{
+  color: red;
+  font-weight: bold;
 }
 
 /* Election Archives Folder*/
@@ -974,25 +932,24 @@ div p.elec-guide-txt{
   font-family: Roboto black;
   color: #142d4f;
   font-weight: inherit;
-  font-size: 45px;
+  font-size: 500%;
   position: relative;
   letter-spacing: 1px;
   text-align: center;
-  margin-top: 25px;
+  margin-top: 40px;
  }
 .Bimg img{
   position:relative;
   z-index: 1000;
-  width: 150px;
-  height: 150px;
-  z-index: 1000;
+  z-index: -1000;
+  max-width: 100%;
+  height: auto;
   }
  .Bbox a{
   color: #1f6f8f;
   font-family: Roboto;
-  font-size: 25px;
-  float: left;
-  margin-left: 75px;
+  font-size: 200%;
+  text-align: center;
   margin-top: -5px;
   }
 .Bbox a:hover{
@@ -1008,8 +965,7 @@ height: 220px;
 border-radius: 4px;
 text-align: center;
 margin: auto;
-margin: auto;
-margin-top: 80px;
+margin-top: 20px;
 transition: 0.5s;
 border-radius: 60%;
 }
@@ -1028,15 +984,61 @@ height: 100%;
 pointer-events: none;
 z-index:1;
 }
-.Bpercent .Bnumber h2 span{
-font-size:24px;
-color: #777;
-transition: 0.5s;
-}
 svg{
 position: relative;
 margin-top: -240px;
 width: 150px;
 height:150px;
 z-index:1000;
+}
+
+/*Election Archives List*/
+.Barch_year{
+  font-family: Roboto black;
+  color: #ffb700;
+  font-weight: inherit;
+  font-size: 1.5vw;
+  position: relative;
+  letter-spacing: 1px;
+  text-align: center;
+  font-style: italic;
+  margin-top: -10px;
+}
+
+.Barch_container{
+  padding: 30px;
+  color: black;
+  display: grid;  
+  grid-gap: 5px;  
+  grid-template-columns: repeat(auto-fit, minmax(150px, 5fr));
+  grid-template-rows: repeat(2, 150px);  
+  text-align: center;
+  margin-top: -5px;
+}
+.Barch_container > div > img{
+  border-radius: 50%;
+  width: 80px;
+}
+.Barch_container > div > img > p {  
+  width: 100%;  
+  height: 100%;  
+  object-fit: cover;  
+  text-align: center;
+}
+.Barch_container > div > p {  
+  font-family: Roboto;
+  font-size: 15px;
+  object-fit: cover;  
+  text-align: center;
+}
+.Bpstn .Bname{
+  margin-top: 10px;
+  color:  #142d4f;
+  font-weight: bold;
+}
+.Bpstn .Bpstn{
+  margin-top: 10px;
+  color:  #ffb700;
+  margin-top: -10px;
+  font-weight: bold;
 }
