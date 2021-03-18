@@ -188,7 +188,6 @@ nav ul ul ul li{
     margin-right: 0px;
     margin-left: 0px;
     float: left;
-    width: auto;
   }
   /* nav .logo{
     padding-left: 30px;
@@ -200,8 +199,7 @@ nav ul ul ul li{
   }
   nav ul li,nav ul ul li{
     display: block;
-    /* width: 100%; */
-    width: auto;
+    width: 100%;
   }
   nav ul li a:hover{
     box-shadow: none;
