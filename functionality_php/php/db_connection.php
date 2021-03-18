@@ -6,13 +6,19 @@
 *only change when using it
 */
 
-$sname= "localhost";
-$uname= "root";
-$password = "";
+// $sname= "localhost";
+// $uname= "root";
+// $password = "";
 
-$db_name = "db_monitoring";
+// $db_name = "db_monitoring";
 
-$conn = mysqli_connect($sname, $uname, $password, $db_name);
+// $conn = mysqli_connect($sname, $uname, $password, $db_name);
+
+$dbhost = "localhost";
+$dbuser = "id16218880_webhostingbscs3a";
+$dbpass = "t9%~bjqmK)uHAwe[";
+$db = "id16218880_buceils";
+$conn = mysqli_connect($dbhost, $dbuser, $dbpass,$db);
 
 if (!$conn) {
 	echo "Connection failed!";
