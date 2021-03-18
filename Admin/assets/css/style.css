@@ -641,6 +641,8 @@ h2.aHeader-txt{
 .Bvcontainer .Bcard:before{
   content: '';
   position: absolute;
+  top: 0;
+  left: 0%;
   width: 100%;
   height: rgba(73, 163, 0, 0.03);
   pointer-events: none;
