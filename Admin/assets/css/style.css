@@ -521,36 +521,32 @@ div p.elec-guide-txt{
   font-family: Roboto black;
   color: #ffc423;
   font-weight: inherit;
-  font-size: 3.2vw;
+  font-size: 500%;
   position: relative;
   letter-spacing: 3px;
   text-align: center;
-  margin-top: 25px;
+  margin-top: 90px;
   z-index:-1000;
  }
-.Bcon{
-    display: flex;
-    margin: auto;
-    margin-left: 17%;
-    margin-top: 5%;
-    max-width: auto;
-}
 .Bvcontainer{
   position: relative;
-  width: 900px;
-  display: flex;
+  width: 100%;
   justify-content: space-around;
+  display: grid; 
+  grid-gap: -20px; 
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: repeat(1, 250px);  
+  z-index: -1000;
 }
 .Bvcontainer .Bcard{
   position: relative;
-  width: 250px;
-  display:flex;
+  width: 100%;
+  display: grid;
   justify-content: center;
   align-items: center;
   height: 300px;
   border-radius: 4px;
   text-align: center;
-  margin-left: 50px;
   transition: 0.5s;
 }
 .Bvcontainer .Bcard:before{
@@ -561,7 +557,6 @@ div p.elec-guide-txt{
   width: 100%;
   height: rgba(73, 163, 0, 0.03);
   pointer-events: none;
-  z-index:1;
 }
 .Bpercent{
   position:relative;
@@ -601,6 +596,7 @@ div p.elec-guide-txt{
 .Bbox a:hover{
   color: #124254;
 }
+
 .Bcard:hover .Bpercent .Bnumber h2{
   color: #124254;
   font-size: 40px;
@@ -608,17 +604,13 @@ div p.elec-guide-txt{
 .Bpercent .Bnumber h2 span{
   font-size:24px;
   color: #777;
-  transition: 0.5s;
+  transition: 1s;
 }
-.Bcard:hover .Bpercent .Bnumber h2 span{
-  color: #fff;
-}
-
 svg{
   position: relative;
   width: 150px;
   height:150px;
-  z-index:1000;
+  z-index: -1000;
 }
 svg circle{
   width: 100%;
@@ -659,8 +651,19 @@ svg circle:nth-child(2){
 }
 
 /*Vote Status per grade level*/
+.Bvotestatus p{
+  font-family: Roboto black;
+  color: #ffc423;
+  font-size: 500%;
+  position: relative;
+  letter-spacing: 1px;
+  text-align: center;
+  z-index:-1000;
+  margin-top: 30px;
+ }
 .table{
  text-align: center;
+ margin-top: 2.5%;
 }
 .Bvs_gradelevel p{
   font-family: Roboto black;
@@ -669,26 +672,18 @@ svg circle:nth-child(2){
   letter-spacing: 3px;
   text-align: center;
   z-index:-1000;
-  margin-top: -50px;
-}
-.Bbtn_goback{
-  border: none;
-  font-style: Roboto;
-  background-color:white;
-  padding: 6px 8px;
-  margin-left: 10px;
-  font-size: 11px;
-  cursor: pointer;
-  border-radius: 20px;
-  margin-bottom: 15px;
+  margin-top: -25px;
 }
 .Bnp{
-  margin-top: -12px;
+  margin-top: 20px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 .Bnp a{
   text-decoration: none;
   display: inline-block;
-  padding: 6px 16px;
+  padding: 8px 22px;
 }
 .Bnp a:hover {
   background-color: #ffc423;
@@ -697,14 +692,13 @@ svg circle:nth-child(2){
 .Bprevious {
   background-color: white;
   color: black;
-  font-size: 16px;
-  margin-left: 667px;
+  font-size: 25px;
 }
 .Bnext {
   background-color: white;
   color:black;
-  font-size: 16px;
-  margin-left: 5px;
+  font-size: 25px;
+  margin-left: 20px;
 }
 .round {
   border-radius: 50%;
@@ -736,8 +730,7 @@ svg circle:nth-child(2){
  }
 .Bimgs img{
   position:relative;
-  align-items: center;
-  z-index: -2000;
+  z-index: -1000;
   max-width: 100%;
   height: auto;
   }
@@ -746,51 +739,46 @@ svg circle:nth-child(2){
   font-family: Roboto;
   font-size: 200%;
   text-align: center;
+  margin-top: -5px;
   }
-.Bboxes a:hover{
-  color: white
+.Bboxes_arch a:hover{
+  color: white;
  }
 .Bcards{
-  position: relative;
-  width: 200px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  height: 220px;
-  border-radius: 4px;
-  text-align: center;
-  margin: auto;
-  margin-top: 20px;
-  transition: 0.5s;
-  border-radius: 60%;
-  z-index: -1000;
+position: relative;
+width: 200px;
+display:flex;
+justify-content: center;
+align-items: center;
+height: 220px;
+border-radius: 4px;
+text-align: center;
+margin: auto;
+margin-top: 20px;
+transition: 0.5s;
+border-radius: 60%;
 }
 .Bcards:hover{
 /*transform:translateY(-10px);*/
-  box-shadow: 0 15px 35px rgba(160, 137, 10, 0.788);
+box-shadow: 0 15px 35px rgba(160, 137, 10, 0.788);
 }
-.Bcards:before{
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0%;
-  width: 100%;
-  height: 100%;
-  /*background: rgba(73, 163, 0, 0.03);*/
-  pointer-events: none;
-  z-index:1;
+ .Bcards:before{
+content: '';
+position: absolute;
+top: 0;
+left: 0%;
+width: 100%;
+height: 100%;
+/*background: rgba(73, 163, 0, 0.03);*/
+pointer-events: none;
+z-index:1;
 }
-.Bpercent .Bnumber h2 span{
-  font-size:24px;
-  color: #777;
-  transition: 0.5s;
-}
-Bsvg{
-  position: relative;
-  margin-top: -240px;
-  width: 150px;
-  height:150px;
-  z-index:1000;
+svg1{
+position: relative;
+margin-top: -240px;
+width: 150px;
+height:150px;
+z-index:1000;
 }
 
 /*Election Archives List*/
@@ -810,8 +798,8 @@ Bsvg{
   color: black;
   display: grid;  
   grid-gap: 5px;  
-  grid-template-columns: repeat(auto-fit, minmax(150px, 5fr));
-  grid-template-rows: repeat(2, 150px);  
+  grid-template-columns: repeat(auto-fit, minmax(200px, 5fr));
+  grid-template-rows: repeat(2, 200px);  
   text-align: center;
   margin-top: -5px;
 }
