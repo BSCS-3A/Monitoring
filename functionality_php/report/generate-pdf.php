@@ -1,6 +1,6 @@
 <?php
 require 'config.php';				 	// Link to database
-require_once('TCPDF-main/tcpdf.php'); 	// Include the main TCPDF library
+require_once('TCPDF-main/tcpdf.php'); 			// Include the main TCPDF library
 
 //---------------------Create header and footer
 class PDF extends TCPDF { 
@@ -66,18 +66,19 @@ ob_start();
 		while($dataRead=mysqli_fetch_array($queryVoteEvent)){ 
 			$pdf->Ln(15);
 			$pdf->SetFont('times','B',12);
-			$pdf->Multicell(170,2, 'DECLARATION OF RESULTS FOR BICOL UNIVERSITY INTEGRATED LABORATORY SCHOOL (BUCEILS) SUPREME STUDENT GOVERNMENT (SSG) ELECTION FOR A.Y. '.$acadyear.'-'.$acadyear+1,0,'C',0,1,'','',true); 
+			$pdf->Multicell(170,2, 'DECLARATION OF RESULTS FOR BICOL UNIVERSITY INTEGRATED LABORATORY SCHOOL (BUCEILS) SUPREME STUDENT GOVERNMENT (SSG) ELECTION FOR A.Y. '.$acadyear.'-'.($acadyear+1),0,'C',0,1,'','',true); 
 
 			$pdf->Ln(10); 
 			$pdf->SetFont('times','',12);
-			$pdf->Multicell(170,2, 'We, the Commission on Election (COMELEC), hereby announce the results of the Student Council Election for the Academic Year '.$acadyear.'-'.$acadyear+1 .' held between '.date('F j, Y', strtotime($dataRead['start_date'])).' ('.date('g:i A', strtotime($dataRead['start_date'])). ') to '.date('F j, Y', strtotime($dataRead['end_date'])).' ('.date('g:i A', strtotime($dataRead['end_date'])) .') using the BUCEILS Online Voting System. Below is a table of the summary of results:																																																																																																																																																',0,'J',0,1,'','',true); //empty space is for justify 
+			$pdf->Multicell(170,2, 'We, the Commission on Election (COMELEC), hereby announce the results of the Student Council Election for the Academic Year '.$acadyear.'-'.($acadyear+1) .' held between '.date('F j, Y', strtotime($dataRead['start_date'])).' ('.date('g:i A', strtotime($dataRead['start_date'])). ') to '.date('F j, Y', strtotime($dataRead['end_date'])).' ('.date('g:i A', strtotime($dataRead['end_date'])) .') using the BUCEILS Online Voting System. Below is a table of the summary of results:																																																																																																																																																',0,'J',0,1,'','',true); //empty space is for justify 
 		}//end while 
 
 
-// -------------------Display table
+// -------------------Display table 
 	$pdf->Ln(5); 
 	$pdf->SetFillColor(224,235,255);
 	$pdf->SetFont('times','B',12);
+	//column titles
 	$pdf->Cell(65,10.8,'CANDIDATES',1,0,'C',1);
 	$pdf->Cell(88,5,'YEAR LEVEL VOTES',1,0,'C',1);
 	$pdf->Cell(17,10.8,'TOTAL',1,0,'C',1);
@@ -89,35 +90,76 @@ ob_start();
 	$pdf->Cell(14.6,5,'10',1,0,'C',1);   
 	$pdf->Cell(14.6,5,'11',1,0,'C',1);   
 	$pdf->Cell(14.7,5,'12',1,1,'C',1);   
-	$pdf->SetFont('times', '', 12);
 
+$query=mysqli_query($conn, "SELECT candidate.student_id, candidate.position_id, candidate.total_votes, student.lname, student.fname, student.mname, candidate_position.heirarchy_id, candidate_position.position_name FROM candidate INNER JOIN student ON candidate.student_id = student.student_id INNER JOIN candidate_position ON candidate.position_id = candidate_position.heirarchy_id ORDER BY heirarchy_id"); 
 
-$query=mysqli_query($conn, "SELECT candidate.student_id, candidate.position_id, candidate.total_votes, student.lname, student.fname, student.mname, candidate_position.position_name FROM candidate INNER JOIN student ON candidate.student_id = student.student_id INNER JOIN candidate_position ON candidate.position_id = candidate_position.position_id ORDER BY position_id"); 
-
+		$data_count=1;
+		$count=1;
 		while($data=mysqli_fetch_array($query)){ 
-		$pdf->Cell(170,5, $data['position_name'],1,1,'L',1);
-			if($data['position_id']==$data['position_id']){
-				$data['fullname']=$data['lname'].", ".$data['fname'].", ".$data['mname'];
-				$pdf->Cell(65,5, $data['fullname'],1,0,'L',0);			//full name				 
-				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);     	//total vote grade 7 
-				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);   	//total vote grade 8
-				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);   	//total vote grade 9
-				$pdf->Cell(14.6,5,$data['total_votes'],1,0,'C',0);   	//total vote grade 10
-				$pdf->Cell(14.6,5,$data['total_votes'],1,0,'C',0);   	//total vote grade 11
-				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);  	//total vote grade 12
-				$pdf->Cell(17,5,$data['total_votes'],1,1,'C',0); 		//total vote
-			}//end if
+			if($data_count==$data['heirarchy_id']){
+					$pdf->SetFont('','B',12);
+					$pdf->Cell(170,5, strtoupper($data['position_name']),1,1,'L',1);	//print position name once
+					$data_count++;
+			}//end if	
+
+				//concat last name, first name, middle name
+				if(empty($data['mname']))
+					$data['fullname']=$data['lname'].", ".$data['fname'];
+				else 														//gets first middle initial 
+					$data['fullname']=$data['lname'].", ".$data['fname']." ".mb_substr($data['mname'],0,1).".";
+
+				//display full name w/ resize condition
+				if(strlen($data['fullname'])<40){
+					$pdf->SetFont('','',12); 
+					$pdf->Cell(65,5,$data['fullname'],1,0,'L',0);			
+				}else{ 
+					$pdf->SetFont('','',10); 
+					$pdf->Cell(65,5,$data['fullname'],1,0,'L',0);			
+				}
+
+
+				//----------TEMPORARY VARIABLES WHILE WAITING FOR BREAKDOWN
+				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);     	//column total grade 7 vote
+				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);   	//column total grade 8 vote
+				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);   	//column total grade 9 vote
+				$pdf->Cell(14.6,5,$data['total_votes'],1,0,'C',0);   	//column total grade 10 vote
+				$pdf->Cell(14.6,5,$data['total_votes'],1,0,'C',0);   	//column total grade 11 vote
+				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);  	//column total grade 12 vote
+				$pdf->Cell(17,5,$data['total_votes'],1,1,'C',0); 		//column total vote
 		}//end while
+
+			//----------TEMPORARY VARIABLES WHILE WAITING FOR BREAKDOWN
+				$pdf->SetFont('','B',12);
+				$pdf->Cell(170,5,'' ,1,1,'C',0); 						//empty row spacer	
+				$pdf->Cell(65,5,'Number of Enrolled Students:',1,0,'L',0);				
+				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);     	//enrolled grade 7
+				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);   	//enrolled grade 8
+				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);   	//enrolled grade 9
+				$pdf->Cell(14.6,5,$data['total_votes'],1,0,'C',0);   	//enrolled grade 10
+				$pdf->Cell(14.6,5,$data['total_votes'],1,0,'C',0);   	//enrolled grade 11
+				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);  	//enrolled grade 12
+				$pdf->Cell(17,5,$data['total_votes'],1,1,'C',0); 		//total enrolled		
+
+				$pdf->Cell(65,5,'Number of Votes Received:',1,0,'L',0);			
+				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);     	//column sum grade 7 
+				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);   	//column sum grade 8 
+				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);   	//column sum grade 9 
+				$pdf->Cell(14.6,5,$data['total_votes'],1,0,'C',0);   	//column sum grade 10 
+				$pdf->Cell(14.6,5,$data['total_votes'],1,0,'C',0);   	//column sum grade 11
+				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);  	//column sum grade 12
+				$pdf->Cell(17,5,$data['total_votes'],1,1,'C',0); 		//column sum total
 
 
 // -------------------Display Text
 	$pdf->Ln(10); 
+	$pdf->SetFont('','',12);
 	$pdf->Multicell(170,2, 'In the event of a tie between candidates vying for the same position, an additional point, indicated by the plus one (+1) symbol beside the original vote count, was given to the candidate who won the toss coin. Leading candidate/s who failed to meet the minimum number of votes required to meet the electoral quota shall not be elected to the position he/she/they are running for. The newly elected candidates’ names are highlighted in the table.                                                             ',0,'J',0,1,'','',true); 
 // -------------------Display Signatory
 	$pdf->Ln(20); 
 	$pdf->SetFont('','B',12);
 	$pdf->Cell(20,1,'Certified true and correct by:',0,0);
 	
+//----------TEMPORARY WHILE WAITING FOR SIGNATORY DETAILS
 	//COMELEC Secretary
 	$pdf->Ln(30); 
 	$pdf->SetFont('','',12);
