@@ -1,5 +1,5 @@
 <?php
-require 'config.php';				 	// Link to database
+require 'php/db_connection.php';				 	// Link to database
 require_once('TCPDF-main/tcpdf.php'); 			// Include the main TCPDF library
 
 //---------------------Create header and footer
