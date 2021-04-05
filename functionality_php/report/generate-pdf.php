@@ -1,6 +1,6 @@
 <?php
 require 'php/db_connection.php';				 	// Link to database
-require_once('TCPDF-main/tcpdf.php'); 			// Include the main TCPDF library
+require_once('TCPDF-main/tcpdf.php'); 				// Include the main TCPDF library
 
 //---------------------Create header and footer
 class PDF extends TCPDF { 
@@ -78,77 +78,89 @@ ob_start();
 	$pdf->Ln(5); 
 	$pdf->SetFillColor(224,235,255);
 	$pdf->SetFont('times','B',12);
-	//column titles
-	$pdf->Cell(65,10.8,'CANDIDATES',1,0,'C',1);
-	$pdf->Cell(88,5,'YEAR LEVEL VOTES',1,0,'C',1);
-	$pdf->Cell(17,10.8,'TOTAL',1,0,'C',1);
-	$pdf->Cell(0,5,'',0,1);  //spacer
-	$pdf->Cell(65,5,'',0,0); //spacer
-	$pdf->Cell(14.7,5,'7',1,0,'C',1);     
-	$pdf->Cell(14.7,5,'8',1,0,'C',1);   
-	$pdf->Cell(14.7,5,'9',1,0,'C',1);   
-	$pdf->Cell(14.6,5,'10',1,0,'C',1);   
-	$pdf->Cell(14.6,5,'11',1,0,'C',1);   
-	$pdf->Cell(14.7,5,'12',1,1,'C',1);   
+	
+		//column titles
+		$pdf->Cell(65,10.8,'CANDIDATES',1,0,'C',1);
+		$pdf->Cell(88,5,'YEAR LEVEL VOTES',1,0,'C',1);
+		$pdf->Cell(17,10.8,'TOTAL',1,0,'C',1);
+		$pdf->Cell(0,5,'',0,1);  //spacer
+		$pdf->Cell(65,5,'',0,0); //spacer
+		$pdf->Cell(14.7,5,'7',1,0,'C',1);     
+		$pdf->Cell(14.7,5,'8',1,0,'C',1);   
+		$pdf->Cell(14.7,5,'9',1,0,'C',1);   
+		$pdf->Cell(14.6,5,'10',1,0,'C',1);   
+		$pdf->Cell(14.6,5,'11',1,0,'C',1);   
+		$pdf->Cell(14.7,5,'12',1,1,'C',1);   
 
 $query=mysqli_query($conn, "SELECT candidate.student_id, candidate.position_id, candidate.total_votes, student.lname, student.fname, student.mname, candidate_position.heirarchy_id, candidate_position.position_name FROM candidate INNER JOIN student ON candidate.student_id = student.student_id INNER JOIN candidate_position ON candidate.position_id = candidate_position.heirarchy_id ORDER BY heirarchy_id"); 
 
 		$data_count=1;
-		$count=1;
 		while($data=mysqli_fetch_array($query)){ 
 			if($data_count==$data['heirarchy_id']){
-					$pdf->SetFont('','B',12);
-					$pdf->Cell(170,5, strtoupper($data['position_name']),1,1,'L',1);	//print position name once
-					$data_count++;
+				$pdf->SetFont('','B',12);
+				$pdf->Cell(170,5, strtoupper($data['position_name']),1,1,'L',1);	//print position name once
+				$data_count++;
 			}//end if	
 
 				//concat last name, first name, middle name
 				if(empty($data['mname']))
 					$data['fullname']=$data['lname'].", ".$data['fname'];
-				else 														//gets first middle initial 
+				else 														//gets first letter middle initial 
 					$data['fullname']=$data['lname'].", ".$data['fname']." ".mb_substr($data['mname'],0,1).".";
 
-				//display full name w/ resize condition
-				if(strlen($data['fullname'])<40){
-					$pdf->SetFont('','',12); 
-					$pdf->Cell(65,5,$data['fullname'],1,0,'L',0);			
-				}else{ 
-					$pdf->SetFont('','',10); 
-					$pdf->Cell(65,5,$data['fullname'],1,0,'L',0);			
+					//display full name w/ resize condition
+					if(strlen($data['fullname'])<40){
+						$pdf->SetFont('','',12); 
+						$pdf->Cell(65,5,$data['fullname'],1,0,'L',0);			
+					}else{ 
+						$pdf->SetFont('','',10); 
+						$pdf->Cell(65,5,$data['fullname'],1,0,'L',0);			
 				}
 
-
-				//----------TEMPORARY VARIABLES WHILE WAITING FOR BREAKDOWN
-				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);     	//column total grade 7 vote
-				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);   	//column total grade 8 vote
-				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);   	//column total grade 9 vote
-				$pdf->Cell(14.6,5,$data['total_votes'],1,0,'C',0);   	//column total grade 10 vote
-				$pdf->Cell(14.6,5,$data['total_votes'],1,0,'C',0);   	//column total grade 11 vote
-				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);  	//column total grade 12 vote
+//----------NUMBER OF VOTES RECEIVED PER CANDIDATE PER GRADE LEVEL
+				//!!! WAITING FOR SUMMARY TABLE
+				$pdf->Cell(14.7,5,'',1,0,'C',0);     					//column total grade 7 vote
+				$pdf->Cell(14.7,5,'',1,0,'C',0);   						//column total grade 8 vote
+				$pdf->Cell(14.7,5,'',1,0,'C',0);   						//column total grade 9 vote
+				$pdf->Cell(14.6,5,'',1,0,'C',0);   						//column total grade 10 vote
+				$pdf->Cell(14.6,5,'',1,0,'C',0);   						//column total grade 11 vote
+				$pdf->Cell(14.7,5,'',1,0,'C',0);  						//column total grade 12 vote
 				$pdf->Cell(17,5,$data['total_votes'],1,1,'C',0); 		//column total vote
 		}//end while
 
-			//----------TEMPORARY VARIABLES WHILE WAITING FOR BREAKDOWN
+//----------NUMBER OF ENROLLED STUDENTS 
 				$pdf->SetFont('','B',12);
 				$pdf->Cell(170,5,'' ,1,1,'C',0); 						//empty row spacer	
-				$pdf->Cell(65,5,'Number of Enrolled Students:',1,0,'L',0);				
-				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);     	//enrolled grade 7
-				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);   	//enrolled grade 8
-				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);   	//enrolled grade 9
-				$pdf->Cell(14.6,5,$data['total_votes'],1,0,'C',0);   	//enrolled grade 10
-				$pdf->Cell(14.6,5,$data['total_votes'],1,0,'C',0);   	//enrolled grade 11
-				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);  	//enrolled grade 12
-				$pdf->Cell(17,5,$data['total_votes'],1,1,'C',0); 		//total enrolled		
+				$pdf->Cell(65,5,'Number of Enrolled Students:',1,0,'L',0);		
+		
+	$queryEnrolled=mysqli_query($conn, "SELECT sum(case when grade_level = '7' then 1 else 0 end) AS g7,
+    				sum(case when grade_level = '8' then 1 else 0 end) AS g8,
+    				sum(case when grade_level = '9' then 1 else 0 end) AS g9,
+    				sum(case when grade_level = '10' then 1 else 0 end) AS g10,
+    				sum(case when grade_level = '11' then 1 else 0 end) AS g11,
+    				sum(case when grade_level = '12' then 1 else 0 end) AS g12,
+   				count(student_id) AS totalEnrolled FROM student");
+	$res = mysqli_fetch_array($queryEnrolled);
+				$pdf->Cell(14.7,5,$res[0],1,0,'C',0);     	//enrolled grade 7
+				$pdf->Cell(14.7,5,$res[1],1,0,'C',0);   	//enrolled grade 8
+				$pdf->Cell(14.7,5,$res[2],1,0,'C',0);   	//enrolled grade 9
+				$pdf->Cell(14.6,5,$res[3],1,0,'C',0);   	//enrolled grade 10
+				$pdf->Cell(14.6,5,$res[4],1,0,'C',0);   	//enrolled grade 11
+				$pdf->Cell(14.7,5,$res[5],1,0,'C',0);  		//enrolled grade 12
+				$pdf->Cell(17,5,$res[6],1,1,'C',0); 		//total enrolled	
 
-				$pdf->Cell(65,5,'Number of Votes Received:',1,0,'L',0);			
-				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);     	//column sum grade 7 
-				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);   	//column sum grade 8 
-				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);   	//column sum grade 9 
-				$pdf->Cell(14.6,5,$data['total_votes'],1,0,'C',0);   	//column sum grade 10 
-				$pdf->Cell(14.6,5,$data['total_votes'],1,0,'C',0);   	//column sum grade 11
-				$pdf->Cell(14.7,5,$data['total_votes'],1,0,'C',0);  	//column sum grade 12
-				$pdf->Cell(17,5,$data['total_votes'],1,1,'C',0); 		//column sum total
-
+//----------NUMBER OF VOTES RECEIVED 
+				$pdf->Cell(65,5,'Number of Votes Received:',1,0,'L',0);	
+				
+				//!!! WAITING FOR VOTE SUMMARY TABLE
+				$pdf->Cell(14.7,5,'',1,0,'C',0);     		//received grade 7
+				$pdf->Cell(14.7,5,'',1,0,'C',0);   		//received grade 8
+				$pdf->Cell(14.7,5,'',1,0,'C',0);   		//received grade 9
+				$pdf->Cell(14.6,5,'',1,0,'C',0);   		//received grade 10
+				$pdf->Cell(14.6,5,'',1,0,'C',0);   		//received grade 11
+				$pdf->Cell(14.7,5,'',1,0,'C',0);  		//received grade 12
+				$pdf->Cell(17,5,'',1,1,'C',0); 			//total received	
+			
 
 // -------------------Display Text
 	$pdf->Ln(10); 
@@ -159,7 +171,8 @@ $query=mysqli_query($conn, "SELECT candidate.student_id, candidate.position_id, 
 	$pdf->SetFont('','B',12);
 	$pdf->Cell(20,1,'Certified true and correct by:',0,0);
 	
-//----------TEMPORARY WHILE WAITING FOR SIGNATORY DETAILS
+// !!! WAITING FOR SIGNATORY DETAILS
+	
 	//COMELEC Secretary
 	$pdf->Ln(30); 
 	$pdf->SetFont('','',12);
