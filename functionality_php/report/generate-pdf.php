@@ -152,14 +152,22 @@ $query=mysqli_query($conn, "SELECT candidate.student_id, candidate.position_id, 
 //----------NUMBER OF VOTES RECEIVED 
 				$pdf->Cell(65,5,'Number of Votes Received:',1,0,'L',0);	
 				
-				//!!! WAITING FOR VOTE SUMMARY TABLE
-				$pdf->Cell(14.7,5,'',1,0,'C',0);     		//received grade 7
-				$pdf->Cell(14.7,5,'',1,0,'C',0);   		//received grade 8
-				$pdf->Cell(14.7,5,'',1,0,'C',0);   		//received grade 9
-				$pdf->Cell(14.6,5,'',1,0,'C',0);   		//received grade 10
-				$pdf->Cell(14.6,5,'',1,0,'C',0);   		//received grade 11
-				$pdf->Cell(14.7,5,'',1,0,'C',0);  		//received grade 12
-				$pdf->Cell(17,5,'',1,1,'C',0); 			//total received	
+	$queryVoted=mysqli_query($conn, "SELECT sum(case when grade_level = '7' then voting_status end) AS g7Voted,
+				sum(case when grade_level = '8' then voting_status end) AS g8Voted,
+				sum(case when grade_level = '9' then voting_status end) AS g9Voted,
+				sum(case when grade_level = '10' then voting_status end) AS g10Voted,
+				sum(case when grade_level = '11' then voting_status end) AS g11Voted,
+				sum(case when grade_level = '12' then voting_status end) AS g12Voted,
+				count(student_id) AS totalVoted FROM student");
+
+	$studVoted = mysqli_fetch_array($queryVoted);
+				$pdf->Cell(14.7,5,$studVoted[0],1,0,'C',0);     		//received grade 7
+				$pdf->Cell(14.7,5,$studVoted[1],1,0,'C',0);   			//received grade 8
+				$pdf->Cell(14.7,5,$studVoted[2],1,0,'C',0);   			//received grade 9
+				$pdf->Cell(14.6,5,$studVoted[3],1,0,'C',0);   			//received grade 10
+				$pdf->Cell(14.6,5,$studVoted[4],1,0,'C',0);   			//received grade 11
+				$pdf->Cell(14.7,5,$studVoted[5],1,0,'C',0);  			//received grade 12
+				$pdf->Cell(17,5,($studVoted[0]+$studVoted[1]+$studVoted[2]+$studVoted[3]+$studVoted[4]+$studVoted[5]),1,1,'C',0);		//total received	
 			
 
 // -------------------Display Text
