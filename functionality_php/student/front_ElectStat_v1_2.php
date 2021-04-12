@@ -9,7 +9,8 @@
     <link rel="icon" href="assets/img/BUHS LOGO.png" type="image/png">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="assets/css/style.css?v=<?php echo time(); ?>">
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="assets/js/countdown.js"></script>
@@ -36,8 +37,8 @@
                 <input type="checkbox" id="btn-2">
                 <ul>
                     <li><a href="#" class="elec-text">ELECTION PROCESS</a></li>
-                    <li><a href="front_Monitoring_v3_0.html ">ARCHIVE</a></li>
-                    <li><a href="front_Monitoring_v1_1.html">RESULTS</a></li>
+                    <li><a href="front_ArcFolder_v3_0.html ">ARCHIVE</a></li>
+                    <li><a href="front_ElecStat_v1_1.html">RESULTS</a></li>
                 </ul>
             </li>
             <li>
@@ -61,8 +62,10 @@
         <!--end of list-->
     </nav>
 
-	<?php if($on_going): ?>>
+	<?php if($vote_stat==1): ?>>
     <?php require 'inc/ongoing.html';?>
+    <?php elseif($vote_stat==2): ?>
+    <?php require 'inc/after_election.html';?>
     <?php else: ?>
     <?php require 'inc/no_election.html';?>
     <?php endif; ?>
