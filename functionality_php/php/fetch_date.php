@@ -6,18 +6,22 @@
 
     $row = mysqli_fetch_assoc($result);
 
-    // Set timezone
     date_default_timezone_set('Asia/Manila');
-
-    $current_date_time = date('Y-m-d H:i:s');
-    // $current_year = date('Y');
-
-    $on_going = 0;
-
-    if($current_date_time>=$row['start_date'] && $current_date_time<$row['end_date']){
-        $on_going = 1;  // set flag to true
+    if(empty($row['vote_event_id'])){
+        $vote_stat = 0;
     }else{
-        $on_going = 0;
+        $current_date_time = date('Y-m-d H:i:s');
+        $after_election_date = date('Y-m-d', strtotime($row['end_date']. ' + 1 days'));
+
+        $vote_stat = 0;
+
+        if($current_date_time>=$row['start_date'] && $current_date_time<$row['end_date']){
+            $vote_stat = 1;
+        }elseif($current_date_time>=$row['end_date']&&$current_date_time<$after_election_date){
+            $vote_stat = 2;
+        }else{
+            $vote_stat = 0;
+        }
     }
 
     mysqli_free_result($result);
