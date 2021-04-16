@@ -90,32 +90,33 @@ ob_start();
 		$pdf->Cell(14.7,5,'9',1,0,'C',1);   
 		$pdf->Cell(14.6,5,'10',1,0,'C',1);   
 		$pdf->Cell(14.6,5,'11',1,0,'C',1);   
-		$pdf->Cell(14.7,5,'12',1,1,'C',1);   
+		$pdf->Cell(14.7,5,'12',1,1,'C',1);
 
-//----------GETS THE WINNER PER POSITION
-		//Count number of candidate_position
-			$result = mysqli_query($conn,"SELECT * FROM candidate");
-			$i = mysqli_num_rows($result);
-		//Get highest vote per candidate_position
-			
-		//Store id of candidate with highest vote
+		//----------GETS THE WINNER PER POSITION
+			//Count number of candidate_position
+				$result = mysqli_query($conn,"SELECT * FROM candidate");
+				$i = mysqli_num_rows($result);
+			//Get highest vote per candidate_position
+				
+			//Store id of candidate with highest vote
 
-//----------CHECKS FOR TIE
-		//If there is more than 1 highest vote per candidate_position
-		//Prompt to pick
-		//Store id of candidate votes given a +1
-		//Update stored id of winning candidate
+		//----------CHECKS FOR TIE
+			//If there is more than 1 highest vote per candidate_position
+			//Prompt to pick
+			//Store id of candidate votes given a +1
+			//Update stored id of winning candidate
 
-//----------CHECKS IF WINNER MET MINIMUM VOTE QUOTA
-		//At least 50% of all votes for non-representative positions
-			//If not, update stored id to zero or null
-		//At least 50% of year-level votes for representative positions
-			//If not, update stored id to zero or null
+		//----------CHECKS IF WINNER MET MINIMUM VOTE QUOTA
+			//At least 50% of all votes for non-representative positions
+				//If not, update stored id to zero or null
+			//At least 50% of year-level votes for representative positions
+				//If not, update stored id to zero or null
 
-$query=mysqli_query($conn, "SELECT candidate.student_id, candidate.position_id, candidate.total_votes, student.lname, student.fname, student.mname, candidate_position.heirarchy_id, candidate_position.position_name FROM candidate INNER JOIN student ON candidate.student_id = student.student_id INNER JOIN candidate_position ON candidate.position_id = candidate_position.heirarchy_id ORDER BY heirarchy_id"); 
+$query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id, candidate.position_id, candidate.total_votes, student.lname, student.fname, student.mname, candidate_position.heirarchy_id, candidate_position.position_name FROM candidate INNER JOIN student ON candidate.student_id = student.student_id INNER JOIN candidate_position ON candidate.position_id = candidate_position.heirarchy_id ORDER BY heirarchy_id"); 
 
 		$data_count=1;
-		while($data=mysqli_fetch_array($query)){ 
+		while($data=mysqli_fetch_array($query))
+		{ 
 			if($data_count==$data['heirarchy_id']){
 				$pdf->SetFont('','B',12);
 				$pdf->Cell(170,5, strtoupper($data['position_name']),1,1,'L',1);	//print position name once
@@ -136,6 +137,9 @@ $query=mysqli_query($conn, "SELECT candidate.student_id, candidate.position_id, 
 						$pdf->SetFont('','',10); 
 						$pdf->Cell(65,5,$data['fullname'],1,0,'L',0);			
 				}
+
+				//abstain votes per position
+
 //----------NUMBER OF VOTES RECEIVED PER CANDIDATE PER GRADE LEVEL
 			$id = $data['candidate_id'];
 			for($i = 7,$j=0; $i <=12;$i++, $j++)
@@ -163,12 +167,12 @@ $query=mysqli_query($conn, "SELECT candidate.student_id, candidate.position_id, 
 				$pdf->Cell(65,5,'Number of Enrolled Students:',1,0,'L',0);		
 		
 	$queryEnrolled=mysqli_query($conn, "SELECT sum(case when grade_level = '7' then 1 else 0 end) AS g7,
-    				sum(case when grade_level = '8' then 1 else 0 end) AS g8,
-    				sum(case when grade_level = '9' then 1 else 0 end) AS g9,
+    			    sum(case when grade_level = '8' then 1 else 0 end) AS g8,
+    			    sum(case when grade_level = '9' then 1 else 0 end) AS g9,
     				sum(case when grade_level = '10' then 1 else 0 end) AS g10,
     				sum(case when grade_level = '11' then 1 else 0 end) AS g11,
     				sum(case when grade_level = '12' then 1 else 0 end) AS g12,
-   				count(student_id) AS totalEnrolled FROM student");
+   					count(student_id) AS totalEnrolled FROM student");
 	$res = mysqli_fetch_array($queryEnrolled);
 				$pdf->Cell(14.7,5,$res[0],1,0,'C',0);     	//enrolled grade 7
 				$pdf->Cell(14.7,5,$res[1],1,0,'C',0);   	//enrolled grade 8
@@ -180,14 +184,14 @@ $query=mysqli_query($conn, "SELECT candidate.student_id, candidate.position_id, 
 
 //----------NUMBER OF VOTES RECEIVED 
 				$pdf->Cell(65,5,'Number of Votes Received:',1,0,'L',0);	
-				
+
 	$queryVoted=mysqli_query($conn, "SELECT sum(case when grade_level = '7' then voting_status end) AS g7Voted,
-				sum(case when grade_level = '8' then voting_status end) AS g8Voted,
-				sum(case when grade_level = '9' then voting_status end) AS g9Voted,
-				sum(case when grade_level = '10' then voting_status end) AS g10Voted,
-				sum(case when grade_level = '11' then voting_status end) AS g11Voted,
-				sum(case when grade_level = '12' then voting_status end) AS g12Voted,
-				count(student_id) AS totalVoted FROM student");
+    			    sum(case when grade_level = '8' then voting_status end) AS g8Voted,
+    			    sum(case when grade_level = '9' then voting_status end) AS g9Voted,
+    				sum(case when grade_level = '10' then voting_status end) AS g10Voted,
+    				sum(case when grade_level = '11' then voting_status end) AS g11Voted,
+    				sum(case when grade_level = '12' then voting_status end) AS g12Voted,
+   					count(student_id) AS totalVoted FROM student");
 
 	$studVoted = mysqli_fetch_array($queryVoted);
 				$pdf->Cell(14.7,5,$studVoted[0],1,0,'C',0);     		//received grade 7
@@ -196,7 +200,7 @@ $query=mysqli_query($conn, "SELECT candidate.student_id, candidate.position_id, 
 				$pdf->Cell(14.6,5,$studVoted[3],1,0,'C',0);   			//received grade 10
 				$pdf->Cell(14.6,5,$studVoted[4],1,0,'C',0);   			//received grade 11
 				$pdf->Cell(14.7,5,$studVoted[5],1,0,'C',0);  			//received grade 12
-				$pdf->Cell(17,5,($studVoted[0]+$studVoted[1]+$studVoted[2]+$studVoted[3]+$studVoted[4]+$studVoted[5]),1,1,'C',0);		//total received	
+				$pdf->Cell(17,5,($studVoted[0]+$studVoted[1]+$studVoted[2]+$studVoted[3]+$studVoted[4]+$studVoted[5]),1,1,'C',0); 				//total received	
 			
 
 // -------------------Display Text
