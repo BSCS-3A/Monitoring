@@ -116,16 +116,22 @@ $query=mysqli_query($conn, "SELECT candidate.student_id, candidate.position_id, 
 						$pdf->SetFont('','',10); 
 						$pdf->Cell(65,5,$data['fullname'],1,0,'L',0);			
 				}
-
 //----------NUMBER OF VOTES RECEIVED PER CANDIDATE PER GRADE LEVEL
-				//!!! WAITING FOR SUMMARY TABLE
-				$pdf->Cell(14.7,5,'',1,0,'C',0);     					//column total grade 7 vote
-				$pdf->Cell(14.7,5,'',1,0,'C',0);   						//column total grade 8 vote
-				$pdf->Cell(14.7,5,'',1,0,'C',0);   						//column total grade 9 vote
-				$pdf->Cell(14.6,5,'',1,0,'C',0);   						//column total grade 10 vote
-				$pdf->Cell(14.6,5,'',1,0,'C',0);   						//column total grade 11 vote
-				$pdf->Cell(14.7,5,'',1,0,'C',0);  						//column total grade 12 vote
+			$id = $data['candidate_id'];
+			for($i = 7,$j=0; $i <=12;$i++, $j++)
+			{
+				$result = mysqli_query($conn,"SELECT * FROM vote INNER JOIN student ON vote.student_id = student.student_id where candidate_id = '$id' and grade_level = '$i' and status='1' ");
+				$votesReceived[$j] = mysqli_num_rows($result);
+			}
+
+				$pdf->Cell(14.7,5,$votesReceived[0],1,0,'C',0);  		//column total grade 7 vote
+				$pdf->Cell(14.7,5,$votesReceived[1],1,0,'C',0);   		//column total grade 8 vote
+				$pdf->Cell(14.7,5,$votesReceived[2],1,0,'C',0);  		//column total grade 9 vote
+				$pdf->Cell(14.6,5,$votesReceived[3],1,0,'C',0);			//column total grade 10 vote
+				$pdf->Cell(14.6,5,$votesReceived[4],1,0,'C',0);   		//column total grade 11 vote
+				$pdf->Cell(14.7,5,$votesReceived[5],1,0,'C',0);  		//column total grade 12 vote
 				$pdf->Cell(17,5,$data['total_votes'],1,1,'C',0); 		//column total vote
+
 		}//end while
 
 //----------NUMBER OF ENROLLED STUDENTS 
