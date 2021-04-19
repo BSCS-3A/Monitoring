@@ -205,7 +205,7 @@ if ($result=mysqli_query($conn,$gr_12))
 							</div>
 						</div>
                        
-                        <a href='front_VstatG7_v7_0.php?level=7'><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRADE 7</b></a>
+                        <a href='front_Vstat_v7_0.php?level=7'><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRADE 7</b></a>
                         </div>
 						</div>
 
@@ -217,7 +217,7 @@ if ($result=mysqli_query($conn,$gr_12))
 								
 							</div>
 						</div>
-                        <a href='front_VstatG7_v7_0.php?level=8'><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRADE 8</b></a>
+                        <a href='front_Vstat_v7_0.php?level=8'><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRADE 8</b></a>
 						</div>
                         </div>
 
@@ -229,7 +229,7 @@ if ($result=mysqli_query($conn,$gr_12))
 								
 							</div>
 						</div>
-                         <a href='front_VstatG7_v7_0.php?level=9'><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRADE 9</b></a>
+                         <a href='front_Vstat_v7_0.php?level=9'><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRADE 9</b></a>
                         
 						</div>
                         </div>
@@ -242,7 +242,7 @@ if ($result=mysqli_query($conn,$gr_12))
 								
 							</div>
 						</div>
-                         <a href='front_VstatG7_v7_0.php?level=10'><b>&nbsp;&nbsp;&nbsp;GRADE 10</b></a>
+                         <a href='front_Vstat_v7_0.php?level=10'><b>&nbsp;&nbsp;&nbsp;GRADE 10</b></a>
                         
 						</div>
                         </div>
@@ -255,7 +255,7 @@ if ($result=mysqli_query($conn,$gr_12))
 								
 							</div>
 						</div>
-                         <a href='front_VstatG7_v7_0.php?level=11'><b>&nbsp;&nbsp;&nbsp;GRADE 11</b></a>
+                         <a href='front_Vstat_v7_0.php?level=11'><b>&nbsp;&nbsp;&nbsp;GRADE 11</b></a>
                         
                         </div>
 						</div>
@@ -268,7 +268,7 @@ if ($result=mysqli_query($conn,$gr_12))
 								
 							</div>
 						</div>
-                         <a href='front_VstatG7_v7_0.php?level=12'><b>&nbsp;&nbsp;&nbsp;GRADE 12</b></a>
+                         <a href='front_Vstat_v7_0.php?level=12'><b>&nbsp;&nbsp;&nbsp;GRADE 12</b></a>
                         
 						</div>
                         </div>
