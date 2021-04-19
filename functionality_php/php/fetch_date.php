@@ -7,11 +7,14 @@
     $row = mysqli_fetch_assoc($result);
 
     date_default_timezone_set('Asia/Manila');
+    $current_date_time = date('Y-m-d H:i:s');
+    $yes = 0;
     if(empty($row['vote_event_id'])){
         $vote_stat = 0;
+    }elseif($_POST['post_button']){
+        $vote_stat = 3;
     }else{
-        $current_date_time = date('Y-m-d H:i:s');
-        $after_election_date = date('Y-m-d', strtotime($row['end_date']. ' + 1 days'));
+        $after_election_date = date('Y-m-d H:i:s', strtotime($row['end_date']. ' + 2 days'));
 
         $vote_stat = 0;
 
@@ -22,6 +25,12 @@
         }else{
             $vote_stat = 0;
         }
+    }
+
+    $reset_election = date('Y-m-d H:i:s', strtotime($row['end_date']. ' + 5 days'));
+
+    if($current_date_time>=$reset_election){
+        $vote_stat = 0;
     }
 
     mysqli_free_result($result);
