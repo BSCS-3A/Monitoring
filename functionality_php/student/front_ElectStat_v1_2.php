@@ -62,10 +62,12 @@
         <!--end of list-->
     </nav>
 
-	<?php if($vote_stat==1): ?>>
+    <?php if($vote_stat==1): ?>
     <?php require 'inc/ongoing.html';?>
     <?php elseif($vote_stat==2): ?>
     <?php require 'inc/after_election.html';?>
+    <?php elseif($vote_stat==3): ?>
+    <?php require 'front_ElectRes_v2_0.php';?>
     <?php else: ?>
     <?php require 'inc/no_election.html';?>
     <?php endif; ?>
