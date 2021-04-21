@@ -65,11 +65,11 @@ while ($row = mysqli_fetch_array($result)) {
         <a href="#">ELECTION</a>
         <input class="nav-toggle4" type="checkbox" id="btn-2">
         <ul>
-          <li><a href="front_ArchFolder_v8_0.html">Archive</a></li>
-          <li><a href="front_VsPercentage_v6_0.html">Vote Status</a></li>
-          <li><a href="front_Election_v5_0.html">Vote Result</a>
+          <li><a href="front_ArchFolder_v8_0.php">Archive</a></li>
+          <li><a href="front_VsPercentage_v6_1.php">Vote Status</a></li>
+          <li><a href="front_Election_v5_0">Vote Result</a>
             <ul>
-              <li><a href="front_Report_v10_0.html">Make Report</a></li>
+              <li><a href="../../functionality_php/report/generate-pdf.php">Make Report</a></li>
             </ul>
           </li>
           <li><a href="#">Configuration</a>

@@ -47,8 +47,8 @@
                 <input class="nav-toggle4" type="checkbox" id="btn-2">
                 <ul>
                     <li><a href="front_ArchFolder_v8_0.php">Archive</a></li>
-                    <li><a href="front_VsPercentage_v6_0.php">Vote Status</a></li>
-                    <li><a href="front_Election_v5_0.php">Vote Result</a>
+                    <li><a href="front_VsPercentage_v6_1.php">Vote Status</a></li>
+                    <li><a href="front_Election_v5_0">Vote Result</a>
                         <ul>
                             <li><a href="../../functionality_php/report/generate-pdf.php">Make Report</a></li>
                         </ul>
