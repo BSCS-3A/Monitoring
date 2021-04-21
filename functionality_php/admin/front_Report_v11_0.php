@@ -10,6 +10,8 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
+    // Connect Election Results PDF
+    // include '../report/generate-pdf.php';
 ?>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -90,9 +92,42 @@
         <div class="Barchives">
           <p><b>ELECTION RESULTS REPORT</b></p>
         </div>
+        
+        <?php
+        //  Election Results Report (Admin)
+        
+          	//----------GETS THE WINNER PER POSITION
+                //Count number of candidate_position
+                    $result = mysqli_query($conn,"SELECT * FROM candidate_position");
+                    $positionCount = mysqli_num_rows($result);
+                    // echo "$positionCount";
+                //Get highest vote per candidate_position
+					for($i=1; $i<=$positionCount; $i++)
+					{
+						$rowSQL = mysqli_query($conn, "SELECT MAX(total_votes) AS tempWinner FROM candidate WHERE position_id = '$i'");
+						list($max) = mysqli_fetch_row($rowSQL);
+						echo "$i = $max;\n";
+					}//end for loop
+
+                //Store id of candidate with highest vote
+					// $names[$i] = mysqli_fetch_row($rowSQL);
+					// echo " = $names['total_votes'];\n";
+
+            //----------CHECKS FOR TIE
+                //If there is more than 1 highest vote per candidate_position
+                //Prompt to pick
+                //Store id of candidate votes given a +1
+                //Update stored id of winning candidate
+
+            //----------CHECKS IF WINNER MET MINIMUM VOTE QUOTA
+                //At least 50% of all votes for non-representative positions
+                    //If not, update stored id to zero or null
+                //At least 50% of year-level votes for representative positions
+                    //If not, update stored id to zero or null
+        ?>
 
         <div class="Bbtn_post">
-            <button onclick="parent.open('http://localhost/MonitoringReport/MonitoringReport/generate-pdf.php')" class="Bbtn_postresults scs-responsive"><b>DOWNLOAD PDF</b></button>
+            <button onclick="parent.open('http://localhost/Monitoring-main/functionality_php/report/generate-pdf.php')" class="Bbtn_postresults scs-responsive"><b>DOWNLOAD PDF</b></button>
         </div>
 
 
