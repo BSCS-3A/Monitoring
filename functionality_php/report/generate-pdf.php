@@ -1,5 +1,5 @@
 <?php
-require 'php/db_connection.php';				// Link to database
+require '../php/db_connection.php';				// Link to database
 require_once('TCPDF-main/tcpdf.php'); 				// Include the main TCPDF library
 
 //---------------------Create header and footer
@@ -91,26 +91,6 @@ ob_start();
 		$pdf->Cell(14.6,5,'10',1,0,'C',1);   
 		$pdf->Cell(14.6,5,'11',1,0,'C',1);   
 		$pdf->Cell(14.7,5,'12',1,1,'C',1);
-
-		//----------GETS THE WINNER PER POSITION
-			//Count number of candidate_position
-				$result = mysqli_query($conn,"SELECT * FROM candidate");
-				$i = mysqli_num_rows($result);
-			//Get highest vote per candidate_position
-				
-			//Store id of candidate with highest vote
-
-		//----------CHECKS FOR TIE
-			//If there is more than 1 highest vote per candidate_position
-			//Prompt to pick
-			//Store id of candidate votes given a +1
-			//Update stored id of winning candidate
-
-		//----------CHECKS IF WINNER MET MINIMUM VOTE QUOTA
-			//At least 50% of all votes for non-representative positions
-				//If not, update stored id to zero or null
-			//At least 50% of year-level votes for representative positions
-				//If not, update stored id to zero or null
 
 $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id, candidate.position_id, candidate.total_votes, student.lname, student.fname, student.mname, candidate_position.heirarchy_id, candidate_position.position_name FROM candidate INNER JOIN student ON candidate.student_id = student.student_id INNER JOIN candidate_position ON candidate.position_id = candidate_position.heirarchy_id ORDER BY heirarchy_id"); 
 
