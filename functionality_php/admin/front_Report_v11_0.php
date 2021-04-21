@@ -10,8 +10,6 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    // Connect Election Results PDF
-    // include '../report/generate-pdf.php';
 ?>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,21 +90,6 @@
         <div class="Barchives">
           <p><b>ELECTION RESULTS REPORT</b></p>
         </div>
-        
-          <?php
-            //  Election Results Report (Admin)
-
-            // $result1 = mysqli_query($conn,"SELECT YEAR(start_date) AS year FROM vote_event;");
-
-            //   while($row1 = mysqli_fetch_array($result1)) {
-            //     if(empty($row1['year'])){
-            //       echo "no content";
-            //     }
-            //     else {
-            //       require('folder.html');
-            //     }
-            //   }
-        ?>
 
         <div class="Bbtn_post">
             <button onclick="parent.open('http://localhost/MonitoringReport/MonitoringReport/generate-pdf.php')" class="Bbtn_postresults scs-responsive"><b>DOWNLOAD PDF</b></button>
