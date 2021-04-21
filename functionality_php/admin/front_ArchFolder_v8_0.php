@@ -49,7 +49,7 @@
                         </ul>
                     </li>
                     <li><a href="#">Configuration</a>
-                    
+
                 </ul>
             </li>
             <li><a href="#">CANDIDATES</a></li>
@@ -79,39 +79,39 @@
         <!--end of list-->
     </nav>
 
-        <div class="Barchives">
-          <p><b>ELECTION ARCHIVES</b></p>
-        </div>
-        
-          <?php
-            //  Election Archives Folders (Admin)
-            require "../php/db_connection.php";
-                // Check connection
-                if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-                }
-                //echo "Connected successfully";
+    <div class="Barchives">
+        <p><b>ELECTION ARCHIVES</b></p>
+    </div>
 
-            $result1 = mysqli_query($conn,"SELECT YEAR(start_date) AS year FROM vote_event;");
+    <?php
+    //  Election Archives Folders (Admin)
+    require "../php/db_connection.php";
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    //echo "Connected successfully";
 
-              while($row1 = mysqli_fetch_array($result1)) {
-                if(empty($row1['year'])){
-                  echo "no content";
-                }
-                else {
-                  require('folder.html');
-                }
-              }
-            ?>
+    $result1 = mysqli_query($conn, "SELECT YEAR(start_date) AS year FROM vote_event;");
 
-        <div class="footer">
-            <p class="footer-txt">BS COMPUTER SCIENCE 3A © 2021</p>
-        </div>
-    
-        <script>
-            $('.icon').click(function () {
-                $('span').toggleClass("cancel");
-            });
-        </script>
-   </body>
+    while ($row1 = mysqli_fetch_array($result1)) {
+        if (empty($row1['year'])) {
+            echo "no content";
+        } else {
+            require('folder.html');
+        }
+    }
+    ?>
+
+    <div class="footer">
+        <p class="footer-txt">BS COMPUTER SCIENCE 3A © 2021</p>
+    </div>
+
+    <script>
+        $('.icon').click(function() {
+            $('span').toggleClass("cancel");
+        });
+    </script>
+</body>
+
 </html>

@@ -1,5 +1,8 @@
+<?php $year = $row1['year']; ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +10,16 @@
     <link rel="stylesheet" type="text/css" href="assets/css/styles_folder.css">
     <title>Document</title>
 </head>
+
 <body>
-      <div class="items">
-            <figure>
-                <b><a href="">
-                <img src="assets/img/folder.png" width="140px" height="140px">
-                <figcaption><?php echo $row1['year']; ?></figcaption>
+    <div class="items">
+        <figure>
+            <b><a href="front_ArchList_v9_0.php?year=<?= $year ?>">
+                    <img src="assets/img/folder.png" width="140px" height="140px">
+                    <figcaption><?php echo $year; ?></figcaption>
                 </a></b>
-            </figure>
-        </div>     
+        </figure>
+    </div>
 </body>
+
 </html>
