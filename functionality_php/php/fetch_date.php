@@ -9,7 +9,7 @@
     date_default_timezone_set('Asia/Manila');
     $current_date_time = date('Y-m-d H:i:s');
     
-    if(isset($_POST["post_result"])){
+    if(isset($_POST["post_button"])){
         $vote_stat = 3;
     }else{
         if(empty($row['vote_event_id'])){
