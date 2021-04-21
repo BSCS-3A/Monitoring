@@ -1,110 +1,118 @@
 <!DOCTYPE html>
 <html>
+<!DOCTYPE html>
+<html>
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta charset="utf-8">
-    <link rel="icon" href="assets/img/buceils-logo.png">
-    <link rel="stylesheet" type="text/css" href="assets/css/style1.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/css/dataTables.bootstrap.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="assets/js/jquery-1.11.1.min.js"></script>
-    <script src="assets/js/jquery.dataTables.min.js"></script>
-    <script src="assets/js/dataTables.bootstrap.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>    
-    <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>   
+    <link rel="icon" href="../../Admin/assets/img/BUHS LOGO.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="../../Admin/assets/css/style.css">
+    <link rel="stylesheet" href="../../Admin/assets/css/bootstrap4.5.2.css">
+    <link rel="stylesheet" href="../../Admin/assets/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../Admin/assets/css/font-awesome.css">
+    <link rel="stylesheet" href="../../Admin/assets/css/jquery.dataTables.min.css">
+    <!-- <script src="assets/js/a076d05399.js"></script> -->
+    <script src="../../Admin/assets/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../../Admin/assets/js/jquery-3.5.1.js"></script>
+    <script src="../../Admin/assets/js/jquery.dataTables.min.js"></script>
+    <script src="../../Admin/assets/js/countdown.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.1.8/js/dataTables.fixedHeader.min.js"></script>
     <title>BUCEILS Voting System</title>
 </head>
+
 <body>
-<nav>
-    <input id="nav-toggle" type="checkbox">
-    <div class="logo">
-        <h2>BUCEILS HS</h2>
-        <h3>ONLINE VOTING SYSTEM</h3>
-    </div>
-    <label for="btn" class="icon"><span class="fa fa-bars"></span></label>
-    <input type="checkbox" id="btn">
-    <ul>
-        <li>
-            <label for="btn-1" class="show">ACCOUNTS</label>
-            <a href="#">ACCOUNTS</a>
-            <input type="checkbox" id="btn-1">
-            <ul>
-                <li><a href="important.html">Students</a></li>
-                <li><a href="#">Admin</a></li>
-            </ul>
-        </li>
-        <li>
-            <label for="btn-2" class="show">ELECTION</label>
-            <a href="#">ELECTION</a>
-            <input type="checkbox" id="btn-2">
-            <ul>
-                <li><a href="#">Archive</a></li>
-                <li><a href="#">Vote Status</a></li>
-                <li><a href="#">Vote Result</a>
-                    <ul>
-                        <li><a href="#">Make Report</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Configuration</a>
-                
-            </ul>
-        </li>
-        <li><a href="#">CANDIDATES</a></li>
-        <li>
-            <label for="btn-4" class="show">LOGS</label>
-            <a href="#">LOGS</a>
-            <input type="checkbox" id="btn-4">
-            <ul>
-                <li><a href="#">Access Log</a></li>
-                <li><a href="#">Activity Log</a></li>
-                <li><a href="#">Vote Summary</a></li>
-            </ul>
-        </li>
-        <li><a href="#">MESSAGES</a></li>
-        <li>
-            <label for="btn-5" class="show">Admin Name</label>
-            <a class="user" href="#"><img class="user-profile" src="assets/img/user.png"></a>
-            <input type="checkbox" id="btn-5">
-            <ul>
-                <li><a class="username" href="#">Admin Name</a></li>
-                <li class="logout">
-                    <span class="fa fa-sign-out"></span><a href="#">LOGOUT</a></span>
-                </li>
-            </ul>
-        </li>
-    </ul>
-    <!--end of list-->
-</nav>
+    <nav>
+        <input class="nav-toggle1" type="checkbox">
+        <div class="aLogo">
+            <h2 class="aLogo-txt1"><a href="adminDashboard.html">BUCEILS HS</a></h2>
+            <h3 class="aLogo-txt2"><a href="adminDashboard.html">ONLINE VOTING SYSTEM</a></h3>
+        </div>
+        <label for="btn" class="ADicon"><span class="fa fa-bars"></span></label>
+        <input class="nav-toggle2" type="checkbox" id="btn">
+        <ul>
+            <li>
+                <label for="btn-1" class="Ashow">ACCOUNTS</label>
+                <a href="#">ACCOUNTS</a>
+                <input class="nav-toggle3" type="checkbox" id="btn-1">
+                <ul>
+                    <li><a href="#">Students</a></li>
+                    <li><a href="#">Admin</a></li>
+                </ul>
+            </li>
+            <li>
+                <label for="btn-2" class="Ashow">ELECTION</label>
+                <a href="#">ELECTION</a>
+                <input class="nav-toggle4" type="checkbox" id="btn-2">
+                <ul>
+                    <li><a href="front_ArchFolder_v8_0.php">Archive</a></li>
+                    <li><a href="front_VsPercentage_v6_0.php">Vote Status</a></li>
+                    <li><a href="front_Election_v5_0.php">Vote Result</a>
+                        <ul>
+                            <li><a href="../../functionality_php/report/generate-pdf.php">Make Report</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Configuration</a>
+                        <ul>
+                            <li><a href="#">Scheduler</a></li>
+                            <li><a href="#">Signatory</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#">CANDIDATES</a></li>
+            <li>
+                <label for="btn-4" class="Ashow">LOGS</label>
+                <a href="#">LOGS</a>
+                <input class="nav-toggle5" type="checkbox" id="btn-4">
+                <ul>
+                    <li><a href="accessLogs-v2.0.html">Access Log</a></li>
+                    <li><a href="#">Activity Log</a></li>
+                    <li><a href="#">Vote Summary</a></li>
+                </ul>
+            </li>
+            <li><a href="#">MESSAGES</a></li>
+            <li>
+                <label for="btn-5" class="Ashow">Admin Name</label>
+                <a class="user" href="#"><img class="user-profile" src="../../Admin/assets/img/user.png"></a>
+                <input class="nav-toggle6" type="checkbox" id="btn-5">
+                <ul>
+                    <li><a class="username" href="#">Admin Name</a></li>
+                    <li class="logout">
+                        <span class="fa fa-sign-out"></span><a href="#">LOGOUT</a></span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!--end of list-->
+    </nav>
     <div class="Bvotestat">
         <p><b>VOTE STATUS</b></p>
     </div>
     <button class="Bbtn_goback" onclick="goBack()">Go Back</button>
     <div class="Bvs_gradelevel">
-    <?php $samp = $_GET['level']; //gets the value from prev page
-        echo '<p>GRADE '.$samp.'</p>';?>
+        <?php $samp = $_GET['level']; //gets the value from prev page
+        echo '<p>GRADE ' . $samp . '</p>'; ?>
     </div>
-    
+
     <div class="container"><br>
-    <div class="row">
-    <div class="col-md-12">
-        <div class="table-responsive">            
-            <table class= "center" id="datatable" width="100%" cellspacing="0" cellpadding="2px">
-                <thead>
-                    <tr> 
-                        <th class="text-center">LASTNAME</th>
-                        <th class="text-center">FIRSTNAME</th>
-                        <th class="text-center">MIDDLENAME</th>    
-                        <th class="text-center">STATUS</th>   
-                    </tr>
-                </thead> 
-            </table>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="center" id="datatable" width="100%" cellspacing="0" cellpadding="2px">
+                        <thead>
+                            <tr>
+                                <th class="text-center">LASTNAME</th>
+                                <th class="text-center">FIRSTNAME</th>
+                                <th class="text-center">MIDDLENAME</th>
+                                <th class="text-center">STATUS</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
     </div>
     </div>
     <br><br><br><br>
@@ -112,29 +120,40 @@
         <p class="footer-txt">BS COMPUTER SCIENCE 3A © 2021</p>
     </div>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
             var table = $('#datatable').DataTable({
-                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                "lengthMenu": [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ],
                 "ajax": {
-                    "url": <?php echo '"../php/fetch_students.php?level='.$samp.'"'?>,
+                    "url": <?php echo '"../php/fetch_students.php?level=' . $samp . '"' ?>,
                     "type": "POST",
                     "dataSrc": ""
                 },
-                "columns": [
-                    {data: "lname"},
-                    {data: "fname"},
-                    {data: "Mname"},
-                    {data: "voting_status"}
+                "columns": [{
+                        data: "lname"
+                    },
+                    {
+                        data: "fname"
+                    },
+                    {
+                        data: "Mname"
+                    },
+                    {
+                        data: "voting_status"
+                    }
                 ]
-            } );
-            setInterval(function(){
+            });
+            setInterval(function() {
                 table.ajax.reload(null, false);
             }, 1000);
         });
+
         function goBack() {
             window.history.back()
         }
     </script>
 </body>
-        
-        </html>
+
+</html>
