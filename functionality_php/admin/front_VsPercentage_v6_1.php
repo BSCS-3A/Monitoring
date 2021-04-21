@@ -85,6 +85,8 @@ include '../php/db_connection.php';
      <div class="Bvotestat">
         <p><b>VOTE STATUS</b></p>
     </div>
+
+//====================variables==================
   <?php
   $gr7 = 0;
   $gr7_voted = 0;
@@ -193,12 +195,14 @@ if ($result=mysqli_query($conn,$gr_12))
 
  $gr12_percent = ($gr12_voted/$gr12)*100;
 
+//===================== ======end============================================
   ?>
+
    <div class="Bcon">
     <div class="Bvcontainer">
     <div class="Bcard">
       <div class ="Bbox">
-	<div class="progressbar" data-animate="false">
+	<div class="progressbar" data-animate="false"><?php //ang gr7_percent sya yung gagamitin para sa bar, yung naga pakita kung ilang percent na?>
 						<div class="circle" data-percent=<?php echo''.$gr7_percent.'';?>>
 								<div></div>
 								
@@ -211,7 +215,7 @@ if ($result=mysqli_query($conn,$gr_12))
 
 	<div class="Bcard">
       <div class ="Bbox">
-	<div class="progressbar" data-animate="false">
+	<div class="progressbar" data-animate="false"><?php //ang gr8_percent sya yung gagamitin para sa bar, yung naga pakita kung ilang percent na?>
 							<div class="circle" data-percent=<?php echo''.$gr8_percent.'';?>>
 								<div></div>
 								
@@ -223,7 +227,7 @@ if ($result=mysqli_query($conn,$gr_12))
 
 	<div class="Bcard">
       <div class ="Bbox">
-	<div class="progressbar" data-animate="false">
+	<div class="progressbar" data-animate="false"><?php //ang gr9_percent sya yung gagamitin para sa bar, yung naga pakita kung ilang percent na?>
 							<div class="circle" data-percent=<?php echo''.$gr9_percent.'';?>>
 								<div></div>
 								
@@ -236,7 +240,7 @@ if ($result=mysqli_query($conn,$gr_12))
 
 	<div class="Bcard">
       <div class ="Bbox">
-	<div class="progressbar" data-animate="false">
+	<div class="progressbar" data-animate="false"><?php //ang gr10_percent sya yung gagamitin para sa bar, yung naga pakita kung ilang percent na?>
 							<div class="circle" data-percent=<?php echo''.$gr10_percent.'';?>>
 								<div></div>
 								
@@ -249,7 +253,7 @@ if ($result=mysqli_query($conn,$gr_12))
 
 	<div class="Bcard">
       <div class ="Bbox">
-	<div class="progressbar" data-animate="false">
+	<div class="progressbar" data-animate="false"><?php //ang gr11_percent sya yung gagamitin para sa bar, yung naga pakita kung ilang percent na?>
 							<div class="circle" data-percent=<?php echo''.$gr11_percent.'';?>>
 								<div></div>
 								
@@ -262,7 +266,7 @@ if ($result=mysqli_query($conn,$gr_12))
 
 	<div class="Bcard">
       <div class ="Bbox">
-	<div class="progressbar" data-animate="false">
+	<div class="progressbar" data-animate="false"><?php //ang gr12_percent sya yung gagamitin para sa bar, yung naga pakita kung ilang percent na?>
 							<div class="circle" data-percent=<?php echo''.$gr12_percent.'';?>>
 								<div></div>
 								
@@ -273,6 +277,11 @@ if ($result=mysqli_query($conn,$gr_12))
 						</div>
                         </div>
 
+	    <?php
+	    //additional notes:
+	    // yung mga ganito = <a href='front_Vstat_v7_0.php?level=12'><b>&nbsp;&nbsp;&nbsp;GRADE 12</b></a>
+	    //sya yung sa label baga na pag tig click maga redirect
+	    ?>
 
 
 						</div>
