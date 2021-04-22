@@ -4,14 +4,12 @@
 <html>
 <html>
 <?php
-// Connect database
-include '../php/db_connection.php';
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-// Connect Election Results PDF
-// include '../report/generate-pdf.php';
+    // Connect database
+    include '../php/db_connection.php';
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 ?>
 
 <head>
@@ -104,36 +102,34 @@ if ($conn->connect_error) {
     </div>
 
     <?php
-    //  Election Results Report (Admin)
+        //  Election Results Report (Admin)
 
-    //----------GETS THE WINNER PER POSITION
-    //Count number of candidate_position
-    $result = mysqli_query($conn, "SELECT * FROM candidate_position");
-    $positionCount = mysqli_num_rows($result);
-    // echo "$positionCount";
-    //Get highest vote per candidate_position
-    for ($i = 1; $i <= $positionCount; $i++) {
-        $rowSQL = mysqli_query($conn, "SELECT MAX(total_votes) AS tempWinner FROM candidate WHERE position_id = '$i'");
-        list($max) = mysqli_fetch_row($rowSQL);
-        echo "$i = $max;\n";
-    } //end for loop
+            //----------GETS THE WINNER PER POSITION
+                //Count number of candidate_position
+                $result = mysqli_query($conn,"SELECT * FROM candidate_position");
+                $positionCount = mysqli_num_rows($result);
+                // echo "$positionCount";
+                
+                for($i=1; $i<=$positionCount; $i++)
+                {
+                    $rowSQL = mysqli_query($conn, "SELECT MAX(total_votes) AS tempWinner FROM candidate WHERE position_id = '$i'"); //Get highest vote per candidate_position
+                    list($max) = mysqli_fetch_row($rowSQL);
+                    // echo "$i = $max;\n";
 
-    //Store id of candidate with highest vote
-    // $names[$i] = mysqli_fetch_row($rowSQL);
-    // echo " = $names['total_votes'];\n";
+                    // Check if there is a tie for tentative winners
+                        //If there is more than 1 highest vote per candidate_position
+                        //Prompt to pick
 
-    //----------CHECKS FOR TIE
-    //If there is more than 1 highest vote per candidate_position
-    //Prompt to pick
-    //Store id of candidate votes given a +1
-    //Update stored id of winning candidate
+                    // Check if winner meets minimum quota
+                        //At least 50% of all votes for non-representative positions
+                            //Then, add to archive
+                        //At least 50% of year-level votes for representative positions
+                            //Then, add to archive
 
-    //----------CHECKS IF WINNER MET MINIMUM VOTE QUOTA
-    //At least 50% of all votes for non-representative positions
-    //If not, update stored id to zero or null
-    //At least 50% of year-level votes for representative positions
-    //If not, update stored id to zero or null
-    ?>
+                }//end for loop
+
+                
+        ?>
 
     <div class="Bbtn_post">
         <button onclick="parent.open('http://localhost/Monitoring-main/functionality_php/report/generate-pdf.php')" class="Bbtn_postresults scs-responsive"><b>DOWNLOAD PDF</b></button>
