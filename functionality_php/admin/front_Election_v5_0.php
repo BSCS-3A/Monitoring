@@ -1,22 +1,3 @@
-<!-- <?php
-// Election (Admin)
-session_start();
-include "../php/db_connection.php";
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-//echo "Connected successfully";
-
-$result = mysqli_query($conn, "SELECT * FROM candidate_position");
-
-$i = 0;
-while ($row = mysqli_fetch_array($result)) {
-  echo $row["position_name"];
-  echo "<br />";
-}
-?> -->
 <!-- ELECTION (ADMIN) -->
 
 <!DOCTYPE html>
@@ -112,6 +93,25 @@ while ($row = mysqli_fetch_array($result)) {
   </div>
 
   <div class="Belection_container">
+    <?php
+      // Election (Admin)
+      include "../php/db_connection.php";
+  
+      // Check connection
+      if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+      }
+      //echo "Connected successfully";
+  
+      $result = mysqli_query($conn, "SELECT * FROM candidate_position");
+  
+      while ($position = mysqli_fetch_array($result)) {
+        //echo $postion['position_name'];
+        //echo $postion['position_id'];
+        //echo '<br>';
+        require('positionBox.php');
+      }
+    ?>
     <div class="Bposition1">
       <h1><b>President</b></h1>
       <div class="Bbar1">
@@ -131,196 +131,6 @@ while ($row = mysqli_fetch_array($result)) {
         </div>
       </div>
     </div>
-    <div class="Bposition2">
-      <h1><b>Vice-President</b></h1>
-      <div class="Bbar1">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:75%">
-            <b><span>75%</span></b>
-          </div>
-        </div>
-      </div>
-      <div class="Bbar2">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:15%">
-            <b><span>15%</span></b>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="Bposition3">
-      <h1><b>Secretary</b></h1>
-      <div class="Bbar1">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:75%">
-            <b><span>75%</span></b>
-          </div>
-        </div>
-      </div>
-      <div class="Bbar2">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:15%">
-            <b><span>15%</span></b>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="Bposition3">
-      <h1><b>Treasurer</b></h1>
-      <div class="Bbar1">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:75%">
-            <b><span>75%</span></b>
-          </div>
-        </div>
-      </div>
-      <div class="Bbar2">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:15%">
-            <b><span>15%</span></b>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="Bposition3">
-      <h1><b>Auditor</b></h1>
-      <div class="Bbar1">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:75%">
-            <b><span>75%</span></b>
-          </div>
-        </div>
-      </div>
-      <div class="Bbar2">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:15%">
-            <b><span>15%</span></b>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="Bposition3">
-      <h1><b>Grade 7 Representative</b></h1>
-      <div class="Bbar1">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:75%">
-            <b><span>75%</span></b>
-          </div>
-        </div>
-      </div>
-      <div class="Bbar2">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:15%">
-            <b><span>15%</span></b>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="Bposition3">
-      <h1><b>Grade 8 Representative</b></h1>
-      <div class="Bbar1">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:75%">
-            <b><span>75%</span></b>
-          </div>
-        </div>
-      </div>
-      <div class="Bbar2">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:15%">
-            <b><span>15%</span></b>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="Bposition3">
-      <h1><b>Grade 9 Representative</b></h1>
-      <div class="Bbar1">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:75%">
-            <b><span>75%</span></b>
-          </div>
-        </div>
-      </div>
-      <div class="Bbar2">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:15%">
-            <b><span>15%</span></b>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="Bposition3">
-      <h1><b>Grade 10 Representative</b></h1>
-      <div class="Bbar1">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:75%">
-            <b><span>75%</span></b>
-          </div>
-        </div>
-      </div>
-      <div class="Bbar2">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:15%">
-            <b><span>15%</span></b>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="Bposition3">
-      <h1><b>Grade 11 Representative</b></h1>
-      <div class="Bbar1">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:75%">
-            <b><span>75%</span></b>
-          </div>
-        </div>
-      </div>
-      <div class="Bbar2">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:15%">
-            <b><span>15%</span></b>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="Bposition3">
-      <h1><b>Grade 12 Representative</b></h1>
-      <div class="Bbar1">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:75%">
-            <b><span>75%</span></b>
-          </div>
-        </div>
-      </div>
-      <div class="Bbar2">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:15%">
-            <b><span>15%</span></b>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
 
@@ -333,8 +143,8 @@ while ($row = mysqli_fetch_array($result)) {
   </div>
 
   <div class="Bbtn_post">
-      <!-- <button type="submit">Submit</button> -->
-      <button type="submit" id="post_button" name="post_button">Submit using POST</button>
+    <!-- <button type="submit">Submit</button> -->
+    <button type="submit" id="post_button" name="post_button">Submit using POST</button>
   </div>
 
   <br>
@@ -349,13 +159,15 @@ while ($row = mysqli_fetch_array($result)) {
   </div>
 
   <script>
-    $(document).ready(function(){
-      $("#post_button").click(function(){
+    $(document).ready(function() {
+      $("#post_button").click(function() {
         var temp = 1;
         $.ajax({
           url: "../php/fetch_date.php",
-          data: {post_button: temp},
-          success: function(response){
+          data: {
+            post_button: temp
+          },
+          success: function(response) {
             console.log(response);
           }
         });
