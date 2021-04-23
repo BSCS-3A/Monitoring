@@ -21,14 +21,11 @@
 </head>
 
 <body>
-    <div class="Barch_year">
-        <p><b><?php echo $year ?> ELECTION</b></p>
-    </div>
     <div class="Barch_container">
         <div class="Bpstn">
             <img src="../Student/assets/img/profile1.png" />
-            <p class="Bname"><?php echo $archRow['winners_name']; ?></p>
-            <p class="Bpstn">President</p>
+            <p class="Bname"><?php echo $archRow['winner_fname']." ".$archRow['winner_mname']." ".$archRow['winner_lname']; ?></p>
+            <p class="Bpstn"><?php echo $archRow['position_name']?></p>
         </div>
     </div>
 </body>
