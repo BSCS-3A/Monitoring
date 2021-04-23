@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<?php require '../php/db_connection.php' ?>
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -91,6 +92,105 @@
    <div class="Bvotestat">
         <p><b>VOTE STATUS</b></p>
     </div>
+ <?php
+    //===========================variables===========================
+    $gr7 = 0;
+    $gr7_voted = 0;
+    $gr7_percent = 0; //to be used in display
+    $gr8 = 0;
+    $gr8_voted = 0;
+    $gr8_percent = 0; //to be used in display
+    $gr9 = 0;
+    $gr9_voted = 0;
+    $gr9_percent = 0; //to be used in display
+    $gr10 = 0;
+    $gr10_voted = 0;
+    $gr10_percent = 0; //to be used in display
+    $gr11 = 0;
+    $gr11_voted = 0;
+    $gr11_percent = 0; //to be used in display
+    $gr12 = 0;
+    $gr12_voted = 0;
+    $gr12_percent = 0; //tp be used in display
+
+    /*Database query for retrieving data of student and their status*/
+
+    //============================for gr 7 ==========================
+    $gr_7 = "SELECT * FROM student where grade_level = 7";
+    if ($result = mysqli_query($conn, $gr_7)) {
+        $gr7 = mysqli_num_rows($result);
+        $gr_7a = "SELECT * FROM student where grade_level = 7 and voting_status = 1";
+        if ($result1 = mysqli_query($conn, $gr_7a)) {
+            $gr7_voted = mysqli_num_rows($result1);
+        }
+    }
+
+    $gr7_percent = ($gr7_voted / $gr7) * 100;
+
+    //=========================for grade 8============================
+
+    $gr_8 = "SELECT * FROM student where grade_level = 8";
+    if ($result = mysqli_query($conn, $gr_8)) {
+        $gr8 = mysqli_num_rows($result);
+        $gr_8a = "SELECT * FROM student where grade_level = 8 and voting_status = 1";
+        if ($result1 = mysqli_query($conn, $gr_8a)) {
+            $gr8_voted = mysqli_num_rows($result1);
+        }
+    }
+
+    $gr8_percent = ($gr8_voted / $gr8) * 100;
+
+    //========================for grade 9 ==============================
+    $gr_9 = "SELECT * FROM student where grade_level = 9";
+    if ($result = mysqli_query($conn, $gr_9)) {
+        $gr9 = mysqli_num_rows($result);
+        $gr_9a = "SELECT * FROM student where grade_level = 9 and voting_status = 1";
+        if ($result1 = mysqli_query($conn, $gr_9a)) {
+            $gr9_voted = mysqli_num_rows($result1);
+        }
+    }
+
+    $gr9_percent = ($gr9_voted / $gr9) * 100;
+
+    //============================for grade 10 ==========================
+
+    $gr_10 = "SELECT * FROM student where grade_level = 10";
+    if ($result = mysqli_query($conn, $gr_10)) {
+        $gr10 = mysqli_num_rows($result);
+        $gr_10a = "SELECT * FROM student where grade_level = 10 and voting_status = 1";
+        if ($result1 = mysqli_query($conn, $gr_10a)) {
+            $gr10_voted = mysqli_num_rows($result1);
+        }
+    }
+
+    $gr10_percent = ($gr10_voted / $gr10) * 100;
+
+    //========================for grade 11 ===============================
+    $gr_11 = "SELECT * FROM student where grade_level = 11";
+    if ($result = mysqli_query($conn, $gr_11)) {
+        $gr11 = mysqli_num_rows($result);
+        $gr_11a = "SELECT * FROM student where grade_level = 11 and voting_status = 1";
+        if ($result1 = mysqli_query($conn, $gr_11a)) {
+            $gr11_voted = mysqli_num_rows($result1);
+        }
+    }
+
+    $gr11_percent = ($gr11_voted / $gr11) * 100;
+
+    //========================for grade 12 ================================
+    $gr_12 = "SELECT * FROM student where grade_level = 12";
+    if ($result = mysqli_query($conn, $gr_12)) {
+        $gr12 = mysqli_num_rows($result);
+        $gr_12a = "SELECT * FROM student where grade_level = 12 and voting_status = 1";
+        if ($result1 = mysqli_query($conn, $gr_12a)) {
+            $gr12_voted = mysqli_num_rows($result1);
+        }
+    }
+
+    $gr12_percent = ($gr12_voted / $gr12) * 100;
+
+    //===================== ======end============================================
+    ?>
 
     <div class="Bvcontainer">
         <div class="Bcard">
