@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 // Election (Admin)
 session_start();
 include "../php/db_connection.php";
@@ -16,7 +16,7 @@ while ($row = mysqli_fetch_array($result)) {
   echo $row["position_name"];
   echo "<br />";
 }
-?>
+?> -->
 <!-- ELECTION (ADMIN) -->
 
 <!DOCTYPE html>
