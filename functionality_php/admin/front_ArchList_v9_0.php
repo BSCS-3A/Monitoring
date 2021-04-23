@@ -93,8 +93,15 @@
     </div>
 
     <?php
-    $year = $_GET['year'];
-    //echo $year;
+        $year = $_GET['year'];
+        //echo $year;
+    ?>
+
+    <div class="Barch_year">
+        <p><b><?php echo $year ?> ELECTION</b></p>
+    </div>
+
+    <?php
 
     require "../php/db_connection.php";
     // Check connection
