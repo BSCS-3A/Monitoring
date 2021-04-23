@@ -125,7 +125,8 @@
         }
     }
 
-    $gr7_percent = ($gr7_voted / $gr7) * 100;
+    $percent = ($gr7_voted / $gr7) * 100;
+    $gr7_percent = round($percent, 2);
 
     //=========================for grade 8============================
 
@@ -138,7 +139,8 @@
         }
     }
 
-    $gr8_percent = ($gr8_voted / $gr8) * 100;
+    $percent = ($gr8_voted / $gr8) * 100;
+    $gr8_percent = round($percent, 2);
 
     //========================for grade 9 ==============================
     $gr_9 = "SELECT * FROM student where grade_level = 9";
@@ -150,7 +152,8 @@
         }
     }
 
-    $gr9_percent = ($gr9_voted / $gr9) * 100;
+    $percent = ($gr9_voted / $gr9) * 100;
+    $gr9_percent = round($percent, 2);
 
     //============================for grade 10 ==========================
 
@@ -163,7 +166,9 @@
         }
     }
 
-    $gr10_percent = ($gr10_voted / $gr10) * 100;
+    $percent = ($gr10_voted / $gr10) * 100;
+    $gr10_percent = round($percent, 2);
+
 
     //========================for grade 11 ===============================
     $gr_11 = "SELECT * FROM student where grade_level = 11";
@@ -175,8 +180,8 @@
         }
     }
 
-    $gr11_percent = ($gr11_voted / $gr11) * 100;
-
+    $percent = ($gr11_voted / $gr11) * 100;
+    $gr11_percent = round($percent, 2);
     //========================for grade 12 ================================
     $gr_12 = "SELECT * FROM student where grade_level = 12";
     if ($result = mysqli_query($conn, $gr_12)) {
@@ -187,8 +192,8 @@
         }
     }
 
-    $gr12_percent = ($gr12_voted / $gr12) * 100;
-
+    $percent = ($gr12_voted / $gr12) * 100;
+    $gr12_percent = round($percent, 2);
     //===================== ======end============================================
     ?>
 
@@ -202,7 +207,7 @@
                         <circle cx="70" cy="70" r="70"></circle>   
                     </svg>
                     <div class="Bnumber">
-                        <h2>90<span>%</span></h2>
+                        <h2><?php echo''.$gr7_percent.'';?><span>%</span></h2>
                     </div>
                 </div>
                 <a href="front_Monitoring_v7_0.html"><b>GRADE 7</b></a>      
@@ -216,7 +221,7 @@
                         <circle cx="70" cy="70" r="70"></circle>   
                     </svg>
                     <div class="Bnumber">
-                        <h2>85<span>%</span></h2>
+                        <h2><?php echo''.$gr8_percent.'';?><span>%</span></h2>
                     </div>
                 </div>
                 <a href="front_Monitoring_v7_1.html"><b>GRADE 8</b></a>     
@@ -230,7 +235,7 @@
                         <circle cx="70" cy="70" r="70"></circle>   
                     </svg>
                     <div class="Bnumber">
-                        <h2>25<span>%</span></h2>
+                        <h2><?php echo''.$gr9_percent.'';?><span>%</span></h2>
                     </div>
                 </div>
                 <a href="front_Monitoring_v7_2.html"><b>GRADE 9</b></a>    
@@ -244,7 +249,7 @@
                         <circle cx="70" cy="70" r="70"></circle>   
                     </svg>
                     <div class="Bnumber">
-                        <h2>37<span>%</span></h2>
+                        <h2><?php echo''.$gr10_percent.'';?><span>%</span></h2>
                     </div>
                 </div>
                 <a href="front_Monitoring_v7_3.html"><b>GRADE 10</b></a>   
@@ -258,7 +263,7 @@
                         <circle cx="70" cy="70" r="70"></circle>   
                     </svg>
                     <div class="Bnumber">
-                        <h2>100<span>%</span></h2>
+                        <h2><?php echo''.$gr11_percent.'';?><span>%</span></h2>
                     </div>
                 </div>
                 <a href="front_Monitoring_v7_4.htmll"><b>GRADE 11</b></a>   
@@ -272,7 +277,7 @@
                         <circle cx="70" cy="70" r="70"></circle>   
                     </svg>
                     <div class="Bnumber">
-                        <h2>45<span>%</span></h2>
+                        <h2><?php echo''.$gr12_percent.'';?><span>%</span></h2>
                     </div>
                 </div>
                 <a href="front_Monitoring_v7_5.html"><b>GRADE 12</b></a>    
