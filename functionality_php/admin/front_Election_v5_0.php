@@ -333,10 +333,8 @@ while ($row = mysqli_fetch_array($result)) {
   </div>
 
   <div class="Bbtn_post">
-    <form action="../php/fetch_date.php" method="post" formtarget='#'>
       <!-- <button type="submit">Submit</button> -->
-      <button type="button" formmethod="post" target="#" name='post_button'>Submit using POST</button>
-    </form>
+      <button type="submit" id="post_button" name="post_button">Submit using POST</button>
   </div>
 
   <br>
@@ -351,6 +349,19 @@ while ($row = mysqli_fetch_array($result)) {
   </div>
 
   <script>
+    $(document).ready(function(){
+      $("#post_button").click(function(){
+        var temp = 1;
+        $.ajax({
+          url: "../php/fetch_date.php",
+          data: {post_button: temp},
+          success: function(response){
+            console.log(response);
+          }
+        });
+      });
+    });
+
     $('.ADicon').click(function() {
       $('span').toggleClass("cancel");
     });
