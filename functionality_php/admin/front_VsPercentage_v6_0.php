@@ -210,7 +210,7 @@
                         <h2><?php echo''.$gr7_percent.'';?><span>%</span></h2>
                     </div>
                 </div>
-                <a href="front_Monitoring_v7_0.html"><b>GRADE 7</b></a>      
+                <a href='front_Vstat_v7_0.php?level=7'><b>GRADE 7</b></a>      
             </div>
         </div>
         <div class="Bcard">
@@ -224,7 +224,7 @@
                         <h2><?php echo''.$gr8_percent.'';?><span>%</span></h2>
                     </div>
                 </div>
-                <a href="front_Monitoring_v7_1.html"><b>GRADE 8</b></a>     
+                <a href='front_Vstat_v7_0.php?level=8'><b>GRADE 8</b></a>     
             </div>
         </div>
         <div class="Bcard">
@@ -238,7 +238,7 @@
                         <h2><?php echo''.$gr9_percent.'';?><span>%</span></h2>
                     </div>
                 </div>
-                <a href="front_Monitoring_v7_2.html"><b>GRADE 9</b></a>    
+                <a href='front_Vstat_v7_0.php?level=9'><b>GRADE 9</b></a>    
             </div>
         </div>
         <div class="Bcard">
@@ -252,7 +252,7 @@
                         <h2><?php echo''.$gr10_percent.'';?><span>%</span></h2>
                     </div>
                 </div>
-                <a href="front_Monitoring_v7_3.html"><b>GRADE 10</b></a>   
+                <a href='front_Vstat_v7_0.php?level=10'><b>GRADE 10</b></a>   
             </div>
         </div>
         <div class="Bcard">
@@ -266,7 +266,7 @@
                         <h2><?php echo''.$gr11_percent.'';?><span>%</span></h2>
                     </div>
                 </div>
-                <a href="front_Monitoring_v7_4.htmll"><b>GRADE 11</b></a>   
+                <a href='front_Vstat_v7_0.php?level=11'><b>GRADE 11</b></a>   
             </div>
         </div>
         <div class="Bcard">
@@ -280,7 +280,7 @@
                         <h2><?php echo''.$gr12_percent.'';?><span>%</span></h2>
                     </div>
                 </div>
-                <a href="front_Monitoring_v7_5.html"><b>GRADE 12</b></a>    
+                <a href='front_Vstat_v7_0.php?level=12'><b>GRADE 12</b></a>    
             </div>
         </div>
         </div>
