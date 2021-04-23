@@ -504,9 +504,24 @@ h2.aHeader-txt{
   display: grid; 
   grid-gap: 60px; 
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-template-rows: repeat(2, 210px);  
-  padding: 70px;
+  grid-template-rows: repeat(2, 320px);  
+  padding: 60px;
   margin-top: -5px;
+}
+.Bcan{
+  background-color:#777;
+  color: white;
+  font-weight: initial; 
+  width:100%;  
+  text-align: center;
+  margin-top: 20px;
+}
+.Bparty{
+  background-color: #e6e4e4;
+  color:rgb(218, 99, 99);
+  width: 100%;
+  text-align: center;
+  font-weight: initial; 
 }
 .Bposition1, .Bposition2, .Bposition3, .Bposition4, .Bposition5,
 .Bposition6, .Bposition7, .Bposition8, .Bposition9, .Bposition10, .Bposition11
@@ -515,7 +530,6 @@ h2.aHeader-txt{
   background-color:white;
   width:100%;
   height: auto;
-  background: white;
   box-shadow:0 20px 60px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 }
@@ -527,6 +541,7 @@ h2.aHeader-txt{
   position: relative;
   text-align:center;
   margin-top: 2px;
+ 
 }
 .Bposition6 h1, .Bposition7 h1, .Bposition8 h1, .Bposition9 h1, .Bposition10 h1, .Bposition11 h1{
   color: rgb(0, 0, 0);
@@ -551,7 +566,7 @@ h2.aHeader-txt{
   width: 90%;
   height: 35px;
   border-radius: 1px; 
-  color: #1d6986;;
+  color: #1d6986;
   text-align: center;
   font-family: Roboto;
   font-size: 140%;
