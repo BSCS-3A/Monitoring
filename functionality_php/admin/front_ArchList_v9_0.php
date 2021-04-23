@@ -1,4 +1,8 @@
 <!-- ELECTION ARCHIVES FOLDERS (ADMIN) -->
+<?php
+        $year = $_GET['year'];
+        //echo $year;
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -92,15 +96,13 @@
         <p><b>ELECTION ARCHIVES</b></p>
     </div>
 
-    <?php
-        $year = $_GET['year'];
-        //echo $year;
-    ?>
+    
 
     <div class="Barch_year">
         <p><b><?php echo $year ?> ELECTION</b></p>
     </div>
 
+    <div class="Barch_container">
     <?php
 
     require "../php/db_connection.php";
@@ -121,6 +123,7 @@
         }
     }
     ?>
+    </div>
 
     <div class="footer">
         <p class="footer-txt">BS COMPUTER SCIENCE 3A © 2021</p>
