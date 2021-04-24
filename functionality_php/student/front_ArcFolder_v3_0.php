@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -32,7 +33,7 @@
             </li>
             <li>
                 <label for="btn-2" class="show">ELECTION</label>
-                <a class="topnav" href="#">ELECTION</a> 
+                <a class="topnav" href="#">ELECTION</a>
                 <input type="checkbox" id="btn-2">
                 <ul>
                     <li><a href="#" class="elec-text">ELECTION PROCESS</a></li>
@@ -62,45 +63,38 @@
     </nav>
 
     <div class="Barch">
-		<p><b>ELECTION ARCHIVES</b></p>
-		</div>
+        <p><b>ELECTION ARCHIVES</b></p>
+    </div>
 
     <?php
-//  Election Archives Folders (Student)
-
-session_start();
-include "../php/db_connection.php";
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-//echo "Connected successfully";
-
-$result1 = mysqli_query($conn,"SELECT YEAR(start_date) AS year FROM vote_event;");
-
-  while($row1 = mysqli_fetch_array($result1)) {
-    if(empty($row1['year'])){
-      echo "no content";
-  }
-    else {
-      include('folder.html');
+    //  Election Archives Folders (Admin)
+    require "../php/db_connection.php";
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
-  }
-?>
-    
+    //echo "Connected successfully";
+
+    $result1 = mysqli_query($conn, "SELECT YEAR(start_date) AS year FROM vote_event;");
+
+    while ($row1 = mysqli_fetch_array($result1)) {
+        if (empty($row1['year'])) {
+            echo "no content";
+        } else {
+            require('folder.php');
+        }
+    }
+    ?>
+
     <div class="footer">
         <p class="footer-txt">BS COMPUTER SCIENCE 3A © 2021</p>
     </div>
 
     <script>
-        $('.icon').click(function () {
+        $('.icon').click(function() {
             $('span').toggleClass("cancel");
         });
     </script>
 </body>
 
 </html>
-
-    
-    
