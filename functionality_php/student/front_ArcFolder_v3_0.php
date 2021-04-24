@@ -1,105 +1,127 @@
-<!--Election Archives Folders (Student)-->
+<!--ELECTION ARCHIVES FOLDERS (ADMIN)-->
 
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta charset="utf-8">
-    <link rel="icon" href="assets/img/BUHS LOGO.png" type="image/png">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="assets/js/countdown.js"></script>
-    <title>BUCEILS HS Online Voting System</title>
+    <link rel="icon" href="../../Admin/assets/img/BUHS LOGO.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="../../Admin/assets/css/style.css">
+    <link rel="stylesheet" href="../../Admin/assets/css/bootstrap4.5.2.css">
+    <link rel="stylesheet" href="../../Admin/assets/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../Admin/assets/css/font-awesome.css">
+    <link rel="stylesheet" href="../../Admin/assets/css/jquery.dataTables.min.css">
+    <!-- <script src="assets/js/a076d05399.js"></script> -->
+    <script src="../../Admin/assets/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../../Admin/assets/js/jquery-3.5.1.js"></script>
+    <script src="../../Admin/assets/js/jquery.dataTables.min.js"></script>
+    <script src="../../Admin/assets/js/countdown.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.1.8/js/dataTables.fixedHeader.min.js"></script>
+    <title>BUCEILS Voting System</title>
 </head>
 
 <body>
     <nav>
-        <input id="nav-toggle" type="checkbox">
-        <div class="logo">
-            <h2>BUCEILS HS</h2>
-            <h3>ONLINE VOTING SYSTEM</h3>
+        <input class="nav-toggle1" type="checkbox">
+        <div class="aLogo">
+            <h2 class="aLogo-txt1"><a href="adminDashboard.html">BUCEILS HS</a></h2>
+            <h3 class="aLogo-txt2"><a href="adminDashboard.html">ONLINE VOTING SYSTEM</a></h3>
         </div>
-        <label for="btn" class="icon"><span class="fa fa-bars"></span></label>
-        <input type="checkbox" id="btn">
+        <label for="btn" class="ADicon"><span class="fa fa-bars"></span></label>
+        <input class="nav-toggle2" type="checkbox" id="btn">
         <ul>
             <li>
-                <label for="btn-1" class="show">VOTE</label>
-                <a class="topnav" href="#">VOTE</a>
-            </li>
-            <li>
-                <label for="btn-2" class="show">ELECTION</label>
-                <a class="topnav" href="#">ELECTION</a> 
-                <input type="checkbox" id="btn-2">
+                <label for="btn-1" class="Ashow">ACCOUNTS</label>
+                <a href="#">ACCOUNTS</a>
+                <input class="nav-toggle3" type="checkbox" id="btn-1">
                 <ul>
-                    <li><a href="#" class="elec-text">ELECTION PROCESS</a></li>
-                    <li><a href="front_Monitoring_v3_0.html ">ARCHIVE</a></li>
-                    <li><a href="front_Monitoring_v1_1.html">RESULTS</a></li>
+                    <li><a href="#">Students</a></li>
+                    <li><a href="#">Admin</a></li>
                 </ul>
             </li>
             <li>
-                <label for="btn-3" class="show">CANDIDATES</label>
-                <a class="topnav" href="#">CANDIDATES</a>
-            </li>
-            <li>
-                <label for="btn-4" class="show">CHAT US</label>
-                <a class="topnav" href="#">CHAT US</a>
-            </li>
-            <li>
-                <label for="btn-5" class="show">JUAN S. DELA CRUZ</label>
-                <a class="user" href="#"><img class="user-profile" src="assets/img/user.png"></a>
-                <input type="checkbox" id="btn-5">
+                <label for="btn-2" class="Ashow">ELECTION</label>
+                <a href="#">ELECTION</a>
+                <input class="nav-toggle4" type="checkbox" id="btn-2">
                 <ul>
-                    <li><a href="#" class="elec-text">JUAN S. DELA CRUZ</a></li>
-                    <li><a href="#">LOGOUT</a></li>
+                    <li><a href="front_ArchFolder_v8_0.php">Archive</a></li>
+                    <li><a href="front_VsPercentage_v6_1.php">Vote Status</a></li>
+                    <li><a href="front_Election_v5_0">Vote Result</a>
+                        <ul>
+                            <li><a href="../../functionality_php/report/generate-pdf.php">Make Report</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Configuration</a>
+                        <ul>
+                            <li><a href="#">Scheduler</a></li>
+                            <li><a href="#">Signatory</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#">CANDIDATES</a></li>
+            <li>
+                <label for="btn-4" class="Ashow">LOGS</label>
+                <a href="#">LOGS</a>
+                <input class="nav-toggle5" type="checkbox" id="btn-4">
+                <ul>
+                    <li><a href="accessLogs-v2.0.html">Access Log</a></li>
+                    <li><a href="#">Activity Log</a></li>
+                    <li><a href="#">Vote Summary</a></li>
+                </ul>
+            </li>
+            <li><a href="#">MESSAGES</a></li>
+            <li>
+                <label for="btn-5" class="Ashow">Admin Name</label>
+                <a class="user" href="#"><img class="user-profile" src="../../Admin/assets/img/user.png"></a>
+                <input class="nav-toggle6" type="checkbox" id="btn-5">
+                <ul>
+                    <li><a class="username" href="#">Admin Name</a></li>
+                    <li class="logout">
+                        <span class="fa fa-sign-out"></span><a href="#">LOGOUT</a></span>
+                    </li>
                 </ul>
             </li>
         </ul>
         <!--end of list-->
     </nav>
 
-    <div class="Barch">
-		<p><b>ELECTION ARCHIVES</b></p>
-		</div>
+    <div class="Barchives">
+        <p><b>ELECTION ARCHIVES</b></p>
+    </div>
 
     <?php
-//  Election Archives Folders (Student)
-
-session_start();
-include "../php/db_connection.php";
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-//echo "Connected successfully";
-
-$result1 = mysqli_query($conn,"SELECT YEAR(start_date) AS year FROM vote_event;");
-
-  while($row1 = mysqli_fetch_array($result1)) {
-    if(empty($row1['year'])){
-      echo "no content";
-  }
-    else {
-      include('folder.html');
+    //  Election Archives Folders (Admin)
+    require "../php/db_connection.php";
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
-  }
-?>
-    
+    //echo "Connected successfully";
+
+    $result1 = mysqli_query($conn, "SELECT YEAR(start_date) AS year FROM vote_event;");
+
+    while ($row1 = mysqli_fetch_array($result1)) {
+        if (empty($row1['year'])) {
+            echo "no content";
+        } else {
+            require('folder.php');
+        }
+    }
+    ?>
+
     <div class="footer">
         <p class="footer-txt">BS COMPUTER SCIENCE 3A © 2021</p>
     </div>
 
     <script>
-        $('.icon').click(function () {
+        $('.icon').click(function() {
             $('span').toggleClass("cancel");
         });
     </script>
 </body>
 
 </html>
-
     
