@@ -1,4 +1,7 @@
-<!-- ELECTION (ADMIN) -->
+<?php
+    require '../php/fetch_candidates.php';
+    require '../php/fetch_candidate_position.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +18,7 @@
   <link rel="stylesheet" href="../../Admin/assets/css/jquery.dataTables.min.css">
   <!-- <script src="assets/js/a076d05399.js"></script> -->
   <script src="../../Admin/assets/js/dataTables.bootstrap4.min.js"></script>
-  <script src="../../Admin/assets/js/jquery-3.5.1.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="../../Admin/assets/js/jquery.dataTables.min.js"></script>
   <script src="../../Admin/assets/js/countdown.js"></script>
   <script src="https://cdn.datatables.net/fixedheader/3.1.8/js/dataTables.fixedHeader.min.js"></script>
@@ -93,59 +96,38 @@
   </div>
 
   <div class="Belection_container">
+    
     <?php
-      // Election (Admin)
-      include "../php/db_connection.php";
-  
-      // Check connection
-      if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-      }
-      //echo "Connected successfully";
-  
-      $result = mysqli_query($conn, "SELECT * FROM candidate_position");
-  
-      while ($position = mysqli_fetch_array($result)) {
-        //echo $postion['position_name'];
-        //echo $postion['position_id'];
-        //echo '<br>';
-        require('positionBox.php');
-      }
+        for($i=0; $i<$size; $i++){
+          echo '<div class="Bposition1">';
+          echo '<h1><b>'.$candidate_positions[$i]['position_name'].'</b></h1>';
+          foreach($candidates as $candidate){
+            if($candidate['position']==$candidate_positions[$i]['position_name']){
+              echo '<div class="Bbar1">';
+              echo '<img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">';
+              echo '<div class="Bvote_percentage">';
+              echo '<div class="Bvote_level" style="width:100%">';
+              echo '<b><span>%</span></b>';
+              echo '</div>';
+              echo '</div>';
+              echo '</div>';
+            }
+          }  
+          echo '</div>';
+        }
     ?>
-    <div class="Bposition1">
-      <h1><b>President</b></h1>
-      <div class="Bbar1">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:100%">
-            <b><span>100%</span></b>
-          </div>
-        </div>
-      </div>
-      <div class="Bbar2">
-        <img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">
-        <div class="Bvote_percentage">
-          <div class="Bvote_level" style="width:0%">
-            <b><span>0%</span></b>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
 
-  <!-- <div class="Bbtn_post">
-     <button onclick="" name="button1" class="Bbtn_postresults scs-responsive"><b>POST RESULTS</b></button>
-    </div> -->
+  <div class="Bbtn_post">
+      <button type="submit" id="post_button" name="post_button" class="Bbtn_postresults scs-responsive"><b>POST RESULT</b></button>
+  </div>>
 
   <div class="Bbtn_reset">
     <button onclick="" name='button2' class="Bbtn_resetresults scs-responsive"><b>RESET ELECTION</b></button>
   </div>
 
-  <div class="Bbtn_post">
-    <!-- <button type="submit">Submit</button> -->
-    <button type="submit" id="post_button" name="post_button">Submit using POST</button>
-  </div>
+  
 
   <br>
   <br>
@@ -159,15 +141,13 @@
   </div>
 
   <script>
-    $(document).ready(function() {
-      $("#post_button").click(function() {
+    $(document).ready(function(){
+      $("#post_button").click(function(){
         var temp = 1;
         $.ajax({
           url: "../php/fetch_date.php",
-          data: {
-            post_button: temp
-          },
-          success: function(response) {
+          data: {post_button: temp},
+          success: function(response){
             console.log(response);
           }
         });
