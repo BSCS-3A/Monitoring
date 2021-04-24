@@ -119,7 +119,12 @@
     while (($shyear = mysqli_fetch_array($schoolYear)) && ($archRow = mysqli_fetch_array($archive))) {
         if ($year === $shyear['schyear']) {
             //echo $year;
-            require('ArchWinnerInfo.php');
+            //require('ArchWinnerInfo.php');
+            echo '<div class="Bpstn">';
+            echo '<img src="../Student/assets/img/profile1.png" />';
+            echo '<p class="Bname">'.$archRow['winner_fname'].' '.$archRow['winner_mname'].' '.$archRow['winner_lname'].'</p>';
+            echo '<p class="Bpstn">'.$archRow['position_name'].'</p>';
+            echo '</div>';
         }
     }
     ?>
