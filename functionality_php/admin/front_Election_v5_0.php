@@ -1,6 +1,6 @@
 <?php
-    require '../php/fetch_candidates.php';
-    require '../php/fetch_candidate_position.php';
+require '../php/fetch_candidates.php';
+require '../php/fetch_candidate_position.php';
 ?>
 
 <!DOCTYPE html>
@@ -96,38 +96,45 @@
   </div>
 
   <div class="Belection_container">
-    
+
     <?php
-        for($i=0; $i<$size; $i++){
-          echo '<div class="Bposition1">';
-          echo '<h1><b>'.$candidate_positions[$i]['position_name'].'</b></h1>';
-          foreach($candidates as $candidate){
-            if($candidate['position']==$candidate_positions[$i]['position_name']){
-              echo '<div class="Bbar1">';
-              echo '<img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">';
-              echo '<div class="Bvote_percentage">';
-              echo '<div class="Bvote_level" style="width:100%">';
-              echo '<b><span>%</span></b>';
-              echo '</div>';
-              echo '</div>';
-              echo '</div>';
-            }
-          }  
+    for ($i = 0; $i < $size; $i++) {
+      echo '<div class="Bposition1">';
+      echo '<h1><b>' . $candidate_positions[$i]['position_name'] . '</b></h1>';
+      foreach ($candidates as $candidate) {
+        if ($candidate['position'] == $candidate_positions[$i]['position_name']) {
+          if ($position_votes[$i]['votes_per_position'] != 0) {
+            $percentage = round(($candidate['total_votes'] / $position_votes[$i]['votes_per_position']) * 100);
+          } else {
+            $percentage = 0;
+          }
+          echo '<div class ="Bcan"><b>Candidate Name</b></div>';
+          echo '<div class ="Bparty"><b>Party</b></div>';
+          echo '<div class="Bbar1">';
+          echo '<img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">';
+          echo '<div class="Bvote_percentage">';
+          echo '<div class="Bvote_level" style="width:100%">';
+          echo '<b><span>%</span></b>';
+          echo '</div>';
+          echo '</div>';
           echo '</div>';
         }
+      }
+      echo '</div>';
+    }
     ?>
   </div>
 
 
   <div class="Bbtn_post">
-      <button type="submit" id="post_button" name="post_button" class="Bbtn_postresults scs-responsive"><b>POST RESULT</b></button>
+    <button type="submit" id="post_button" name="post_button" class="Bbtn_postresults scs-responsive"><b>POST RESULT</b></button>
   </div>>
 
   <div class="Bbtn_reset">
     <button onclick="" name='button2' class="Bbtn_resetresults scs-responsive"><b>RESET ELECTION</b></button>
   </div>
 
-  
+
 
   <br>
   <br>
@@ -141,13 +148,15 @@
   </div>
 
   <script>
-    $(document).ready(function(){
-      $("#post_button").click(function(){
+    $(document).ready(function() {
+      $("#post_button").click(function() {
         var temp = 1;
         $.ajax({
           url: "../php/fetch_date.php",
-          data: {post_button: temp},
-          success: function(response){
+          data: {
+            post_button: temp
+          },
+          success: function(response) {
             console.log(response);
           }
         });
