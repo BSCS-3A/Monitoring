@@ -10,7 +10,6 @@ front_ElectRes_v2_0.html      | Election Results
 front_ArcFolder_v3_0.html     | Election Archives Folders
 front_ArcList_v4_0.html       | Election Archives List of Winners
 
----------------------------------------------------------------------------
 
 Source Files (Admin)          | Definition
 ------------------------------|--------------------------------------------
