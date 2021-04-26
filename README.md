@@ -1,6 +1,6 @@
 # Monitoring
+
 FILE NAMING <br>
-OVERVIEW: <br>
 Source Files (Student)        | Definition
 ------------------------------|-----------------------------------------
 front_ElecStat_v1_0.html      | On-going Election Status Display
