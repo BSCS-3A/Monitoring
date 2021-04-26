@@ -25,5 +25,3 @@ front_ArchFolder_v8_0.html    | Election Archives Folders
 front_ArchList_v9_0.html      | Election Archives List of Winners
 front_Report_v11_1.php        | Election Results Report
 generate-pdf.php              | Counts the votes per candidate, per yearlevel and total before generating PDF
-
----------------------------------------------------------------------------
