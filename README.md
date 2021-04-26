@@ -12,7 +12,7 @@ front_ArcList_v4_0.html       | Election Archives List of Winners
 
 <br>
 Source Files (Admin)          | Definition
-------------------------------|-----------------------------------------
+------------------------------|----------------------------------------------------------------------------------
 front_Election_v5_0.html      | Election
 front_VsPercentage_v6_0.html  | Vote Status Percentage per year level
 front_VstatG7_v7_0.html       | Vote Status Grade 7
