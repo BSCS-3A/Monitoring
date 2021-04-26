@@ -9,6 +9,8 @@
     date_default_timezone_set('Asia/Manila');
     $current_date_time = date('Y-m-d H:i:s');
     $after_election_date = date('Y-m-d H:i:s', strtotime($row['end_date']. ' + 2 days'));
+
+    $last_election_date = date('Y-m-d H:i:s', strtotime($row['end_date']));
     
     if((isset($_POST["post_button"])) && $current_date_time>$row['end_date']){
         $vote_stat = 3;
