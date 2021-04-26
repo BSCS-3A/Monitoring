@@ -10,9 +10,10 @@ front_ElectRes_v2_0.html      | Election Results
 front_ArcFolder_v3_0.html     | Election Archives Folders
 front_ArcList_v4_0.html       | Election Archives List of Winners
 
-<br>
+---------------------------------------------------------------------------
+
 Source Files (Admin)          | Definition
-------------------------------|----------------------------------------------------------------------------------
+------------------------------|--------------------------------------------
 front_Election_v5_0.html      | Election
 front_VsPercentage_v6_0.html  | Vote Status Percentage per year level
 front_VstatG7_v7_0.html       | Vote Status Grade 7
@@ -25,3 +26,5 @@ front_ArchFolder_v8_0.html    | Election Archives Folders
 front_ArchList_v9_0.html      | Election Archives List of Winners
 front_Report_v11_1.php        | Election Results Report
 generate-pdf.php              | Counts the votes per candidate, per yearlevel and total before generating PDF
+
+---------------------------------------------------------------------------
