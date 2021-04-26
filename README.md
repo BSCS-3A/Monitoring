@@ -17,7 +17,7 @@ front_VstatG11_v7_4.html >> Vote Status Grade 11 (Admin)
 front_VstatG12_v7_5.html >> Vote Status Grade 12 (Admin)  
 front_ArchFolder_v8_0.html >> Election Archives Folders (Admin)  
 front_ArchList_v9_0.html >> Election Archives List of Winners (Admin)  
-front_Report_v10_0.html >> Election Results Report (Admin)
+front_Report_v11_1.php >> Election Results Report (Admin)
 
 generate-pdf.php >> Counts the votes per candidate, per yearlevel and total before generating PDF (Admin)
 
