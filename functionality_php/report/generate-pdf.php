@@ -113,36 +113,12 @@ ob_start();
 				//If not, update stored id to zero or null
 
 
-//--------------
-//NO. OF ENROLLED STUDENTS
-	$queryEnrolled=mysqli_query($conn, "SELECT sum(case when grade_level = '7' then 1 else 0 end) AS g7,
-    			    sum(case when grade_level = '8' then 1 else 0 end) AS g8,
-    			    sum(case when grade_level = '9' then 1 else 0 end) AS g9,
-    				sum(case when grade_level = '10' then 1 else 0 end) AS g10,
-    				sum(case when grade_level = '11' then 1 else 0 end) AS g11,
-    				sum(case when grade_level = '12' then 1 else 0 end) AS g12,
-   					count(student_id) AS totalEnrolled FROM student");
-	$res = mysqli_fetch_array($queryEnrolled);
 //-------------
-
-//SHOULD BE CONNECTED TO VOTE TABLE (STATUS: FIXING NOW: KRISHA)
-//NO. OF  VOTES RECEIVED
-	$queryVoted=mysqli_query($conn, "SELECT sum(case when grade_level = '7' then voting_status end) AS g7Voted,
-    			    sum(case when grade_level = '8' then voting_status end) AS g8Voted,
-    			    sum(case when grade_level = '9' then voting_status end) AS g9Voted,
-    				sum(case when grade_level = '10' then voting_status end) AS g10Voted,
-    				sum(case when grade_level = '11' then voting_status end) AS g11Voted,
-    				sum(case when grade_level = '12' then voting_status end) AS g12Voted,
-   					count(student_id) AS totalVoted FROM student WHERE voting_status=1");
-	$studVoted = mysqli_fetch_array($queryVoted);
-//--------------
-
 
 $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id, candidate.position_id, candidate.total_votes, student.lname, student.fname, student.mname, candidate_position.heirarchy_id, candidate_position.position_name FROM candidate INNER JOIN student ON candidate.student_id = student.student_id INNER JOIN candidate_position ON candidate.position_id = candidate_position.heirarchy_id ORDER BY heirarchy_id"); 
 
 
 //!!!! PENDING PROBLEM: ERROR WHEN NO CANDIDATE IN A POSITION (STATUS: ZERO)
-
 		$data_count=1;
 		while($data=mysqli_fetch_array($query))
 		{ 
@@ -191,22 +167,39 @@ $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id,
 				$votesReceived[$j] = mysqli_num_rows($result);
 			}
 
+				$votesReceivedTotal= $votesReceived[0]+$votesReceived[1]+$votesReceived[2]+$votesReceived[3]+$votesReceived[4]+$votesReceived[5];
+
 				$pdf->Cell(14.7,5,$votesReceived[0],1,0,'C',0);  		//column total grade 7 vote
 				$pdf->Cell(14.7,5,$votesReceived[1],1,0,'C',0);   		//column total grade 8 vote
 				$pdf->Cell(14.7,5,$votesReceived[2],1,0,'C',0);  		//column total grade 9 vote
 				$pdf->Cell(14.6,5,$votesReceived[3],1,0,'C',0);			//column total grade 10 vote
 				$pdf->Cell(14.6,5,$votesReceived[4],1,0,'C',0);   		//column total grade 11 vote
 				$pdf->Cell(14.7,5,$votesReceived[5],1,0,'C',0);  		//column total grade 12 vote
-				$pdf->Cell(17,5,$votesReceived[0]+$votesReceived[1]+$votesReceived[2]+$votesReceived[3]+$votesReceived[4]+$votesReceived[5],1,1,'C',0); 		//ADDS EVERY COLUMN
-				//$pdf->Cell(17,5,$data['total_votes'],1,1,'C',0); //GETS TOTAL FROM DB
-
-
+				$pdf->Cell(17,5,$votesReceivedTotal,1,1,'C',0); 		//ADDS EVERY COLUMN
+				
+				//SUMMATION OF NUMBER OF VOTES RECEIVED 
+				$g7sum+=$votesReceived[0];
+				$g8sum+=$votesReceived[1];
+				$g9sum+=$votesReceived[2];
+				$g10sum+=$votesReceived[3];
+				$g11sum+=$votesReceived[4];
+				$g12sum+=$votesReceived[5];
+				$gTsum+=$votesReceivedTotal;
 }//end while
 
 //----------HIGHLIGHTS THE ROW OF WINNER PER POSITION
 			//if it is the stored id per position, highlight
 
-//----------NUMBER OF ENROLLED STUDENTS 
+//----------DISPLAYS NUMBER OF ENROLLED STUDENTS 
+	$queryEnrolled=mysqli_query($conn, "SELECT sum(case when grade_level = '7' then 1 else 0 end) AS g7,
+    			    sum(case when grade_level = '8' then 1 else 0 end) AS g8,
+    			    sum(case when grade_level = '9' then 1 else 0 end) AS g9,
+    				sum(case when grade_level = '10' then 1 else 0 end) AS g10,
+    				sum(case when grade_level = '11' then 1 else 0 end) AS g11,
+    				sum(case when grade_level = '12' then 1 else 0 end) AS g12,
+   					count(student_id) AS totalEnrolled FROM student");
+	$res = mysqli_fetch_array($queryEnrolled);
+
 				$pdf->SetFont('','B',12);
 				$pdf->Cell(170,5,'' ,1,1,'C',0); 						//empty row spacer	
 				$pdf->Cell(65,5,'Number of Enrolled Students:',1,0,'L',0);		
@@ -219,22 +212,16 @@ $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id,
 				$pdf->Cell(14.7,5,$res[5],1,0,'C',0);  		//enrolled grade 12
 				$pdf->Cell(17,5,$res[6],1,1,'C',0); 		//total enrolled	
 
-
-//GETS FROM STUDENT TABLE, SHOULD BE FROM VOTE TABLE: (STATUS: FIXING NOW: KRISHA)
-//----------NUMBER OF VOTES RECEIVED 
+//----------DISPLAYS NUMBER OF VOTES RECEIVED 
 				$pdf->Cell(65,5,'Number of Votes Received:',1,0,'L',0);	
 
-				$pdf->Cell(14.7,5,$studVoted[0],1,0,'C',0);     		//received grade 7
-				$pdf->Cell(14.7,5,$studVoted[1],1,0,'C',0);   			//received grade 8
-				$pdf->Cell(14.7,5,$studVoted[2],1,0,'C',0);   			//received grade 9
-				$pdf->Cell(14.6,5,$studVoted[3],1,0,'C',0);   			//received grade 10
-				$pdf->Cell(14.6,5,$studVoted[4],1,0,'C',0);   			//received grade 11
-				$pdf->Cell(14.7,5,$studVoted[5],1,0,'C',0);  			//received grade 12
-				$pdf->Cell(17,5,$studVoted[6],1,1,'C',0); 				//total received	
-			
-
-
-
+				$pdf->Cell(14.7,5,$g7sum,1,0,'C',0);     		//received grade 7
+				$pdf->Cell(14.7,5,$g8sum,1,0,'C',0);   			//received grade 8
+				$pdf->Cell(14.7,5,$g9sum,1,0,'C',0);   			//received grade 9
+				$pdf->Cell(14.6,5,$g10sum,1,0,'C',0);   		//received grade 10
+				$pdf->Cell(14.6,5,$g11sum,1,0,'C',0);   		//received grade 11
+				$pdf->Cell(14.7,5,$g12sum,1,0,'C',0);  			//received grade 12
+				$pdf->Cell(17,5,$gTsum,1,1,'C',0); 				//total received
 
 // -------------------Display Text
 	$pdf->Ln(10); 
