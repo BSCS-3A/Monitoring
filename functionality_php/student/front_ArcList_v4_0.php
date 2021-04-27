@@ -71,10 +71,6 @@
     </div>
 
     <div class="Barch_year">
-        <p><b>2021 ELECTION</b></p>
-    </div>
-
-    <div class="Barch_year">
         <p><b><?php echo $year ?> ELECTION</b></p>
     </div>
 
