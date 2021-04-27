@@ -1,5 +1,5 @@
 <?php
-require '../php/db_connection.php';				// Link to database
+require 'php/db_connection.php';				// Link to database
 require_once('TCPDF-main/tcpdf.php'); 				// Include the main TCPDF library
 
 //---------------------Create header and footer
@@ -92,14 +92,79 @@ ob_start();
 		$pdf->Cell(14.6,5,'11',1,0,'C',1);   
 		$pdf->Cell(14.7,5,'12',1,1,'C',1);
 
+		//----------GETS THE WINNER PER POSITION
+			//Count number of candidate_position
+				$result = mysqli_query($conn,"SELECT * FROM candidate");
+				$i = mysqli_num_rows($result);
+			//Get highest vote per candidate_position
+				
+			//Store id of candidate with highest vote
+
+		//----------CHECKS FOR TIE
+			//If there is more than 1 highest vote per candidate_position
+			//Prompt to pick
+			//Store id of candidate votes given a +1
+			//Update stored id of winning candidate
+
+		//----------CHECKS IF WINNER MET MINIMUM VOTE QUOTA
+			//At least 50% of all votes for non-representative positions
+				//If not, update stored id to zero or null
+			//At least 50% of year-level votes for representative positions
+				//If not, update stored id to zero or null
+
+
+//--------------
+//NO. OF ENROLLED STUDENTS
+	$queryEnrolled=mysqli_query($conn, "SELECT sum(case when grade_level = '7' then 1 else 0 end) AS g7,
+    			    sum(case when grade_level = '8' then 1 else 0 end) AS g8,
+    			    sum(case when grade_level = '9' then 1 else 0 end) AS g9,
+    				sum(case when grade_level = '10' then 1 else 0 end) AS g10,
+    				sum(case when grade_level = '11' then 1 else 0 end) AS g11,
+    				sum(case when grade_level = '12' then 1 else 0 end) AS g12,
+   					count(student_id) AS totalEnrolled FROM student");
+	$res = mysqli_fetch_array($queryEnrolled);
+//-------------
+
+//SHOULD BE CONNECTED TO VOTE TABLE (STATUS: FIXING NOW: KRISHA)
+//NO. OF  VOTES RECEIVED
+	$queryVoted=mysqli_query($conn, "SELECT sum(case when grade_level = '7' then voting_status end) AS g7Voted,
+    			    sum(case when grade_level = '8' then voting_status end) AS g8Voted,
+    			    sum(case when grade_level = '9' then voting_status end) AS g9Voted,
+    				sum(case when grade_level = '10' then voting_status end) AS g10Voted,
+    				sum(case when grade_level = '11' then voting_status end) AS g11Voted,
+    				sum(case when grade_level = '12' then voting_status end) AS g12Voted,
+   					count(student_id) AS totalVoted FROM student WHERE voting_status=1");
+	$studVoted = mysqli_fetch_array($queryVoted);
+//--------------
+
+
 $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id, candidate.position_id, candidate.total_votes, student.lname, student.fname, student.mname, candidate_position.heirarchy_id, candidate_position.position_name FROM candidate INNER JOIN student ON candidate.student_id = student.student_id INNER JOIN candidate_position ON candidate.position_id = candidate_position.heirarchy_id ORDER BY heirarchy_id"); 
+
+
+//!!!! PENDING PROBLEM: ERROR WHEN NO CANDIDATE IN A POSITION (STATUS: ZERO)
 
 		$data_count=1;
 		while($data=mysqli_fetch_array($query))
 		{ 
-			if($data_count==$data['heirarchy_id']){
+			if($data_count==$data['heirarchy_id']){	
+			
 				$pdf->SetFont('','B',12);
 				$pdf->Cell(170,5, strtoupper($data['position_name']),1,1,'L',1);	//print position name once
+/*
+				//ABSTAINED VOTES------ (MOVE AFTER LAST CANDIDATE, SOLVE FOR VALUES) (STATUS: FIX LATER: KRISHA)
+				$pdf->SetFont('','',12);
+				$pdf->Cell(65,5, 'ABSTAIN',1,0,'L',0);					//print position name once
+
+				//temporary place holders
+				$abstained=($data['total_votes']-$votesReceived[0]+$votesReceived[1]+$votesReceived[2]+$votesReceived[3]+$votesReceived[4]+$votesReceived[5]);
+				$pdf->Cell(14.7,5,$res[0]-$studVoted[0],1,0,'C',0);  					//column total grade 7 vote
+				$pdf->Cell(14.7,5,$res[1]-$studVoted[1] ,1,0,'C',0);   				//column total grade 8 vote
+				$pdf->Cell(14.7,5,$res[2]-$studVoted[2],1,0,'C',0);  					//column total grade 9 vote
+				$pdf->Cell(14.6,5,$res[3]-$studVoted[3],1,0,'C',0);					//column total grade 10 vote
+				$pdf->Cell(14.6,5,$res[4]-$studVoted[4],1,0,'C',0);   				//column total grade 11 vote
+				$pdf->Cell(14.7,5,$res[5]-$studVoted[5],1,0,'C',0);  					//column total grade 12 vote
+				$pdf->Cell(17,5,$abstained,1,1,'C',0); 						//column total vote
+*/
 				$data_count++;
 			}//end if	
 
@@ -116,9 +181,7 @@ $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id,
 					}else{ 
 						$pdf->SetFont('','',10); 
 						$pdf->Cell(65,5,$data['fullname'],1,0,'L',0);			
-				}
-
-				//abstain votes per position
+					}
 
 //----------NUMBER OF VOTES RECEIVED PER CANDIDATE PER GRADE LEVEL
 			$id = $data['candidate_id'];
@@ -134,9 +197,11 @@ $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id,
 				$pdf->Cell(14.6,5,$votesReceived[3],1,0,'C',0);			//column total grade 10 vote
 				$pdf->Cell(14.6,5,$votesReceived[4],1,0,'C',0);   		//column total grade 11 vote
 				$pdf->Cell(14.7,5,$votesReceived[5],1,0,'C',0);  		//column total grade 12 vote
-				$pdf->Cell(17,5,$data['total_votes'],1,1,'C',0); 		//column total vote
+				$pdf->Cell(17,5,$votesReceived[0]+$votesReceived[1]+$votesReceived[2]+$votesReceived[3]+$votesReceived[4]+$votesReceived[5],1,1,'C',0); 		//ADDS EVERY COLUMN
+				//$pdf->Cell(17,5,$data['total_votes'],1,1,'C',0); //GETS TOTAL FROM DB
 
-		}//end while
+
+}//end while
 
 //----------HIGHLIGHTS THE ROW OF WINNER PER POSITION
 			//if it is the stored id per position, highlight
@@ -146,14 +211,6 @@ $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id,
 				$pdf->Cell(170,5,'' ,1,1,'C',0); 						//empty row spacer	
 				$pdf->Cell(65,5,'Number of Enrolled Students:',1,0,'L',0);		
 		
-	$queryEnrolled=mysqli_query($conn, "SELECT sum(case when grade_level = '7' then 1 else 0 end) AS g7,
-    			    sum(case when grade_level = '8' then 1 else 0 end) AS g8,
-    			    sum(case when grade_level = '9' then 1 else 0 end) AS g9,
-    				sum(case when grade_level = '10' then 1 else 0 end) AS g10,
-    				sum(case when grade_level = '11' then 1 else 0 end) AS g11,
-    				sum(case when grade_level = '12' then 1 else 0 end) AS g12,
-   					count(student_id) AS totalEnrolled FROM student");
-	$res = mysqli_fetch_array($queryEnrolled);
 				$pdf->Cell(14.7,5,$res[0],1,0,'C',0);     	//enrolled grade 7
 				$pdf->Cell(14.7,5,$res[1],1,0,'C',0);   	//enrolled grade 8
 				$pdf->Cell(14.7,5,$res[2],1,0,'C',0);   	//enrolled grade 9
@@ -162,26 +219,22 @@ $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id,
 				$pdf->Cell(14.7,5,$res[5],1,0,'C',0);  		//enrolled grade 12
 				$pdf->Cell(17,5,$res[6],1,1,'C',0); 		//total enrolled	
 
+
+//GETS FROM STUDENT TABLE, SHOULD BE FROM VOTE TABLE: (STATUS: FIXING NOW: KRISHA)
 //----------NUMBER OF VOTES RECEIVED 
 				$pdf->Cell(65,5,'Number of Votes Received:',1,0,'L',0);	
 
-	$queryVoted=mysqli_query($conn, "SELECT sum(case when grade_level = '7' then voting_status end) AS g7Voted,
-    			    sum(case when grade_level = '8' then voting_status end) AS g8Voted,
-    			    sum(case when grade_level = '9' then voting_status end) AS g9Voted,
-    				sum(case when grade_level = '10' then voting_status end) AS g10Voted,
-    				sum(case when grade_level = '11' then voting_status end) AS g11Voted,
-    				sum(case when grade_level = '12' then voting_status end) AS g12Voted,
-   					count(student_id) AS totalVoted FROM student");
-
-	$studVoted = mysqli_fetch_array($queryVoted);
 				$pdf->Cell(14.7,5,$studVoted[0],1,0,'C',0);     		//received grade 7
 				$pdf->Cell(14.7,5,$studVoted[1],1,0,'C',0);   			//received grade 8
 				$pdf->Cell(14.7,5,$studVoted[2],1,0,'C',0);   			//received grade 9
 				$pdf->Cell(14.6,5,$studVoted[3],1,0,'C',0);   			//received grade 10
 				$pdf->Cell(14.6,5,$studVoted[4],1,0,'C',0);   			//received grade 11
 				$pdf->Cell(14.7,5,$studVoted[5],1,0,'C',0);  			//received grade 12
-				$pdf->Cell(17,5,($studVoted[0]+$studVoted[1]+$studVoted[2]+$studVoted[3]+$studVoted[4]+$studVoted[5]),1,1,'C',0); 				//total received	
+				$pdf->Cell(17,5,$studVoted[6],1,1,'C',0); 				//total received	
 			
+
+
+
 
 // -------------------Display Text
 	$pdf->Ln(10); 
