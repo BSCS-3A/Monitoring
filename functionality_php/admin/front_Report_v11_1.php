@@ -26,10 +26,10 @@
             require '../php/db_connection.php';                     // Connect database
             if ($conn->connect_error)                               // Check connection
                 die("Connection failed: " . $conn->connect_error);
-            require '../php/fetch_date.php';                        // Connect fetch_date
-            require '../php/student_count.php';                     // Connect student_count
-            require '../php/fetch_report.php';                      // Connect fetch_report
-            include "navAdmin.php";                                 // Add the navBar
+            require '../php/fetch_date.php';                        // Fetches important datetime
+            require '../php/student_count.php';                     // Counts student
+            require '../php/fetch_report.php';                      // Contains necessary functions and query
+            include "navAdmin.php";                                 // Adds the navBar and footer
         ?>
 
         <div class="Breport">
@@ -40,6 +40,10 @@
             // Count and store to Archive right after election
                 if($current_date_time>$last_election_date)//change to automatically compute after election
                 {
+                    // $winnerCandidates = " WHERE 0";
+                    $winnerCandidates = (array) null;
+                    $tiedCandidates = " WHERE 0";
+
                     for($i=1; $i<=$positionSize; $i++)
                     {
                         // Count the highest vote per position
@@ -52,12 +56,34 @@
                             $voteAllow=mysqli_fetch_array($result);
                             if($voteAllow['vote_allow']==1)
                             {// For non-representative positions
-                                getWinners($conn, $enrolled, '6', $i, $max);
+                                getLists($conn, $enrolled, '6', $i, $max, $tiedCandidates, $winnerCandidates);
                             }else{// For representative positions
-                                getWinners($conn, $enrolled, getGradeLevel($conn, $i), $i, $max);
+                                getLists($conn, $enrolled, getGradeLevel($conn, $i), $i, $max, $tiedCandidates, $winnerCandidates);
                             } //end if else
                         }
                     }//end for loop
+
+                    // if($resultStatus==false)
+                    {    // if headadmin
+                        if($_SESSION['admin_position'] == "Head Admin")
+                        {
+                            $queryString = "SELECT * FROM ((candidate INNER JOIN student ON candidate.student_id = student.student_id) INNER JOIN candidate_position ON candidate.position_id = candidate_position.position_id)".$tiedCandidates." ORDER BY candidate_position.hierarchy_id";
+                            $tieTable = $conn->query($queryString);
+                            echo "<br>$queryString";
+                            // makeBallot($tieTable);
+                            // after voting change to final
+                        }else{ //ordinary admin
+                            // display that election results is not yet final, call admin to finalize
+                        }
+                    }
+                    // else{
+                    insertToArchive($conn,$winnerCandidates);
+                    for($n=0; $n<sizeof($winnerCandidates); $n++)
+                    {
+                        echo "<br><br>$winnerCandidates[$n]";
+                    }
+                        // store to archive if final
+                    // }
                 }
                 else{
                     echo "Election is still ongoing\n";
