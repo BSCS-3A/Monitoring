@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="../../Admin/assets/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../../Admin/assets/css/font-awesome.css">
     <link rel="stylesheet" href="../../Admin/assets/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/styles_folder.css">
+
     <!-- <script src="assets/js/a076d05399.js"></script> -->
     <script src="../../Admin/assets/js/dataTables.bootstrap4.min.js"></script>
     <script src="../../Admin/assets/js/jquery-3.5.1.js"></script>
@@ -101,13 +104,24 @@
     }
     //echo "Connected successfully";
 
-    $result1 = mysqli_query($conn, "SELECT YEAR(start_date) AS year FROM vote_event;");
+    $result1 = mysqli_query($conn, "SELECT YEAR(start_date) AS year 
+    FROM vote_event
+    ORDER BY vote_event_id;"
+    );
 
     while ($row1 = mysqli_fetch_array($result1)) {
         if (empty($row1['year'])) {
             echo "no content";
         } else {
-            require('folder.php');
+            $year = $row1['year'];
+            echo '<div class="items">';
+            echo '<figure>';
+            echo '<b><a href="front_ArchList_v9_0.php?year='.$year.'">';
+            echo '<img src="assets/img/folder.png" width="140px" height="140px">';
+            echo '<figcaption>'.$year.'</figcaption>';
+            echo '</a></b>';
+            echo '</figure>';
+            echo '</div>';
         }
     }
     ?>
