@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/styles_folder.css">
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="assets/js/countdown.js"></script>
@@ -81,7 +82,15 @@
         if (empty($row1['year'])) {
             echo "no content";
         } else {
-            require('folder.php');
+            $year = $row1['year'];
+            echo '<div class="items">';
+            echo '<figure>';
+            echo '<b><a href="front_ArcList_v4_0.php?year='.$year.'">';
+            echo '<img src="assets/img/folder.png" width="140px" height="140px">';
+            echo '<figcaption>'.$year.'</figcaption>';
+            echo '</a></b>';
+            echo '</figure>';
+            echo '</div>';
         }
     }
     ?>
