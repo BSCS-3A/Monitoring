@@ -113,7 +113,7 @@
     //echo "Connected successfully";
 
     $schoolYear = mysqli_query($conn, "SELECT YEAR(school_year) AS schyear FROM archive");
-    $archive = mysqli_query($conn, "SELECT * FROM archive");
+    $archive = mysqli_query($conn, "SELECT * FROM archive ORDER BY archive_id");
 
 
     while (($shyear = mysqli_fetch_array($schoolYear)) && ($archRow = mysqli_fetch_array($archive))) {
