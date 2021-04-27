@@ -25,3 +25,33 @@ front_ArchFolder_v8_0.html    | Election Archives Folders
 front_ArchList_v9_0.html      | Election Archives List of Winners
 front_Report_v11_1.php        | Election Results Report
 generate-pdf.php              | Counts the votes per candidate, per yearlevel and total before generating PDF
+
+# possible files to be transfered to main branch
+Functionality PHP <br>
+Source Files <br>
+(functionality_php/student)   | Definition
+------------------------------|-----------------------------------------
+front_ElecStat_v1_2.php       | Election status index file
+inc folder                    | Election Status conditions
+------------------------------|------------------------------------------
+no_election.html              | No On-going Election Status Display
+after_election.html           | End of Election Status Display
+ongoing.html                  | On-going Election Status Display
+front_ElectRes_v2_0.php       | Election Results
+front_ArcFolder_v3_0.php      | Election Archives Folders
+front_ArcList_v4_0.php        | Election Archives List of Winners
+
+
+
+Source Files <br>
+(functionality_php/admin)     | Definition
+------------------------------|--------------------------------------------
+front_Election_v5_0.html      | Election
+front_VsPercentage_v6_0.html  | Vote Status Percentage per year level
+front_VsPercentage_v6_0.html  | Vote Status Percentage per year level MODIFIED
+front_VstatG7_v7_0.html       | Vote Status Grade 7
+front_ArchFolder_v8_0.html    | Election Archives Folders
+front_ArchList_v9_0.html      | Election Archives List of Winners
+front_Report_v11_1.php        | Election Results Report
+generate-pdf.php              | Counts the votes per candidate, per yearlevel and total before generating PDF
+
