@@ -1,6 +1,7 @@
 <?php
 require '../php/fetch_candidates.php';
 require '../php/fetch_candidate_position.php';
+require '../php/position_vote_count.php'
 ?>
 
 <!DOCTYPE html>
@@ -113,8 +114,8 @@ require '../php/fetch_candidate_position.php';
           echo '<div class="Bbar1">';
           echo '<img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">';
           echo '<div class="Bvote_percentage">';
-          echo '<div class="Bvote_level" style="width:100%">';
-          echo '<b><span>%</span></b>';
+          echo '<div class="Bvote_level" style="width:'.$percentage.'%">';
+          echo '<b><span>'.$percentage.'%</span></b>';
           echo '</div>';
           echo '</div>';
           echo '</div>';
