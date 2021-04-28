@@ -24,21 +24,32 @@
         	$tieQuery = $conn->query("SELECT * FROM candidate WHERE position_id = '$i' AND total_votes='$max'");
         	for ($k=0; $k < numTie($conn, $i, $max); $k++) {
         		$tiedStudents= mysqli_fetch_array($tieQuery);
-            	$tiedCandidates = $tiedCandidates." || candId = ".$tiedStudents['candidate_id']."";
+            	$tiedCandidates = $tiedCandidates." || candidate_id = ".$tiedStudents['candidate_id']."";
             }
         }
 
     // Function to INSERT to archive
-        function insertToArchive($conn,$winnerCandidates)
+        function insertToArchive($conn, $winnerList, $last_election_date )
         {
-        	for($n=0; $n<sizeof($winnerCandidates); $n++)
+        	$winnersString = "SELECT * FROM candidate INNER JOIN student ON candidate.student_id = student.student_id INNER JOIN candidate_position ON candidate.position_id = candidate_position.position_id ".$winnerList." ORDER BY candidate_position.heirarchy_id";
+        	// mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+        	$queryWinners = $conn->query($winnersString);
+        	while ($winner=mysqli_fetch_array($queryWinners))
         	{
-        		$conn->query("INSERT INTO `archive` (`archive_id`, `position_name`, `winner_fname`, `winner_mname`, `winner_lname`, `school_year`, `platform_info`) VALUES (NULL, 'cc', 'gd', 'ffss', 'iuf', CURRENT_DATE(), 'yef')");
+        		$w_posName = $winner['position_name'];
+        		$w_fname = $winner['fname'];
+        		$w_mname = $winner['mname'];
+        		$w_lname = $winner['lname'];
+        		$w_sy = $last_election_date ;
+        		$w_platform = $winner['platform_info'];
+        		echo "<br>--$w_sy";
+
+        		$conn->query("INSERT INTO `archive` (`archive_id`, `position_name`, `winner_fname`, `winner_mname`, `winner_lname`, `school_year`, `platform_info`) VALUES (NULL, '$w_posName', '$w_fname', '$w_mname', '$w_lname', '$w_sy', '$w_platform')");
         	}
         }
 
     // Function to get lists of tied candidates and winners
-        function getLists($conn, $enrolled, $arrAdd, $i, $max, & $tiedCandidates, & $winnerCandidates)
+        function getLists($conn, $enrolled, $arrAdd, $i, $max, & $tiedCandidates, & $winnerList)
         {
         	if($max>=getQuota($enrolled[$arrAdd]))
             {//At least 50% of whole population
@@ -47,7 +58,7 @@
                     getTiedCandidates($conn, $i, $max, $tiedCandidates);
 	            }else{
 	                $winnerStudents= mysqli_fetch_array($conn->query("SELECT * FROM candidate WHERE position_id = '$i' AND total_votes='$max'"));
-		            array_push($winnerCandidates, (int)$winnerStudents['candidate_id']);
+            		$winnerList = $winnerList." || candidate_id = ".$winnerStudents['candidate_id']."";
 
 	            }
             }else{
