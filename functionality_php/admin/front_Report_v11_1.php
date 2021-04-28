@@ -40,8 +40,7 @@
             // Count and store to Archive right after election
                 if($current_date_time>$last_election_date)//change to automatically compute after election
                 {
-                    // $winnerCandidates = " WHERE 0";
-                    $winnerCandidates = (array) null;
+                    $winnerList = " WHERE 0";
                     $tiedCandidates = " WHERE 0";
 
                     for($i=1; $i<=$positionSize; $i++)
@@ -56,9 +55,9 @@
                             $voteAllow=mysqli_fetch_array($result);
                             if($voteAllow['vote_allow']==1)
                             {// For non-representative positions
-                                getLists($conn, $enrolled, '6', $i, $max, $tiedCandidates, $winnerCandidates);
+                                getLists($conn, $enrolled, '6', $i, $max, $tiedCandidates, $winnerList);
                             }else{// For representative positions
-                                getLists($conn, $enrolled, getGradeLevel($conn, $i), $i, $max, $tiedCandidates, $winnerCandidates);
+                                getLists($conn, $enrolled, getGradeLevel($conn, $i), $i, $max, $tiedCandidates, $winnerList);
                             } //end if else
                         }
                     }//end for loop
@@ -67,7 +66,7 @@
                     {    // if headadmin
                         if($_SESSION['admin_position'] == "Head Admin")
                         {
-                            $queryString = "SELECT * FROM ((candidate INNER JOIN student ON candidate.student_id = student.student_id) INNER JOIN candidate_position ON candidate.position_id = candidate_position.position_id)".$tiedCandidates." ORDER BY candidate_position.hierarchy_id";
+                            $queryString = "SELECT * FROM ((candidate INNER JOIN student ON candidate.student_id = student.student_id) INNER JOIN candidate_position ON candidate.position_id = candidate_position.position_id)".$tiedCandidates." ORDER BY candidate_position.heirarchy_id";
                             $tieTable = $conn->query($queryString);
                             echo "<br>$queryString";
                             // makeBallot($tieTable);
@@ -77,12 +76,7 @@
                         }
                     }
                     // else{
-                    insertToArchive($conn,$winnerCandidates);
-                    for($n=0; $n<sizeof($winnerCandidates); $n++)
-                    {
-                        echo "<br><br>$winnerCandidates[$n]";
-                    }
-                        // store to archive if final
+                        insertToArchive($conn, $winnerList, $last_election_date);
                     // }
                 }
                 else{
