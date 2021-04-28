@@ -1,7 +1,8 @@
 <?php
 require '../php/fetch_candidates.php';
 require '../php/fetch_candidate_position.php';
-require '../php/position_vote_count.php'
+require '../php/position_vote_count.php';
+require '../php/fetch_date.php';
 ?>
 
 <!DOCTYPE html>
@@ -103,14 +104,19 @@ require '../php/position_vote_count.php'
       echo '<div class="Bposition1">';
       echo '<h1><b>' . $candidate_positions[$i]['position_name'] . '</b></h1>';
       foreach ($candidates as $candidate) {
+        if(empty($candidate['middle_name'])){
+          $period = "";
+        }else{
+          $period = ".";
+        }
         if ($candidate['position'] == $candidate_positions[$i]['position_name']) {
           if ($position_votes[$i]['votes_per_position'] != 0) {
             $percentage = round(($candidate['total_votes'] / $position_votes[$i]['votes_per_position']) * 100);
           } else {
             $percentage = 0;
           }
-          if($current_date_time < $row['end_date']){
-            echo '<div class ="Bcan"><b>'.$candidate['first_name'].' '.$candidate['middle_name'].'. '.$candidate['last_name'].'</b></div>';
+          if($current_date_time > $row['end_date']){
+            echo '<div class ="Bcan"><b>'.$candidate['first_name'].' '.$candidate['middle_name'][0].''.$period.' '.$candidate['last_name'].'</b></div>';
             echo '<div class ="Bparty"><b>'.$candidate['party_name'].'</b></div>';
             echo '<div class="Bbar1">';
             echo '<img class="Banon" src="'.$candidate['photo'].'" width="45px" height="45px">';
