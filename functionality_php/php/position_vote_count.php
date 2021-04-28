@@ -12,7 +12,7 @@
     $position_votes = array();
 	  while($vote=mysqli_fetch_array($result)){
       $position_votes[] = array( 
-        "position"=>$vote['position_id'],
+        "position"=>$vote['position'],
         "votes_per_position"=>$vote['votes_per_position']
       );
     }
