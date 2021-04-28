@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html>
-<!DOCTYPE html>
-<html>
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta charset="utf-8">
     <link rel="icon" href="../../Admin/assets/img/BUHS LOGO.png" type="image/png">
-    <link rel="stylesheet" type="text/css" href="../../Admin/assets/css/style.css">
-    <link rel="stylesheet" href="../../Admin/assets/css/bootstrap4.5.2.css">
-    <link rel="stylesheet" href="../../Admin/assets/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="../../Admin/assets/css/style1.css">
+    <link rel="stylesheet" href="../../Admin/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../../Admin/assets/css/dataTables.bootstrap.css">
     <link rel="stylesheet" href="../../Admin/assets/css/font-awesome.css">
-    <link rel="stylesheet" href="../../Admin/assets/css/jquery.dataTables.min.css">
-    <!-- <script src="assets/js/a076d05399.js"></script> -->
-    <script src="../../Admin/assets/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../../Admin/assets/js/jquery-3.5.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="../../Admin/assets/js/jquery-1.11.1.min.js"></script>
     <script src="../../Admin/assets/js/jquery.dataTables.min.js"></script>
+    <script src="../../Admin/assets/js/dataTables.bootstrap.js"></script>
     <script src="../../Admin/assets/js/countdown.js"></script>
     <script src="https://cdn.datatables.net/fixedheader/3.1.8/js/dataTables.fixedHeader.min.js"></script>
     <title>BUCEILS Voting System</title>
@@ -90,7 +86,7 @@
     <div class="Bvotestat">
         <p><b>VOTE STATUS</b></p>
     </div>
-    <button class="Bbtn_goback" onclick="goBack()">Go Back</button>
+    <br><br>
     <div class="Bvs_gradelevel">
         <?php $samp = $_GET['level']; //gets the value from prev page
         echo '<p>GRADE ' . $samp . '</p>'; ?>
@@ -155,5 +151,4 @@
         }
     </script>
 </body>
-
 </html>
