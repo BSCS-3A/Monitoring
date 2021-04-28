@@ -110,10 +110,10 @@ require '../php/position_vote_count.php'
             $percentage = 0;
           }
           if($current_date_time < $row['end_date']){
-            echo '<div class ="Bcan"><b>'.$candidate['first_name'].' '.$candidate['last_name'].'</b></div>';
+            echo '<div class ="Bcan"><b>'.$candidate['first_name'].' '.$candidate['middle_name'].'. '.$candidate['last_name'].'</b></div>';
             echo '<div class ="Bparty"><b>'.$candidate['party_name'].'</b></div>';
             echo '<div class="Bbar1">';
-            echo '<img class="Banon" src="../../Admin/anon.png" width="45px" height="45px">';
+            echo '<img class="Banon" src="'.$candidate['photo'].'" width="45px" height="45px">';
             echo '<div class="Bvote_percentage">';
             echo '<div class="Bvote_level" style="width:' . $percentage . '%">';
             echo '<b><span>'.$candidate['total_votes'].'</span></b>';
