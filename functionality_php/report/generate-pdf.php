@@ -117,6 +117,16 @@ ob_start();
 //$lastCandidate= mysqli_fetch_array($queryGroup);
 //-------------
  
+//----------DISPLAYS NUMBER OF ENROLLED STUDENTS 
+	$queryEnrolled=mysqli_query($conn, "SELECT sum(case when grade_level = '7' then 1 else 0 end) AS g7,
+    			    sum(case when grade_level = '8' then 1 else 0 end) AS g8,
+    			    sum(case when grade_level = '9' then 1 else 0 end) AS g9,
+    				sum(case when grade_level = '10' then 1 else 0 end) AS g10,
+    				sum(case when grade_level = '11' then 1 else 0 end) AS g11,
+    				sum(case when grade_level = '12' then 1 else 0 end) AS g12,
+   					count(student_id) AS totalEnrolled FROM student");
+	$res = mysqli_fetch_array($queryEnrolled);
+
 $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id, candidate.position_id, candidate.total_votes, student.lname, student.fname, student.mname, candidate_position.heirarchy_id, candidate_position.position_name FROM candidate INNER JOIN student ON candidate.student_id = student.student_id INNER JOIN candidate_position ON candidate.position_id = candidate_position.heirarchy_id ORDER BY heirarchy_id"); 
 
 		$flag = 0;
@@ -130,9 +140,7 @@ $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id,
 				$pdf->SetFont('','B',12);
 				$pdf->Cell(170,5, strtoupper($data['position_name']),1,1,'L',1);	//print position name once
 				$flag = 1;
-			}
-			//end if
-
+			}//end if
 				//concat last name, first name, middle name
 				if(empty($data['mname']))
 					$data['fullname']=$data['lname'].", ".$data['fname'];
@@ -147,17 +155,14 @@ $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id,
 						$pdf->SetFont('','',10); 
 						$pdf->Cell(65,5,$data['fullname'],1,0,'L',0);			
 					}
-
 //----------NUMBER OF VOTES RECEIVED PER CANDIDATE PER GRADE LEVEL
 			$id = $data['candidate_id'];
 			for($i = 7,$j=0; $i <=12;$i++, $j++)
 			{
-				$result = mysqli_query($conn,"SELECT * FROM vote INNER JOIN student ON vote.student_id = student.student_id where candidate_id = '$id' and grade_level = '$i' and status='1' ");
+				$result = mysqli_query($conn,"SELECT * FROM vote INNER JOIN student ON vote.student_id = student.student_id where candidate_id = '$id' and grade_level = '$i' and status='VOTED' ");
 				$votesReceived[$j] = mysqli_num_rows($result);
 			}
-
 				$votesReceivedTotal= $votesReceived[0]+$votesReceived[1]+$votesReceived[2]+$votesReceived[3]+$votesReceived[4]+$votesReceived[5];
-
 				$pdf->Cell(14.7,5,$votesReceived[0],1,0,'C',0);  		//column total grade 7 vote
 				$pdf->Cell(14.7,5,$votesReceived[1],1,0,'C',0);   		//column total grade 8 vote
 				$pdf->Cell(14.7,5,$votesReceived[2],1,0,'C',0);  		//column total grade 9 vote
@@ -165,44 +170,47 @@ $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id,
 				$pdf->Cell(14.6,5,$votesReceived[4],1,0,'C',0);   		//column total grade 11 vote
 				$pdf->Cell(14.7,5,$votesReceived[5],1,0,'C',0);  		//column total grade 12 vote
 				$pdf->Cell(17,5,$votesReceivedTotal,1,1,'C',0); 		//ADDS EVERY COLUMN
-				
+	
+				$sumGrade7+=$votesReceived[0];
+				$sumGrade8+=$votesReceived[1];
+				$sumGrade9+=$votesReceived[2];
+				$sumGrade10+=$votesReceived[3];
+				$sumGrade11+=$votesReceived[4];
+				$sumGrade12+=$votesReceived[5];
+
 				$temp = $data['heirarchy_id'];
 
+//!!!! MINOR ERROR WITH ADDING OF ABSTAIN BUT WORKING
 //----------DISPLAYS ABSTAIN
-//STATUS: CORRECT NA PRINTING, CALCULATIONS NALANG
-
 $queryGroup=mysqli_query($conn, "SELECT max(student_id) as last FROM candidate group by position_id");
 while($lastCandidate = mysqli_fetch_array($queryGroup)){
-				
-		if($data['student_id']==$lastCandidate['last']){ //should loop :<
+		if($data['student_id']==$lastCandidate['last']){ 
 			$pdf->SetFont('','',12);
 			$pdf->Cell(65,5, 'ABSTAIN',1,0,'L',0);					
 
-				//temporary place holders
-				$pdf->Cell(14.7,5,'',1,0,'C',0);  					//column total grade 7 vote
-				$pdf->Cell(14.7,5,'' ,1,0,'C',0);   				//column total grade 8 vote
-				$pdf->Cell(14.7,5,'',1,0,'C',0);  					//column total grade 9 vote
-				$pdf->Cell(14.6,5,'',1,0,'C',0);					//column total grade 10 vote
-				$pdf->Cell(14.6,5,'',1,0,'C',0);   					//column total grade 11 vote
-				$pdf->Cell(14.7,5,'',1,0,'C',0);  					//column total grade 12 vote
-				$pdf->Cell(17,5,'',1,1,'C',0); 						//column total vote
+				$abstainedGrade7=$res[0]-$sumGrade7;
+				$abstainedGrade8=$res[1]-$sumGrade8;
+				$abstainedGrade9=$res[2]-$sumGrade9;
+				$abstainedGrade10=$res[3]-$sumGrade10;
+				$abstainedGrade11=$res[4]-$sumGrade11;
+				$abstainedGrade12=$res[5]-$sumGrade12;
+				
+				$pdf->Cell(14.7,5,$abstainedGrade7,1,0,'C',0);  					//column total grade 7 vote
+				$pdf->Cell(14.7,5,$abstainedGrade8 ,1,0,'C',0);   					//column total grade 8 vote
+				$pdf->Cell(14.7,5,$abstainedGrade9,1,0,'C',0);  					//column total grade 9 vote
+				$pdf->Cell(14.6,5,$abstainedGrade10,1,0,'C',0);						//column total grade 10 vote
+				$pdf->Cell(14.6,5,$abstainedGrade11,1,0,'C',0);   					//column total grade 11 vote
+				$pdf->Cell(14.7,5,$abstainedGrade12,1,0,'C',0);  					//column total grade 12 vote
+				$pdf->Cell(17,5,$abstainedGrade7+$abstainedGrade8+$abstainedGrade9+$abstainedGrade10+$abstainedGrade11+$abstainedGrade12,1,1,'C',0); 										
 		}//end if
-	}//end while	
+	}//end while
+		
 }//end while
 
 //----------HIGHLIGHTS THE ROW OF WINNER PER POSITION
 			//if it is the stored id per position, highlight
 
 //----------DISPLAYS NUMBER OF ENROLLED STUDENTS 
-	$queryEnrolled=mysqli_query($conn, "SELECT sum(case when grade_level = '7' then 1 else 0 end) AS g7,
-    			    sum(case when grade_level = '8' then 1 else 0 end) AS g8,
-    			    sum(case when grade_level = '9' then 1 else 0 end) AS g9,
-    				sum(case when grade_level = '10' then 1 else 0 end) AS g10,
-    				sum(case when grade_level = '11' then 1 else 0 end) AS g11,
-    				sum(case when grade_level = '12' then 1 else 0 end) AS g12,
-   					count(student_id) AS totalEnrolled FROM student");
-	$res = mysqli_fetch_array($queryEnrolled);
-
 				$pdf->SetFont('','B',12);
 				$pdf->Cell(170,5,'' ,1,1,'C',0); 			//empty row spacer	
 				$pdf->Cell(65,5,'Number of Enrolled Students:',1,0,'L',0);		
@@ -244,6 +252,7 @@ while($lastCandidate = mysqli_fetch_array($queryGroup)){
 	$pdf->SetFont('','B',12);
 	$pdf->Cell(20,1,'Certified true and correct by:',0,0);
 	
+
 // !!! WAITING FOR SIGNATORY DETAILS
 	
 	//COMELEC Secretary
