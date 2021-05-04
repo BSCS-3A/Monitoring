@@ -1,6 +1,7 @@
 <?php
 require '../php/db_connection.php';				// Link to database
 require '../php/student_count.php';				// Link to queries
+require '../php/fetch_report.php';				// Link to queries in archive
 require_once('TCPDF-main/tcpdf.php'); 			// Include the main TCPDF library
 
 //---------------------Create header and footer
@@ -123,6 +124,7 @@ $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id,
 			}
 			if($flag==0){
 				$pdf->SetFont('','B',12);
+				$pdf->SetFillColor(224,235,255);
 				$pdf->Cell(170,5, strtoupper($data['position_name']),1,1,'L',1);	//print position name once
 				$flag = 1;
 				$sumGrade7 = 0;
@@ -132,6 +134,16 @@ $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id,
 				$sumGrade11 = 0;
 				$sumGrade12 = 0;
 			}//end if
+
+			// if candidate is winner, set fill color to green
+				if (isWinner($conn, $data['fname'], $data['mname'], $data['lname']))
+				{
+					$pdf->SetFillColor(144,238,144);
+					$color = 1;
+				} else {
+					$color = 0;
+				}
+
 				//concat last name, first name, middle name
 				if(empty($data['mname']))
 					$data['fullname']=$data['lname'].", ".$data['fname'];
@@ -141,11 +153,12 @@ $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id,
 					//display full name w/ resize condition
 					if(strlen($data['fullname'])<40){
 						$pdf->SetFont('','',12); 
-						$pdf->Cell(65,5,$data['fullname'],1,0,'L',0);			
+						$pdf->Cell(65,5,$data['fullname'],1,0,'L',$color);			
 					}else{ 
 						$pdf->SetFont('','',10); 
-						$pdf->Cell(65,5,$data['fullname'],1,0,'L',0);			
+						$pdf->Cell(65,5,$data['fullname'],1,0,'L',$color);			
 					}
+					
 //----------NUMBER OF VOTES RECEIVED PER CANDIDATE PER GRADE LEVEL
 			$id = $data['candidate_id'];
 			for($i = 7,$j=0; $i <=12;$i++, $j++)
@@ -154,13 +167,14 @@ $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id,
 				$votesReceived[$j] = mysqli_num_rows($result);
 			}
 				$votesReceivedTotal= $votesReceived[0]+$votesReceived[1]+$votesReceived[2]+$votesReceived[3]+$votesReceived[4]+$votesReceived[5];
-				$pdf->Cell(14.7,5,$votesReceived[0],1,0,'C',0);  		//column total grade 7 vote
-				$pdf->Cell(14.7,5,$votesReceived[1],1,0,'C',0);   		//column total grade 8 vote
-				$pdf->Cell(14.7,5,$votesReceived[2],1,0,'C',0);  		//column total grade 9 vote
-				$pdf->Cell(14.6,5,$votesReceived[3],1,0,'C',0);			//column total grade 10 vote
-				$pdf->Cell(14.6,5,$votesReceived[4],1,0,'C',0);   		//column total grade 11 vote
-				$pdf->Cell(14.7,5,$votesReceived[5],1,0,'C',0);  		//column total grade 12 vote
-				$pdf->Cell(17,5,$votesReceivedTotal,1,1,'C',0); 		//ADDS EVERY COLUMN
+
+				$pdf->Cell(14.7,5,$votesReceived[0],1,0,'C',$color);  		//column total grade 7 vote
+				$pdf->Cell(14.7,5,$votesReceived[1],1,0,'C',$color);   		//column total grade 8 vote
+				$pdf->Cell(14.7,5,$votesReceived[2],1,0,'C',$color);  		//column total grade 9 vote
+				$pdf->Cell(14.6,5,$votesReceived[3],1,0,'C',$color);			//column total grade 10 vote
+				$pdf->Cell(14.6,5,$votesReceived[4],1,0,'C',$color);   		//column total grade 11 vote
+				$pdf->Cell(14.7,5,$votesReceived[5],1,0,'C',$color);  		//column total grade 12 vote
+				$pdf->Cell(17,5,$votesReceivedTotal,1,1,'C',$color); 		//ADDS EVERY COLUMN
 			
 				$sumGrade7+=$votesReceived[0];
 				$sumGrade8+=$votesReceived[1];
