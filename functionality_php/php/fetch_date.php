@@ -7,35 +7,15 @@
     $row = mysqli_fetch_assoc($result);
 
     date_default_timezone_set('Asia/Manila');
+
     $current_date_time = date('Y-m-d H:i:s');
-    $after_election_date = date('Y-m-d H:i:s', strtotime($row['end_date']. ' + 2 days'));
+    $vote_stat = 0;
 
-    $last_election_date = date('Y-m-d H:i:s', strtotime($row['end_date']));
+    $o_file = fopen("../admin/post_result.txt", "r") or die("Unable to open file!");
+
+    $postB = fgetc($o_file);
     
-    if((isset($_POST["post_button"])) && $current_date_time>$row['end_date']){
-        $vote_stat = 3;
-    }else{
-        if(empty($row['vote_event_id'])){
-            $vote_stat = 0;
-        }else{
-            $vote_stat = 0;
-
-            if($current_date_time>=$row['start_date'] && $current_date_time<$row['end_date']){
-                $vote_stat = 1;
-            }elseif($current_date_time>=$row['end_date']&&$current_date_time<$after_election_date){
-                $vote_stat = 2;
-            }else{
-                $vote_stat = 0;
-            }
-        }
-    }
-    
-
-    $reset_election = date('Y-m-d H:i:s', strtotime($row['end_date']. ' + 5 days'));
-
-    if($current_date_time>=$reset_election){
-        $vote_stat = 0;
-    }
+    fclose($o_file);
 
     mysqli_free_result($result);
 ?>
