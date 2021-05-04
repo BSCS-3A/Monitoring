@@ -62,15 +62,32 @@
         <!--end of list-->
     </nav>
 
-    <?php if($vote_stat==1): ?>
-    <?php require 'inc/ongoing.html';?>
-    <?php elseif($vote_stat==2): ?>
-    <?php require 'inc/after_election.html';?>
-    <?php elseif($vote_stat==3): ?>
-    <?php require 'front_ElectRes_v2_0.php';?>
-    <?php else: ?>
-    <?php require 'inc/no_election.html';?>
-    <?php endif; ?>
+    <div>
+    <?php
+        if(!(empty($row['vote_event_id']))){
+            
+            $after_election_date = date('Y-m-d H:i:s', strtotime($row['end_date']. ' + 2 days'));
+
+            $last_election_date = date('Y-m-d H:i:s', strtotime($row['end_date']));
+            
+            if($current_date_time>$row['end_date'] && $postB==1){
+                require 'front_ElectRes_v2_0.php';
+            }else{
+                if($current_date_time>=$row['start_date'] && $current_date_time<$row['end_date']){
+                    require 'inc/ongoing.html';
+                }elseif($current_date_time>=$row['end_date']&&$postB==0){
+                    require 'inc/after_election.html';
+                }else{
+                    require 'inc/no_election.html';
+                }
+                
+            }
+        }else{
+            require 'inc/no_election.html';
+        }
+    ?>
+    </div>
+    
 
     <div class="footer">
         <p class="footer-txt">BS COMPUTER SCIENCE 3A © 2021</p>
