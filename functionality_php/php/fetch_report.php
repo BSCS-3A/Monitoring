@@ -72,6 +72,15 @@
             return ($gradeLevel['grade_level'] - 7);
         }
 
+        function isWinner($conn, $fname, $mname, $lname){
+            $winnerQuery = $conn->query("SELECT * FROM archive WHERE winner_fname = '$fname' AND winner_mname = '$mname' AND winner_lname = '$lname'");
+            if($winnerQuery->num_rows == 0) {
+                 return false;
+            } else {
+                return true;            }
+            // $mysqli->close();
+        }
+
     //Count number of candidate_position
         $result = mysqli_query($conn,"SELECT * FROM candidate_position");
         $positionSize = mysqli_num_rows($result);
