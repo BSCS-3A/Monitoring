@@ -947,3 +947,23 @@ z-index:1000;
   z-index:-1000;
   text-align: center;
  }
+
+ /*No On-going Election*/
+.Belec2 p{
+  font-family: Roboto regular;
+  color: white;
+  font-weight: inherit;
+  font-size: 300%;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-top: 170px;
+}
+.Bon2 h1{
+  font-family: Roboto regular;
+  color: #e0a900;
+  font-weight: inherit;
+  font-size: 500%;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-top: 4px;
+}
