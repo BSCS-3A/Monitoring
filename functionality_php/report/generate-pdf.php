@@ -1,6 +1,7 @@
 <?php
 require '../php/db_connection.php';				// Link to database
 require '../php/student_count.php';				// Link to queries
+require '../php/fetch_date.php';				// Link to queries in date
 require '../php/fetch_report.php';				// Link to queries in archive
 require_once('TCPDF-main/tcpdf.php'); 			// Include the main TCPDF library
 
@@ -94,29 +95,17 @@ ob_start();
 		$pdf->Cell(14.6,5,'11',1,0,'C',1);   
 		$pdf->Cell(14.7,5,'12',1,1,'C',1);
 
-		//----------GETS THE WINNER PER POSITION
-			//Count number of candidate_position
-				// $result = mysqli_query($conn,"SELECT * FROM candidate");
-				// $i = mysqli_num_rows($result);
-			//Get highest vote per candidate_position
-				
-			//Store id of candidate with highest vote
-
-		//----------CHECKS FOR TIE
-			//If there is more than 1 highest vote per candidate_position
-			//Prompt to pick
-			//Store id of candidate votes given a +1
-			//Update stored id of winning candidate
-
 //QUERY TO GET THE LAST CANDIDATE PER POSITION
 //$queryGroup=mysqli_query($conn, "SELECT max(student_id) as last FROM candidate group by position_id");
 //$lastCandidate= mysqli_fetch_array($queryGroup);
 //-------------
 
+
 $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id, candidate.position_id, candidate.total_votes, student.lname, student.fname, student.mname, candidate_position.heirarchy_id, candidate_position.position_name FROM candidate INNER JOIN student ON candidate.student_id = student.student_id INNER JOIN candidate_position ON candidate.position_id = candidate_position.heirarchy_id ORDER BY heirarchy_id"); 
 
 		$flag = 0;
 		$temp = 0;
+		// $row_flag = 0;
 		while($data=mysqli_fetch_array($query))
 		{ 	
 			if($temp==0 || $temp!=$data['heirarchy_id']){
@@ -133,13 +122,23 @@ $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id,
 				$sumGrade10 = 0;
 				$sumGrade11 = 0;
 				$sumGrade12 = 0;
+
+				// Max votes per position to determine tie
+					$pos_id = $data['position_id'];
+					$rowSQL = mysqli_query($conn, "SELECT MAX(total_votes) AS tempWinner FROM candidate WHERE position_id = '$pos_id'");
+			        list($max) = mysqli_fetch_row($rowSQL);
 			}//end if
 
+			$string = '';
 			// if candidate is winner, set fill color to green
-				if (isWinner($conn, $data['fname'], $data['mname'], $data['lname']))
+				if (isWinner($conn, $data['fname'], $data['mname'], $data['lname'], $last_election_date))
 				{
 					$pdf->SetFillColor(144,238,144);
 					$color = 1;
+					if (numTie($conn, $pos_id, $max)>1)
+					{ // add '+1' beside votes if winner in tie
+						$string = ' +1';
+					}
 				} else {
 					$color = 0;
 				}
@@ -158,7 +157,7 @@ $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id,
 						$pdf->SetFont('','',10); 
 						$pdf->Cell(65,5,$data['fullname'],1,0,'L',$color);			
 					}
-					
+
 //----------NUMBER OF VOTES RECEIVED PER CANDIDATE PER GRADE LEVEL
 			$id = $data['candidate_id'];
 			for($i = 7,$j=0; $i <=12;$i++, $j++)
@@ -174,7 +173,7 @@ $query=mysqli_query($conn, "SELECT candidate.candidate_id, candidate.student_id,
 				$pdf->Cell(14.6,5,$votesReceived[3],1,0,'C',$color);			//column total grade 10 vote
 				$pdf->Cell(14.6,5,$votesReceived[4],1,0,'C',$color);   		//column total grade 11 vote
 				$pdf->Cell(14.7,5,$votesReceived[5],1,0,'C',$color);  		//column total grade 12 vote
-				$pdf->Cell(17,5,$votesReceivedTotal,1,1,'C',$color); 		//ADDS EVERY COLUMN
+				$pdf->Cell(17,5,$votesReceivedTotal.$string,1,1,'C',$color); 		//ADDS EVERY COLUMN
 			
 				$sumGrade7+=$votesReceived[0];
 				$sumGrade8+=$votesReceived[1];
@@ -211,9 +210,6 @@ while($lastCandidate = mysqli_fetch_array($queryGroup)){
 	}//end while
 		
 }//end while
-
-//----------HIGHLIGHTS THE ROW OF WINNER PER POSITION
-			//if it is the stored id per position, highlight
 
 //----------DISPLAYS NUMBER OF ENROLLED STUDENTS 
 				$pdf->SetFont('','B',12);
@@ -253,21 +249,21 @@ while($lastCandidate = mysqli_fetch_array($queryGroup)){
 // !!! WAITING FOR SIGNATORY DETAILS
 	
 	//COMELEC Secretary
-	$pdf->Ln(30); 
+	$pdf->Ln(20); 
 	$pdf->SetFont('','',12);
 	$pdf->Cell(20,5,'SURNAME, FIRST NAME M.',0,1);
 	$pdf->SetFont('','BI',12);
 	$pdf->Cell(20,1,'COMELEC Secretary',0,0);
 	
 	//COMELEC Chairman
-	$pdf->Ln(30); 
+	$pdf->Ln(20); 
 	$pdf->SetFont('','',12);
 	$pdf->Cell(20,5,'SURNAME, FIRST NAME M.',0,1);
 	$pdf->SetFont('','BI',12);
 	$pdf->Cell(20,1,'COMELEC Chairman',0,0);
 	
 	//COMELEC Adviser
-	$pdf->Ln(30); 
+	$pdf->Ln(20); 
 	$pdf->SetFont('','',12);
 	$pdf->Cell(20,5,'SURNAME, FIRST NAME M.',0,1);
 	$pdf->SetFont('','BI',12);
