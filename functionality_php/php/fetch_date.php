@@ -10,6 +10,7 @@
 
     $current_date_time = date('Y-m-d H:i:s');
     $vote_stat = 0;
+    $last_election_date = date('Y-m-d H:i:s', strtotime($row['end_date']));
 
     $o_file = fopen("../admin/post_result.txt", "r") or die("Unable to open file!");
 
