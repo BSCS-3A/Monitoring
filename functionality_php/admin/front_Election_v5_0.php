@@ -154,7 +154,7 @@ require '../php/fetch_date.php';
     echo '</div>';
     echo '</form>';
     }else{
-      require 'no_election.html';
+      require 'No_ElecRess.html';
     }
   ?>
 
