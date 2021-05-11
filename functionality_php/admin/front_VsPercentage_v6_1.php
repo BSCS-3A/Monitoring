@@ -5,11 +5,14 @@ include '../php/db_connection.php';
 ?>
 
 <head>
+<!-- darleng kiss mo ako-->
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta charset="utf-8">
     <link rel="icon" href="../../Admin/assets/img/BUHS LOGO.png" type="image/png">
-    <link rel="stylesheet" type="text/css" href="../../Admin/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/jpa/style.css">
     <link rel="stylesheet" href="../../Admin/assets/css/bootstrap4.5.2.css">
     <link rel="stylesheet" href="../../Admin/assets/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../../Admin/assets/css/font-awesome.css">
@@ -22,9 +25,66 @@ include '../php/db_connection.php';
     <script src="https://cdn.datatables.net/fixedheader/3.1.8/js/dataTables.fixedHeader.min.js"></script>
     <title>BUCEILS Voting System</title>
 </head>
+<!--darleng kiss mo ko-->
+<style type="text/css">
+ #specSec {
+  margin-bottom: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 
+ #exe{ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 49.75%;
+  margin-bottom: .5%;  }
+
+#exe:nth-last-child(n+5):first-child,
+#exe:nth-last-child(n+5):first-child ~ *,
+
+ #exe:nth-last-child(n+6):first-child,
+ #exe:nth-last-child(n+6):first-child ~ * {
+
+  flex-basis: 33%;
+}
+
+
+#exe:nth-child(5):last-child {
+  margin-right: auto;
+  margin-left: .5%;
+} 
+
+
+
+
+
+#exe {
+  min-height: 300px;
+  font: 0.9rem Arial;
+}
+#adesign {
+    color:white;
+    font-family: Roboto;
+     font-size: 20px;
+    float: right;
+    margin-left: 15px;
+     margin-top: 35px;
+}
+#adesign2digits {
+    color:white;
+    font-family: Roboto;
+     font-size: 20px;
+    float: right;
+    margin-left: 5px;
+     margin-top: 35px;
+}
+</style>
 <body>
-    <nav>
+  <nav>
         <input class="nav-toggle1" type="checkbox">
         <div class="aLogo">
             <h2 class="aLogo-txt1"><a href="adminDashboard.html">BUCEILS HS</a></h2>
@@ -93,9 +153,8 @@ include '../php/db_connection.php';
     <div class="Bvotestat">
         <p><b>VOTE STATUS</b></p>
     </div>
-
-    //====================variables==================
     <?php
+      //====================variables==================
     $gr7 = 0;
     $gr7_voted = 0;
     $gr7_percent = 0;
@@ -193,107 +252,89 @@ include '../php/db_connection.php';
 
     //===================== ======end============================================
     ?>
-
-    <div class="Bcon">
-        <div class="Bvcontainer">
-            <div class="Bcard">
-                <div class="Bbox">
-                    <div class="progressbar" data-animate="false"><?php //ang gr7_percent sya yung gagamitin para sa bar, yung naga pakita kung ilang percent na
+<div id="specSec">
+  <div id="exe">
+      <div class="progressbar" data-animate="false"><?php //ang gr7_percent sya yung gagamitin para sa bar, yung naga pakita kung ilang percent na
                                                                     ?>
                         <div class="circle" data-percent=<?php echo '' . $gr7_percent . ''; ?>>
                             <div></div>
 
                         </div>
+                        
+                        <a href='front_Vstat_v7_0.php?level=7' id="adesign">GRADE 7</b></a>
+                        
                     </div>
 
-                    <a href='front_Vstat_v7_0.php?level=7'><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRADE 7</b></a>
-                </div>
-            </div>
-
-            <div class="Bcard">
-                <div class="Bbox">
-                    <div class="progressbar" data-animate="false"><?php //ang gr8_percent sya yung gagamitin para sa bar, yung naga pakita kung ilang percent na
+  </div>
+  <div id="exe">
+   <div class="progressbar" data-animate="false"><?php //ang gr8_percent sya yung gagamitin para sa bar, yung naga pakita kung ilang percent na
                                                                     ?>
                         <div class="circle" data-percent=<?php echo '' . $gr8_percent . ''; ?>>
                             <div></div>
 
                         </div>
+                        
+                        <a href='front_Vstat_v7_0.php?level=8' id="adesign">GRADE 8</b></a>
+                        
                     </div>
-                    <a href='front_Vstat_v7_0.php?level=8'><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRADE 8</b></a>
-                </div>
-            </div>
-
-            <div class="Bcard">
-                <div class="Bbox">
-                    <div class="progressbar" data-animate="false"><?php //ang gr9_percent sya yung gagamitin para sa bar, yung naga pakita kung ilang percent na
+      
+  </div>
+  <div id="exe">
+       <div class="progressbar" data-animate="false"><?php //ang gr9_percent sya yung gagamitin para sa bar, yung naga pakita kung ilang percent na
                                                                     ?>
                         <div class="circle" data-percent=<?php echo '' . $gr9_percent . ''; ?>>
                             <div></div>
 
                         </div>
+                        
+                        <a href='front_Vstat_v7_0.php?level=9' id="adesign">GRADE 9</b></a>
+                        
                     </div>
-                    <a href='front_Vstat_v7_0.php?level=9'><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRADE 9</b></a>
-
-                </div>
-            </div>
-
-            <div class="Bcard">
-                <div class="Bbox">
-                    <div class="progressbar" data-animate="false"><?php //ang gr10_percent sya yung gagamitin para sa bar, yung naga pakita kung ilang percent na
+  </div>
+  <div id="exe">
+       <div class="progressbar" data-animate="false"><?php //ang gr10_percent sya yung gagamitin para sa bar, yung naga pakita kung ilang percent na
                                                                     ?>
                         <div class="circle" data-percent=<?php echo '' . $gr10_percent . ''; ?>>
                             <div></div>
 
                         </div>
+                        
+                        <a href='front_Vstat_v7_0.php?level=10' id="adesign2digits">GRADE 10</b></a>
+                        
                     </div>
-                    <a href='front_Vstat_v7_0.php?level=10'><b>&nbsp;&nbsp;&nbsp;GRADE 10</b></a>
-
-                </div>
-            </div>
-
-            <div class="Bcard">
-                <div class="Bbox">
-                    <div class="progressbar" data-animate="false"><?php //ang gr11_percent sya yung gagamitin para sa bar, yung naga pakita kung ilang percent na
+  </div>
+  <div id="exe">
+       <div class="progressbar" data-animate="false"><?php //ang gr11_percent sya yung gagamitin para sa bar, yung naga pakita kung ilang percent na
                                                                     ?>
                         <div class="circle" data-percent=<?php echo '' . $gr11_percent . ''; ?>>
                             <div></div>
 
                         </div>
+                        
+                        <a href='front_Vstat_v7_0.php?level=11' id="adesign2digits">GRADE 11</b></a>
+                        
                     </div>
-                    <a href='front_Vstat_v7_0.php?level=11'><b>&nbsp;&nbsp;&nbsp;GRADE 11</b></a>
-
-                </div>
-            </div>
-
-            <div class="Bcard">
-                <div class="Bbox">
-                    <div class="progressbar" data-animate="false"><?php //ang gr12_percent sya yung gagamitin para sa bar, yung naga pakita kung ilang percent na
+  </div>
+  <div id="exe">
+       <div class="progressbar" data-animate="false"><?php //ang gr12_percent sya yung gagamitin para sa bar, yung naga pakita kung ilang percent na
                                                                     ?>
                         <div class="circle" data-percent=<?php echo '' . $gr12_percent . ''; ?>>
                             <div></div>
 
                         </div>
+                        
+                        <a href='front_Vstat_v7_0.php?level=12' id="adesign2digits">GRADE 12</b></a>
+                        
                     </div>
-                    <a href='front_Vstat_v7_0.php?level=12'><b>&nbsp;&nbsp;&nbsp;GRADE 12</b></a>
-
-                </div>
-            </div>
-
-            <?php
-            //additional notes:
-            // yung mga ganito = <a href='front_Vstat_v7_0.php?level=12'><b>&nbsp;&nbsp;&nbsp;GRADE 12</b></a>
-            //sya yung sa label baga na pag tig click maga redirect
-            ?>
+  </div>
+</div>
 
 
-        </div>
-    </div>
+
 
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js'></script>
-    <script src="assets/jpa/script.js ?v=<?php echo time(); ?>"></script>
-
+    <script src="assets/jpa/script.js ?v=<?php echo time(); ?>"></script>  
 </body>
-
 </html>
