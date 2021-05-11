@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
-include 'db_connection.php';
+include '../php/db_connection.php';
 ?>
 <head>
 	<title>BUCEILS Voting System</title>
